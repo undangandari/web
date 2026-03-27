@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Script untuk memutar file JSON Lottie -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -422,11 +426,11 @@
         <!-- ========================================= -->
         <!-- SECTION 7: PENUTUP (TERIMA KASIH)         -->
         <!-- ========================================= -->
-        <section id="penutup" class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center p-5 z-10 py-24">
+        <section id="penutup" class="relative w-full flex flex-col items-center justify-center p-5 pt-24 pb-8 z-10">
             
             <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png" alt="Lampion" class="absolute top-0 left-0 w-full z-0 naik-turun pointer-events-none opacity-90">
 
-            <div class="w-full max-w-[340px] premium-card rounded-[2rem] p-6 md:p-8 flex flex-col items-center relative reveal-up z-10 mt-8">
+            <div class="w-full max-w-[340px] premium-card rounded-[2rem] p-6 md:p-8 flex flex-col items-center relative reveal-up z-10 mt-8 mb-16">
                 
                 <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
 
@@ -491,8 +495,39 @@
 
             </div>
 
-            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -left-6 w-44 z-20 drop-shadow-2xl">
-            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -right-6 w-44 z-20 drop-shadow-2xl transform scale-x-[-1]">
+        </section>
+
+        <!-- ========================================= -->
+        <!-- SECTION 8: FOOTER / CREDIT VENDOR         -->
+        <!-- ========================================= -->
+        <section id="footer" class="relative w-full flex flex-col items-center justify-center pb-12 pt-4 z-20">
+            
+            <!-- Lottie Player Animation -->
+            <lottie-player 
+                src="https://ik.imagekit.io/asetundangan/aset/json/thanksjson.json" 
+                background="transparent" 
+                speed="1" 
+                style="width: 200px; height: auto;" 
+                loop 
+                autoplay
+                class="reveal-up z-10"
+                style="transition-delay: 0.1s;">
+            </lottie-player>
+
+            <p class="font-montserrat font-medium text-white/60 text-[10px] leading-relaxed text-center mb-5 reveal-up z-10" style="transition-delay: 0.2s;">
+                Made with love by undangandari.com<br>
+                Click here if you are interested in us
+            </p>
+
+            <div class="flex items-center gap-2.5 reveal-up z-10" style="transition-delay: 0.3s;">
+                <a href="#" class="w-8 h-8 rounded bg-[#5179bc] hover:bg-[#3d609a] text-white flex items-center justify-center transition-colors shadow-sm"><i class="fas fa-link text-[12px]"></i></a>
+                <a href="#" class="w-8 h-8 rounded bg-[#5179bc] hover:bg-[#3d609a] text-white flex items-center justify-center transition-colors shadow-sm"><i class="fab fa-instagram text-[13px]"></i></a>
+                <a href="#" class="w-8 h-8 rounded bg-[#5179bc] hover:bg-[#3d609a] text-white flex items-center justify-center transition-colors shadow-sm"><i class="fab fa-whatsapp text-[13px]"></i></a>
+            </div>
+
+            <!-- Ornamen Quran Bawah (Sekarang dipindah ke paling bawah agar tidak tertimpa footer) -->
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -left-6 w-44 z-0 drop-shadow-2xl pointer-events-none">
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -right-6 w-44 z-0 drop-shadow-2xl transform scale-x-[-1] pointer-events-none">
         </section>
 
     </div>
