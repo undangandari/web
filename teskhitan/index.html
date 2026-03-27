@@ -72,6 +72,22 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
             border: 1px solid rgba(255,255,255,0.2);
         }
+
+        /* Khusus Select/Dropdown form */
+        select.input-form option { background-color: #94b4d6; color: #112b52; }
+
+        /* Transisi Toggle Amplop */
+        .gift-wrap {
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+            overflow: hidden;
+            max-height: 1000px;
+            opacity: 1;
+        }
+        .gift-wrap.gift-hidden {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0 !important;
+        }
     </style>
 </head>
 <body>
@@ -274,7 +290,7 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127453.308734266!2d98.57564755106574!3d3.593132649065095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303131b0c0349b11%3A0xc3ec51b32d0c2e27!2sMasjid%20Agung%20Kota%20Medan!5e0!3m2!1sid!2sid!4v1714445558123!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
-                <a href="https://maps.app.goo.gl/SRkgbhFnmvKziUGD7" target="_blank" class="w-[90%] bg-biru-teks hover:bg-[#0e2242] text-white border border-emas/40 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-all duration-300 flex items-center justify-center gap-3 group shadow-lg reveal-up z-10" style="transition-delay: 0.6s;">
+                <a href="https://maps.app.goo.gl/SRkgbhFnmvKziUGD7" target="_blank" class="w-[90%] bg-[#5179bc] hover:bg-[#3d609a] text-white border border-white/30 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-all duration-300 flex items-center justify-center gap-3 group shadow-md reveal-up z-10" style="transition-delay: 0.6s;">
                     <i class="fas fa-map-marker-alt text-[12px] group-hover:animate-bounce"></i> LIHAT GOOGLE MAPS
                 </a>
 
@@ -285,9 +301,7 @@
         </section>
 
 
-        <!-- ========================================= -->
-        <!-- SECTION 5: GALLERY FOTO                   -->
-        <!-- ========================================= -->
+        <!-- SECTION 5: GALLERY FOTO -->
         <section id="galeri" class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center p-5 z-10 py-24">
             
             <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png" alt="Lampion" class="absolute top-0 left-0 w-full z-0 naik-turun pointer-events-none opacity-90">
@@ -310,27 +324,176 @@
 
                 <!-- Grid Layout Masonry Gallery -->
                 <div class="grid grid-cols-2 gap-2 w-full reveal-up z-10" style="transition-delay: 0.3s;">
-                    
-                    <!-- Foto 1 (Besar Atas) -->
                     <div class="col-span-2 rounded-xl overflow-hidden shadow-md border-[2px] border-white/50 aspect-square relative group">
                         <img src="https://ik.imagekit.io/asetundangan/aset/khitan/muslimboy.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-pointer" alt="Gallery 1">
                     </div>
-                    
-                    <!-- Foto 2 (Kecil Kiri) -->
                     <div class="col-span-1 rounded-xl overflow-hidden shadow-md border-[2px] border-white/50 aspect-[3/4] relative group">
                         <img src="https://ik.imagekit.io/asetundangan/aset/khitan/muslimboy2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-pointer" alt="Gallery 2">
                     </div>
-                    
-                    <!-- Foto 3 (Kecil Kanan) -->
                     <div class="col-span-1 rounded-xl overflow-hidden shadow-md border-[2px] border-white/50 aspect-[3/4] relative group">
                         <img src="https://ik.imagekit.io/asetundangan/aset/khitan/muslimboy3.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-pointer" alt="Gallery 3">
                     </div>
-                    
-                    <!-- Foto 4 (Panjang Bawah) -->
                     <div class="col-span-2 rounded-xl overflow-hidden shadow-md border-[2px] border-white/50 aspect-[16/9] relative group">
                         <img src="https://ik.imagekit.io/asetundangan/aset/khitan/muslimboy4.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-pointer" alt="Gallery 4">
                     </div>
+                </div>
+            </div>
 
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -left-6 w-44 z-20 drop-shadow-2xl">
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -right-6 w-44 z-20 drop-shadow-2xl transform scale-x-[-1]">
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- SECTION 6: AMPLOP DIGITAL (GIFT)          -->
+        <!-- ========================================= -->
+        <section id="gift" class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center p-5 z-10 py-24">
+            
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png" alt="Lampion" class="absolute top-0 left-0 w-full z-0 naik-turun pointer-events-none opacity-90">
+
+            <div class="w-full max-w-[340px] premium-card rounded-[2rem] p-8 flex flex-col items-center relative reveal-up z-10 mt-8">
+                
+                <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                <!-- Judul Amplop Digital -->
+                <div class="flex items-center justify-center w-full mb-6 mt-2 reveal-up z-10" style="transition-delay: 0.1s;">
+                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                    <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Amplop Digital</h2>
+                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                </div>
+
+                <!-- Teks Pengantar dengan ornamen + -->
+                <div class="flex items-center justify-between w-full mb-6 px-1 reveal-up z-10" style="transition-delay: 0.2s;">
+                    <span class="font-montserrat text-white/50 text-[18px] font-light leading-none">+</span>
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center max-w-[85%]">
+                        Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi gift.
+                    </p>
+                    <span class="font-montserrat text-white/50 text-[18px] font-light leading-none">+</span>
+                </div>
+
+                <!-- Tombol Toggle Rekening -->
+                <button onclick="document.getElementById('wrap-rekening').classList.toggle('gift-hidden'); const isHidden = document.getElementById('wrap-rekening').classList.contains('gift-hidden'); document.getElementById('icon-toggle-gift').className = isHidden ? 'far fa-eye text-[12px]' : 'far fa-eye-slash text-[12px]'; document.getElementById('text-toggle-gift').innerText = isHidden ? 'LIHAT REKENING' : 'SEMBUNYIKAN REKENING';" class="w-[90%] bg-[#5179bc] hover:bg-[#3d609a] text-white border border-white/30 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-all duration-300 flex items-center justify-center gap-3 shadow-md reveal-up z-10 mb-2 focus:outline-none" style="transition-delay: 0.3s;">
+                    <i id="icon-toggle-gift" class="far fa-eye-slash text-[12px]"></i>
+                    <span id="text-toggle-gift">SEMBUNYIKAN REKENING</span>
+                </button>
+
+                <!-- Wrapper Kartu Rekening (Bisa Expand/Collapse) -->
+                <div id="wrap-rekening" class="gift-wrap flex flex-col gap-4 w-full items-center z-10 mt-6" style="transition-delay: 0.4s;">
+                    
+                    <!-- Kartu Rekening 1 (BCA) -->
+                    <div class="relative w-full max-w-[280px] aspect-[1.58/1] rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.15)] flex flex-col justify-between p-5 overflow-hidden border border-white/60 bg-gradient-to-br from-[#f8f9fc] to-[#e4e9f2]">
+                        <!-- Ornamen Bulat Blur Background -->
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/60 rounded-full blur-2xl pointer-events-none"></div>
+                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#c5d3e8]/50 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <div class="flex justify-between items-start w-full z-10">
+                            <img src="https://undangandari.com/wp-content/uploads/2025/08/chip-atm-undangan.webp" alt="Chip" class="w-10 opacity-70 mix-blend-multiply">
+                            <img src="https://undangandari.com/wp-content/uploads/2025/08/Logo-Bank-BCA-1.png" alt="BCA" class="h-5 object-contain">
+                        </div>
+                        
+                        <div class="flex flex-col items-end w-full z-10 mt-auto text-biru-teks">
+                            <h5 class="font-montserrat text-[11px] font-bold tracking-[0.1em] mb-0.5 text-gray-700">COLE PALMER</h5>
+                            <p class="font-montserrat text-[18px] tracking-[0.15em] font-semibold mb-3 text-gray-900">12345678987</p>
+                            <button onclick="navigator.clipboard.writeText('12345678987'); const span = this.querySelector('span'); const oriText = span.innerText; span.innerText = 'Berhasil disalin!'; setTimeout(() => span.innerText = oriText, 2000);" class="bg-black/10 hover:bg-black/20 border border-black/10 text-gray-700 text-[9px] font-montserrat font-bold px-3 py-1.5 rounded transition-colors flex items-center gap-1.5">
+                                <i class="far fa-copy"></i> <span>Salin Nomor</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Kartu Rekening 2 (BCA) - Duplikat untuk demo -->
+                    <div class="relative w-full max-w-[280px] aspect-[1.58/1] rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.15)] flex flex-col justify-between p-5 overflow-hidden border border-white/60 bg-gradient-to-br from-[#f8f9fc] to-[#e4e9f2]">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/60 rounded-full blur-2xl pointer-events-none"></div>
+                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#c5d3e8]/50 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <div class="flex justify-between items-start w-full z-10">
+                            <img src="https://undangandari.com/wp-content/uploads/2025/08/chip-atm-undangan.webp" alt="Chip" class="w-10 opacity-70 mix-blend-multiply">
+                            <img src="https://undangandari.com/wp-content/uploads/2025/08/Logo-Bank-BCA-1.png" alt="BCA" class="h-5 object-contain">
+                        </div>
+                        
+                        <div class="flex flex-col items-end w-full z-10 mt-auto text-biru-teks">
+                            <h5 class="font-montserrat text-[11px] font-bold tracking-[0.1em] mb-0.5 text-gray-700">COLE PALMER</h5>
+                            <p class="font-montserrat text-[18px] tracking-[0.15em] font-semibold mb-3 text-gray-900">12345678987</p>
+                            <button onclick="navigator.clipboard.writeText('12345678987'); const span = this.querySelector('span'); const oriText = span.innerText; span.innerText = 'Berhasil disalin!'; setTimeout(() => span.innerText = oriText, 2000);" class="bg-black/10 hover:bg-black/20 border border-black/10 text-gray-700 text-[9px] font-montserrat font-bold px-3 py-1.5 rounded transition-colors flex items-center gap-1.5">
+                                <i class="far fa-copy"></i> <span>Salin Nomor</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -left-6 w-44 z-20 drop-shadow-2xl">
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -right-6 w-44 z-20 drop-shadow-2xl transform scale-x-[-1]">
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- SECTION 7: DOA & UCAPAN (RSVP)            -->
+        <!-- ========================================= -->
+        <section id="ucapan" class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center p-5 z-10 py-24">
+            
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png" alt="Lampion" class="absolute top-0 left-0 w-full z-0 naik-turun pointer-events-none opacity-90">
+
+            <div class="w-full max-w-[340px] premium-card rounded-[2rem] p-6 md:p-8 flex flex-col items-center relative reveal-up z-10 mt-8">
+                
+                <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                <div class="flex items-center justify-center w-full mb-4 mt-2 reveal-up z-10" style="transition-delay: 0.1s;">
+                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                    <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Doa & Ucapan</h2>
+                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                </div>
+
+                <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-2 reveal-up z-10" style="transition-delay: 0.2s;">
+                    Silahkan tuliskan doa & ucapan selamat untuk Jackson serta konfirmasi kehadiran pada kolom ucapan dibawah ini.
+                </p>
+
+                <div class="grid grid-cols-3 gap-2 w-full mb-6 reveal-up z-10" style="transition-delay: 0.3s;">
+                    <div class="bg-[#28a745] text-white rounded-md py-3 flex flex-col items-center shadow-md">
+                        <strong class="font-montserrat text-[22px] font-bold leading-none mb-1 shadow-sm">0</strong>
+                        <span class="font-montserrat text-[9px] font-medium tracking-wide">Hadir</span>
+                    </div>
+                    <div class="bg-[#dc3545] text-white rounded-md py-3 flex flex-col items-center shadow-md">
+                        <strong class="font-montserrat text-[22px] font-bold leading-none mb-1 shadow-sm">0</strong>
+                        <span class="font-montserrat text-[9px] font-medium tracking-wide">Tidak Hadir</span>
+                    </div>
+                    <div class="bg-[#ffc107] text-white rounded-md py-3 flex flex-col items-center shadow-md">
+                        <strong class="font-montserrat text-[22px] font-bold leading-none mb-1 shadow-sm">0</strong>
+                        <span class="font-montserrat text-[9px] font-medium tracking-wide">Masih Ragu</span>
+                    </div>
+                </div>
+
+                <div class="w-full flex flex-col items-start mb-5 reveal-up z-10" style="transition-delay: 0.4s;">
+                    <div class="flex items-center gap-2 mb-2 text-biru-teks">
+                        <i class="far fa-envelope-open text-[18px]"></i>
+                        <h4 class="font-playfair font-bold text-[16px] tracking-wide">0 Doa & Ucapan</h4>
+                    </div>
+                    <div class="w-[80%] h-[1.5px] bg-biru-teks/20"></div>
+                </div>
+
+                <form class="w-full flex flex-col gap-3 reveal-up z-10" style="transition-delay: 0.5s;" onsubmit="event.preventDefault(); const btn = this.querySelector('button'); const originalText = btn.innerHTML; btn.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i> Mengirim...'; setTimeout(() => btn.innerHTML = originalText, 2000);">
+                    <input type="text" placeholder="Nama Anda" required class="input-form w-full bg-white/30 border border-biru-teks/30 rounded-md px-4 py-3.5 font-montserrat text-[11px] text-biru-teks placeholder:text-biru-teks/60 focus:outline-none focus:border-biru-teks focus:bg-white/60 transition-all">
+                    <textarea placeholder="Tulis ucapan & doa Anda..." rows="3" required class="input-form w-full bg-white/30 border border-biru-teks/30 rounded-md px-4 py-3.5 font-montserrat text-[11px] text-biru-teks placeholder:text-biru-teks/60 focus:outline-none focus:border-biru-teks focus:bg-white/60 transition-all resize-none"></textarea>
+                    <select required class="input-form appearance-none w-full bg-white/30 border border-biru-teks/30 rounded-md px-4 py-3.5 font-montserrat text-[11px] text-biru-teks focus:outline-none focus:border-biru-teks focus:bg-white/60 transition-all cursor-pointer">
+                        <option value="" disabled selected>Konfirmasi Kehadiran</option>
+                        <option value="Hadir">Hadir</option>
+                        <option value="Masih Ragu">Masih Ragu</option>
+                        <option value="Tidak Hadir">Tidak Hadir</option>
+                    </select>
+                    <button type="submit" class="w-full mt-2 bg-[#5179bc] hover:bg-[#3d609a] text-white font-montserrat font-bold text-[11px] tracking-wider py-3.5 rounded-md transition-all shadow-md">
+                        Kirim Ucapan
+                    </button>
+                </form>
+
+                <div class="w-full mt-6 reveal-up z-10" style="transition-delay: 0.6s;">
+                    <p class="font-montserrat text-biru-teks/60 text-[10px] text-center mb-2">Belum ada doa & ucapan. Jadilah yang pertama!</p>
+                </div>
+
+                <div class="w-full mt-8 bg-white/20 border border-biru-teks/20 rounded-xl p-5 shadow-sm reveal-up z-10" style="transition-delay: 0.7s;">
+                    <p class="font-playfair italic text-biru-teks/90 text-[11.5px] leading-[1.8] text-center">
+                        "Sempurnakanlah putra kami dalam ibadahnya setelah melakukan Khitanan ini. Jadikan dia anak yang selalu dalam lindungan-Mu ya Allah, jadi anak yang shalih, hafal Al-Qur'an, faham dalam agama dan diberkahi kehidupannya didunia dan di akhirat, <span class="font-bold">aamiin</span>."
+                    </p>
                 </div>
 
             </div>
@@ -365,7 +528,6 @@
                 let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                // Tambahkan angka 0 di depan jika di bawah 10
                 const cdHari = document.getElementById("cd-hari");
                 if (cdHari) {
                     cdHari.innerHTML = days < 10 ? '0' + days : days;
