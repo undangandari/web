@@ -345,91 +345,7 @@
 
 
         <!-- ========================================= -->
-        <!-- SECTION 6: AMPLOP DIGITAL (GIFT)          -->
-        <!-- ========================================= -->
-        <section id="gift" class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center p-5 z-10 py-24">
-            
-            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png" alt="Lampion" class="absolute top-0 left-0 w-full z-0 naik-turun pointer-events-none opacity-90">
-
-            <div class="w-full max-w-[340px] premium-card rounded-[2rem] p-8 flex flex-col items-center relative reveal-up z-10 mt-8">
-                
-                <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
-
-                <!-- Judul Amplop Digital -->
-                <div class="flex items-center justify-center w-full mb-6 mt-2 reveal-up z-10" style="transition-delay: 0.1s;">
-                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
-                    <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Amplop Digital</h2>
-                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
-                </div>
-
-                <!-- Teks Pengantar dengan ornamen + -->
-                <div class="flex items-center justify-between w-full mb-6 px-1 reveal-up z-10" style="transition-delay: 0.2s;">
-                    <span class="font-montserrat text-white/50 text-[18px] font-light leading-none">+</span>
-                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center max-w-[85%]">
-                        Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi gift.
-                    </p>
-                    <span class="font-montserrat text-white/50 text-[18px] font-light leading-none">+</span>
-                </div>
-
-                <!-- Tombol Toggle Rekening -->
-                <button onclick="document.getElementById('wrap-rekening').classList.toggle('gift-hidden'); const isHidden = document.getElementById('wrap-rekening').classList.contains('gift-hidden'); document.getElementById('icon-toggle-gift').className = isHidden ? 'far fa-eye text-[12px]' : 'far fa-eye-slash text-[12px]'; document.getElementById('text-toggle-gift').innerText = isHidden ? 'LIHAT REKENING' : 'SEMBUNYIKAN REKENING';" class="w-[90%] bg-[#5179bc] hover:bg-[#3d609a] text-white border border-white/30 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-all duration-300 flex items-center justify-center gap-3 shadow-md reveal-up z-10 mb-2 focus:outline-none" style="transition-delay: 0.3s;">
-                    <i id="icon-toggle-gift" class="far fa-eye-slash text-[12px]"></i>
-                    <span id="text-toggle-gift">SEMBUNYIKAN REKENING</span>
-                </button>
-
-                <!-- Wrapper Kartu Rekening (Bisa Expand/Collapse) -->
-                <div id="wrap-rekening" class="gift-wrap flex flex-col gap-4 w-full items-center z-10 mt-6" style="transition-delay: 0.4s;">
-                    
-                    <!-- Kartu Rekening 1 (BCA) -->
-                    <div class="relative w-full max-w-[280px] aspect-[1.58/1] rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.15)] flex flex-col justify-between p-5 overflow-hidden border border-white/60 bg-gradient-to-br from-[#f8f9fc] to-[#e4e9f2]">
-                        <!-- Ornamen Bulat Blur Background -->
-                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/60 rounded-full blur-2xl pointer-events-none"></div>
-                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#c5d3e8]/50 rounded-full blur-2xl pointer-events-none"></div>
-
-                        <div class="flex justify-between items-start w-full z-10">
-                            <img src="https://undangandari.com/wp-content/uploads/2025/08/chip-atm-undangan.webp" alt="Chip" class="w-10 opacity-70 mix-blend-multiply">
-                            <img src="https://undangandari.com/wp-content/uploads/2025/08/Logo-Bank-BCA-1.png" alt="BCA" class="h-5 object-contain">
-                        </div>
-                        
-                        <div class="flex flex-col items-end w-full z-10 mt-auto text-biru-teks">
-                            <h5 class="font-montserrat text-[11px] font-bold tracking-[0.1em] mb-0.5 text-gray-700">COLE PALMER</h5>
-                            <p class="font-montserrat text-[18px] tracking-[0.15em] font-semibold mb-3 text-gray-900">12345678987</p>
-                            <button onclick="navigator.clipboard.writeText('12345678987'); const span = this.querySelector('span'); const oriText = span.innerText; span.innerText = 'Berhasil disalin!'; setTimeout(() => span.innerText = oriText, 2000);" class="bg-black/10 hover:bg-black/20 border border-black/10 text-gray-700 text-[9px] font-montserrat font-bold px-3 py-1.5 rounded transition-colors flex items-center gap-1.5">
-                                <i class="far fa-copy"></i> <span>Salin Nomor</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Kartu Rekening 2 (BCA) - Duplikat untuk demo -->
-                    <div class="relative w-full max-w-[280px] aspect-[1.58/1] rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.15)] flex flex-col justify-between p-5 overflow-hidden border border-white/60 bg-gradient-to-br from-[#f8f9fc] to-[#e4e9f2]">
-                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/60 rounded-full blur-2xl pointer-events-none"></div>
-                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#c5d3e8]/50 rounded-full blur-2xl pointer-events-none"></div>
-
-                        <div class="flex justify-between items-start w-full z-10">
-                            <img src="https://undangandari.com/wp-content/uploads/2025/08/chip-atm-undangan.webp" alt="Chip" class="w-10 opacity-70 mix-blend-multiply">
-                            <img src="https://undangandari.com/wp-content/uploads/2025/08/Logo-Bank-BCA-1.png" alt="BCA" class="h-5 object-contain">
-                        </div>
-                        
-                        <div class="flex flex-col items-end w-full z-10 mt-auto text-biru-teks">
-                            <h5 class="font-montserrat text-[11px] font-bold tracking-[0.1em] mb-0.5 text-gray-700">COLE PALMER</h5>
-                            <p class="font-montserrat text-[18px] tracking-[0.15em] font-semibold mb-3 text-gray-900">12345678987</p>
-                            <button onclick="navigator.clipboard.writeText('12345678987'); const span = this.querySelector('span'); const oriText = span.innerText; span.innerText = 'Berhasil disalin!'; setTimeout(() => span.innerText = oriText, 2000);" class="bg-black/10 hover:bg-black/20 border border-black/10 text-gray-700 text-[9px] font-montserrat font-bold px-3 py-1.5 rounded transition-colors flex items-center gap-1.5">
-                                <i class="far fa-copy"></i> <span>Salin Nomor</span>
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -left-6 w-44 z-20 drop-shadow-2xl">
-            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -right-6 w-44 z-20 drop-shadow-2xl transform scale-x-[-1]">
-        </section>
-
-
-        <!-- ========================================= -->
-        <!-- SECTION 7: DOA & UCAPAN (RSVP)            -->
+        <!-- SECTION 6: DOA & UCAPAN (RSVP)            -->
         <!-- ========================================= -->
         <section id="ucapan" class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center p-5 z-10 py-24">
             
@@ -495,6 +411,83 @@
                         "Sempurnakanlah putra kami dalam ibadahnya setelah melakukan Khitanan ini. Jadikan dia anak yang selalu dalam lindungan-Mu ya Allah, jadi anak yang shalih, hafal Al-Qur'an, faham dalam agama dan diberkahi kehidupannya didunia dan di akhirat, <span class="font-bold">aamiin</span>."
                     </p>
                 </div>
+
+            </div>
+
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -left-6 w-44 z-20 drop-shadow-2xl">
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -right-6 w-44 z-20 drop-shadow-2xl transform scale-x-[-1]">
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- SECTION 7: PENUTUP (TERIMA KASIH)         -->
+        <!-- ========================================= -->
+        <section id="penutup" class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center p-5 z-10 py-24">
+            
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png" alt="Lampion" class="absolute top-0 left-0 w-full z-0 naik-turun pointer-events-none opacity-90">
+
+            <div class="w-full max-w-[340px] premium-card rounded-[2rem] p-6 md:p-8 flex flex-col items-center relative reveal-up z-10 mt-8">
+                
+                <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                <!-- Judul Terima Kasih -->
+                <div class="flex items-center justify-center w-full mb-6 mt-2 reveal-up z-10" style="transition-delay: 0.1s;">
+                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                    <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Terima Kasih</h2>
+                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                </div>
+
+                <!-- Teks Pengantar -->
+                <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-6 px-2 reveal-up z-10" style="transition-delay: 0.2s;">
+                    Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bpk / Ibu / Saudara/i dan teman-teman, berkenan hadir dan memberikan do'a.
+                </p>
+
+                <!-- Icon Praying Hands Divider -->
+                <div class="flex items-center justify-center w-[60%] mb-6 reveal-up z-10" style="transition-delay: 0.3s;">
+                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                    <i class="fas fa-praying-hands text-biru-teks text-[18px] mx-4"></i>
+                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                </div>
+
+                <!-- Teks Doa -->
+                <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-3 px-2 reveal-up z-10" style="transition-delay: 0.4s;">
+                    Semoga Jackson menjadi anak yang shalih, penuh berkah, dan sukses dunia dan akhirat.
+                </p>
+                <p class="font-montserrat font-medium text-biru-teks text-[11.5px] leading-[1.8] text-center mb-8 px-2 reveal-up z-10" style="transition-delay: 0.5s;">
+                    Aamiin yaa robbal 'aalamin.
+                </p>
+
+                <!-- Foto Keluarga -->
+                <div class="w-full mb-8 reveal-up z-10 flex flex-col items-center" style="transition-delay: 0.6s;">
+                    <div class="w-full rounded-xl overflow-hidden shadow-lg border-[2px] border-white/50 relative">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/khitan/muslim-family-khitan.jpg" alt="Keluarga" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+
+                <!-- Divider Keluarga Besar -->
+                <div class="flex items-center justify-center w-full mb-5 opacity-70 reveal-up z-10" style="transition-delay: 0.7s;">
+                    <div class="h-[1px] bg-biru-teks/30 flex-grow"></div>
+                    <span class="font-montserrat font-bold text-[10px] text-biru-teks px-4 uppercase tracking-[0.15em]">Keluarga Besar</span>
+                    <div class="h-[1px] bg-biru-teks/30 flex-grow"></div>
+                </div>
+
+                <!-- Nama Orang Tua -->
+                <div class="flex flex-col items-center gap-1 w-full mb-8 reveal-up z-10" style="transition-delay: 0.8s;">
+                    <p class="font-montserrat font-bold text-biru-teks text-[12.5px] tracking-wide text-center">
+                        Bapak Jose Mourinho
+                    </p>
+                    <p class="font-montserrat font-medium text-biru-teks/70 text-[9px] text-center lowercase italic">
+                        dan
+                    </p>
+                    <p class="font-montserrat font-bold text-biru-teks text-[12.5px] tracking-wide text-center">
+                        Ibu Happy Mourinho
+                    </p>
+                </div>
+
+                <!-- Salam Penutup -->
+                <h3 class="font-cinzel font-bold text-biru-teks text-[13px] tracking-[0.1em] uppercase mb-4 text-center reveal-up z-10" style="transition-delay: 0.9s;">
+                    WASSALAMUALAIKUM WR. WB.
+                </h3>
 
             </div>
 
