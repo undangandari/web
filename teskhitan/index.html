@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Section Cover & Profil Khitan</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'biru-bg': '#072e66',      /* Biru gelap background */
+                        'biru-box': '#9ab7d3',     /* Baby blue solid untuk kotak */
+                        'biru-teks': '#1b3a63',    /* Biru navy pekat elegan untuk teks & badge */
+                        'emas': '#dca943',         /* Emas premium */
+                        'emas-muda': '#ead28b'
+                    },
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'great-vibes': ['Great Vibes', 'cursive'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #1a1a1a; display: flex; justify-content: center; margin: 0; min-height: 100vh; }
+        
+        /* Container HP */
+        .mobile-container {
+            width: 100%;
+            max-width: 420px;
+            background-color: #072e66;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            overflow-x: hidden;
+            background-image: url('https://ik.imagekit.io/asetundangan/aset/background/background%20biru%20islami%20khita.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Animasi Ornamen */
+        .naik-turun { animation: upDown 4s ease-in-out infinite alternate; }
+        @keyframes upDown {
+            0% { transform: translateY(-5px); }
+            100% { transform: translateY(5px); }
+        }
+
+        /* Animasi Masuk (Fade Up) */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container Utama (Maks 420px) -->
+    <div class="mobile-container">
+        
+        <!-- ========================================= -->
+        <!-- SECTION 1: COVER                          -->
+        <!-- ========================================= -->
+        <section id="cover" class="relative w-full min-h-[100dvh] flex flex-col items-center p-5 z-10 pt-20 pb-28">
+            
+            <!-- Ornamen Lampion Atas -->
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png" alt="Lampion" class="absolute top-0 left-0 w-full z-0 naik-turun pointer-events-none">
+
+            <!-- Box Cover (Solid Baby Blue + Inner White Border) -->
+            <div class="w-full max-w-[340px] bg-biru-box rounded-[2rem] p-6 flex flex-col items-center relative reveal-up mt-8 shadow-[0_15px_30px_rgba(0,0,0,0.4)] z-10">
+                
+                <!-- Inner Border Putih Tipis -->
+                <div class="absolute inset-[6px] border border-white/60 rounded-[1.7rem] pointer-events-none z-0"></div>
+
+                <!-- Foto Arch & Badge "Jackson" -->
+                <div class="relative w-[115px] mb-4 -mt-16 z-10">
+                    <!-- Bingkai Kubah -->
+                    <div class="w-full h-[145px] border-[2px] border-emas rounded-t-full rounded-b-xl overflow-hidden shadow-md bg-biru-box/50 p-[2px]">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/khitan/muslimboy.jpg" alt="Foto Khitan" class="w-full h-full object-cover rounded-t-full rounded-b-lg">
+                    </div>
+                    <!-- Badge Nama (Navy Solid) -->
+                    <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-biru-teks border border-emas px-5 py-1 rounded-md shadow-lg w-max flex justify-center items-center">
+                        <span class="font-playfair font-bold italic text-emas text-[12px] tracking-wider relative z-10 pt-0.5">Jackson</span>
+                    </div>
+                </div>
+
+                <!-- Judul "UNDANGAN TASYAKURAN" dengan Ornamen Diamond -->
+                <div class="flex items-center justify-center gap-2 mb-2 mt-4 reveal-up z-10">
+                    <div class="w-1.5 h-1.5 bg-emas transform rotate-45"></div>
+                    <h3 class="font-montserrat text-biru-teks font-bold text-[9px] tracking-[0.25em] uppercase">Undangan Tasyakuran</h3>
+                    <div class="w-1.5 h-1.5 bg-emas transform rotate-45"></div>
+                </div>
+                
+                <!-- "Khitan" -->
+                <h1 class="font-great-vibes text-biru-teks text-[5.5rem] leading-[1] mb-2 drop-shadow-sm reveal-up z-10">Khitan</h1>
+                
+                <!-- "Nicolas Jackson" -->
+                <h2 class="font-playfair font-bold italic text-biru-teks text-[1.6rem] tracking-wide mb-5 reveal-up z-10">Nicolas Jackson</h2>
+
+                <!-- Divider 3 Titik Emas -->
+                <div class="flex items-center gap-2 w-[70%] mb-5 reveal-up z-10 opacity-70">
+                    <div class="h-[1px] bg-biru-teks flex-grow"></div>
+                    <div class="w-1.5 h-1.5 bg-emas transform rotate-45"></div>
+                    <div class="w-1 h-1 bg-emas transform rotate-45"></div>
+                    <div class="w-1.5 h-1.5 bg-emas transform rotate-45"></div>
+                    <div class="h-[1px] bg-biru-teks flex-grow"></div>
+                </div>
+
+                <!-- Box Tamu Undangan (Transparan + Border Putih) -->
+                <div class="w-[95%] border border-white/60 bg-white/10 rounded-2xl py-5 px-4 flex flex-col items-center mb-2 reveal-up z-10">
+                    <p class="font-montserrat text-biru-teks/90 text-[8.5px] font-semibold mb-2 text-center">Kepada Yth: Bpk/Ibu/Saudara/i</p>
+                    <h4 class="font-montserrat font-bold text-biru-teks text-[13px] tracking-widest text-center uppercase mb-6">Tamu Undangan</h4>
+
+                    <!-- Tombol Buka (Outline) -->
+                    <a href="#profil" class="w-[85%] border border-biru-teks text-biru-teks hover:bg-biru-teks hover:text-white font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3 rounded-full transition-all duration-300 flex items-center justify-center gap-2 group mb-5">
+                        <i class="fas fa-chevron-down text-[10px] group-hover:animate-bounce"></i> BUKA UNDANGAN
+                    </a>
+
+                    <!-- Disclaimer -->
+                    <p class="font-montserrat italic text-biru-teks/60 text-[7.5px] text-center px-4 leading-relaxed">*) Mohon maaf apabila ada kesalahan penulisan nama/gelar</p>
+                </div>
+            </div>
+            
+            <!-- Ornamen Quran Bawah (Overlap Tepi HP) -->
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -left-8 w-48 z-20 drop-shadow-2xl">
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -right-8 w-48 z-20 drop-shadow-2xl transform scale-x-[-1]">
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- SECTION 2: PROFIL                         -->
+        <!-- ========================================= -->
+        <section id="profil" class="relative w-full min-h-[100dvh] flex flex-col items-center p-5 z-10 pt-20 pb-28">
+            
+            <!-- Ornamen Lampion Atas -->
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png" alt="Lampion" class="absolute top-0 left-0 w-full z-0 naik-turun pointer-events-none">
+
+            <!-- Box Profil -->
+            <div class="w-full max-w-[340px] bg-biru-box rounded-[2rem] p-6 flex flex-col items-center relative reveal-up mt-8 shadow-[0_15px_30px_rgba(0,0,0,0.4)] z-10">
+                
+                <!-- Inner Border -->
+                <div class="absolute inset-[6px] border border-white/60 rounded-[1.7rem] pointer-events-none z-0"></div>
+
+                <!-- Salam Pembuka -->
+                <h3 class="font-montserrat font-bold text-biru-teks text-[11px] tracking-[0.15em] uppercase mb-4 text-center reveal-up z-10 mt-6">
+                    ASSALAMUALAIKUM WR. WB.
+                </h3>
+
+                <!-- Paragraf Pembuka -->
+                <p class="font-montserrat font-medium text-biru-teks/90 text-[10px] leading-[2] text-center mb-8 px-4 reveal-up z-10">
+                    Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, insyaaAllah kami akan menyelenggarakan acara Tasyakuran Khitan anak kami :
+                </p>
+
+                <!-- Foto Arch & Badge "Jackson" -->
+                <div class="relative w-[115px] mb-6 z-10 reveal-up">
+                    <div class="w-full h-[145px] border-[2px] border-emas rounded-t-full rounded-b-xl overflow-hidden shadow-md bg-biru-box/50 p-[2px]">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/khitan/muslimboy.jpg" alt="Foto Anak" class="w-full h-full object-cover rounded-t-full rounded-b-lg">
+                    </div>
+                    <!-- Badge Nama -->
+                    <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-biru-teks border border-emas px-5 py-1 rounded-md shadow-lg w-max flex justify-center items-center">
+                        <span class="font-playfair font-bold italic text-emas text-[12px] tracking-wider relative z-10 pt-0.5">Jackson</span>
+                    </div>
+                </div>
+
+                <!-- Nama Anak -->
+                <h2 class="font-playfair font-bold italic text-biru-teks text-[1.6rem] tracking-wide mb-6 reveal-up z-10">
+                    Nicolas Jackson
+                </h2>
+
+                <!-- Divider "Putra Pertama Dari" -->
+                <div class="flex items-center justify-center w-[85%] mb-6 reveal-up z-10">
+                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                    <span class="font-montserrat font-bold text-[8px] text-biru-teks/70 px-4 uppercase tracking-[0.2em]">Putra Pertama Dari</span>
+                    <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                </div>
+
+                <!-- Nama Orang Tua (Presisi & Rapi) -->
+                <div class="flex flex-col items-center mb-4 reveal-up z-10">
+                    <p class="font-montserrat font-bold text-biru-teks text-[11.5px] tracking-wide text-center mb-1">
+                        Bapak Jose Mourinho
+                    </p>
+                    <p class="font-montserrat font-medium text-biru-teks/70 text-[9.5px] text-center lowercase italic mb-1">
+                        dan
+                    </p>
+                    <p class="font-montserrat font-bold text-biru-teks text-[11.5px] tracking-wide text-center">
+                        Ibu Happy Mourinho
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Ornamen Quran Bawah -->
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -left-8 w-48 z-20 drop-shadow-2xl">
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-8 -right-8 w-48 z-20 drop-shadow-2xl transform scale-x-[-1]">
+        </section>
+
+    </div>
+
+    <!-- SCRIPT UNTUK ANIMASI ON-SCROLL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal-up');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>	
