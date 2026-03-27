@@ -14,7 +14,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Script Animasi & Fungsionalitas -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 
@@ -45,18 +44,15 @@
         html { scroll-behavior: auto !important; }
         body { background-color: #111; display: flex; justify-content: center; margin: 0; min-height: 100vh; overflow-x: hidden; }
         
-        /* FIX 1: Hapus background-image dan attachment: fixed dari sini */
         .mobile-container {
             width: 100%;
             max-width: 420px;
-            background-color: transparent; /* Ubah ke transparent karena pakai layer fixed */
+            background-color: transparent; 
             position: relative;
             box-shadow: 0 0 30px rgba(0,0,0,0.8);
             overflow-x: hidden;
-            /* HAPUS INI: background-image & background-attachment */
         }
 
-        /* FIX 2: Terapkan teknik Layering Background GPU (Dari Baby Blue) */
         .fixed-bg-layer {
             position: fixed;
             top: 0;
@@ -72,7 +68,6 @@
             pointer-events: none;
         }
 
-        /* FIX 3: Overlay dijadikan fixed seukuran layar saja, bukan memanjang ke bawah */
         .bg-overlay {
             position: fixed; 
             top: 0;
@@ -90,7 +85,6 @@
             background: linear-gradient(145deg, #a2c1e1 0%, #89aacc 100%);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.4);
             border: 1px solid rgba(255,255,255,0.2);
-            /* Biarkan translateZ ini, dengan background layer terpisah ini aman */
             transform: translateZ(0); 
         }
 
@@ -107,11 +101,10 @@
         @keyframes spin-continuous { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         #audio-toggle.rotating svg { animation: spin-continuous 4s linear infinite; }
 
-        /* FIX 4: Tambahkan will-change pada lampion agar di-handle GPU */
         .naik-turun { animation: upDown 4s ease-in-out infinite alternate; will-change: transform; }
         @keyframes upDown { 0% { transform: translateY(-6px); } 100% { transform: translateY(6px); } }
 
-        /* FIX 5: Sistem Animasi AOS - Tambahkan will-change (Dari Baby Blue) */
+        /* Sistem Animasi AOS Teroptimasi */
         .muncul, .muncul-kiri, .muncul-kanan, .zoom { opacity: 0; will-change: transform, opacity; }
         .muncul { transform: translateY(3rem) scale(0.98); transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease; }
         .muncul.active { transform: translateY(0) scale(1); opacity: 1; }
@@ -156,7 +149,7 @@
         </div>
     </div>
 
-    <!-- LAYER BACKGROUND FIXED (Ini kunci utama anti-lag saat scroll) -->
+    <!-- LAYER BACKGROUND FIXED -->
     <div class="fixed-bg-layer"></div>
     <div class="bg-overlay"></div>
 
@@ -211,7 +204,7 @@
             <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png" alt="Quran" class="absolute -bottom-2 -right-4 w-28 opacity-90 z-20 drop-shadow-lg transform scale-x-[-1] pointer-events-none">
         </section>
 
-        <!-- WRAPPER CONTENT UNDANGAN (Tersembunyi hingga tombol buka diklik) -->
+        <!-- WRAPPER CONTENT UNDANGAN -->
         <div id="content-undangan" class="hidden flex-col w-full z-10 relative">
 
             <!-- ========================================= -->
@@ -223,20 +216,20 @@
                 <div class="w-full max-w-[340px] premium-card rounded-[2rem] px-8 pt-8 pb-12 flex flex-col items-center relative muncul mt-8 mb-6">
                     <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
 
-                    <h3 class="font-montserrat font-bold text-biru-teks text-[11px] tracking-[0.2em] uppercase mb-4 text-center mt-2 zoom">Assalamu'alaikum Wr. Wb.</h3>
-                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-10 px-2 muncul">
+                    <h3 class="font-montserrat font-bold text-biru-teks text-[11px] tracking-[0.2em] uppercase mb-4 text-center mt-2">Assalamu'alaikum Wr. Wb.</h3>
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-10 px-2">
                         Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, insyaaAllah kami akan menyelenggarakan acara Tasyakuran Khitan anak kami :
                     </p>
 
-                    <div class="relative w-[130px] mb-8 z-10 flex flex-col items-center zoom">
+                    <div class="relative w-[130px] mb-8 z-10 flex flex-col items-center">
                         <div class="w-full h-[165px] border-[2px] border-emas/80 rounded-t-[5rem] rounded-b-[4px] shadow-lg bg-transparent p-[4px]">
                             <img src="https://ik.imagekit.io/asetundangan/aset/khitan/muslimboy.jpg" alt="Foto Anak" class="w-full h-full object-cover rounded-t-[4.8rem] rounded-b-[2px]">
                         </div>
                     </div>
 
-                    <h2 class="font-playfair font-bold italic text-biru-teks text-[1.8rem] tracking-wide mb-8 muncul">Nicolas Jackson</h2>
+                    <h2 class="font-playfair font-bold italic text-biru-teks text-[1.8rem] tracking-wide mb-8">Nicolas Jackson</h2>
 
-                    <div class="w-full flex flex-col items-center muncul">
+                    <div class="w-full flex flex-col items-center">
                         <div class="flex items-center justify-center w-full mb-5 opacity-70">
                             <div class="h-[1px] bg-biru-teks/30 flex-grow"></div>
                             <span class="font-montserrat font-bold text-[8.5px] text-biru-teks px-4 uppercase tracking-[0.25em]">Putra Pertama Dari</span>
@@ -264,15 +257,15 @@
                     
                     <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
 
-                    <h2 class="font-cinzel text-biru-teks text-[22px] font-bold tracking-[0.15em] text-center leading-snug mb-4 mt-2 zoom">
+                    <h2 class="font-cinzel text-biru-teks text-[22px] font-bold tracking-[0.15em] text-center leading-snug mb-4 mt-2">
                         TASYAKURAN<br>KHITAN
                     </h2>
                     
-                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-1 muncul">
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-1">
                         Dengan segala kerendahan hati kami berharap kehadiran Bapak/Ibu/Saudara/i dalam acara Tasyakuran Khitan anak kami yang akan diselenggarakan pada :
                     </p>
 
-                    <div class="grid grid-cols-2 gap-3 w-full mb-8 muncul">
+                    <div class="grid grid-cols-2 gap-3 w-full mb-8">
                         <div class="border-[1.5px] border-biru-teks/20 rounded-xl p-4 flex flex-col items-center bg-white/30 shadow-[0_4px_15px_rgba(0,0,0,0.05)]">
                             <div class="w-10 h-10 rounded-full border-[1.5px] border-biru-teks/30 flex items-center justify-center mb-3 bg-white/50 text-biru-teks shadow-sm">
                                 <i class="far fa-calendar-alt text-[16px]"></i>
@@ -289,13 +282,13 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-center w-full mb-6 opacity-80 muncul">
+                    <div class="flex items-center justify-center w-full mb-6 opacity-80">
                         <div class="h-[1px] bg-biru-teks/30 flex-grow"></div>
                         <span class="font-cinzel font-bold text-[12px] text-biru-teks px-4 uppercase tracking-[0.1em]">Menghitung Hari</span>
                         <div class="h-[1px] bg-biru-teks/30 flex-grow"></div>
                     </div>
 
-                    <div class="grid grid-cols-4 gap-2 w-full mb-6 zoom">
+                    <div class="grid grid-cols-4 gap-2 w-full mb-6">
                         <div class="bg-biru-teks rounded-lg py-3 flex flex-col items-center shadow-sm border border-emas/40 relative overflow-hidden">
                             <div class="absolute inset-0 bg-white/5 pointer-events-none"></div>
                             <span id="cd-hari" class="font-cinzel font-bold text-[20px] text-white leading-none mb-1.5 drop-shadow-sm">00</span>
@@ -318,11 +311,11 @@
                         </div>
                     </div>
 
-                    <p class="font-montserrat font-medium text-biru-teks/70 text-[9.5px] leading-relaxed text-center mb-6 px-4 muncul">
+                    <p class="font-montserrat font-medium text-biru-teks/70 text-[9.5px] leading-relaxed text-center mb-6 px-4">
                         Klik tombol dibawah untuk menambahkan pengingat otomatis ke kalender Google.
                     </p>
 
-                    <a href="#" class="w-[90%] bg-biru-teks hover:bg-[#0e2242] text-white border border-emas/40 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-colors duration-300 flex items-center justify-center gap-3 group shadow-md zoom">
+                    <a href="#" class="w-[90%] bg-biru-teks hover:bg-[#0e2242] text-white border border-emas/40 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-colors duration-300 flex items-center justify-center gap-3 group shadow-md">
                         <i class="far fa-calendar-alt text-[12px] group-hover:scale-110 transition-transform"></i> SIMPAN DI KALENDER
                     </a>
 
@@ -344,13 +337,13 @@
                     
                     <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
 
-                    <div class="flex items-center justify-center w-full mb-6 mt-2 zoom">
+                    <div class="flex items-center justify-center w-full mb-6 mt-2">
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                         <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Lokasi Acara</h2>
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                     </div>
 
-                    <div class="flex items-center justify-between w-full mb-5 px-1 muncul">
+                    <div class="flex items-center justify-between w-full mb-5 px-1">
                         <span class="font-montserrat text-white/50 text-[18px] font-light leading-none">+</span>
                         <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center max-w-[80%]">
                             Insyaallah, acara Tasyakuran Khitan ini akan diadakan di:
@@ -358,19 +351,19 @@
                         <span class="font-montserrat text-white/50 text-[18px] font-light leading-none">+</span>
                     </div>
 
-                    <h3 class="font-montserrat font-bold text-biru-teks text-[13.5px] tracking-wide text-center mb-2 zoom underline decoration-biru-teks/40 underline-offset-4">
+                    <h3 class="font-montserrat font-bold text-biru-teks text-[13.5px] tracking-wide text-center mb-2 underline decoration-biru-teks/40 underline-offset-4">
                         Kediaman Keluarga Kami
                     </h3>
-                    <p class="font-montserrat font-medium text-biru-teks/70 text-[11px] leading-relaxed text-center mb-8 muncul">
+                    <p class="font-montserrat font-medium text-biru-teks/70 text-[11px] leading-relaxed text-center mb-8">
                         Jl. Gatot Subroto No 123<br>
                         Kec. Medan Petisah, Kota Medan
                     </p>
 
-                    <div class="w-full h-[250px] rounded-xl border-[2px] border-white overflow-hidden shadow-sm mb-8 zoom bg-white">
+                    <div class="w-full h-[250px] rounded-xl border-[2px] border-white overflow-hidden shadow-sm mb-8 bg-white">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127453.308734266!2d98.57564755106574!3d3.593132649065095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303131b0c0349b11%3A0xc3ec51b32d0c2e27!2sMasjid%20Agung%20Kota%20Medan!5e0!3m2!1sid!2sid!4v1714445558123!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
-                    <a href="https://maps.app.goo.gl/SRkgbhFnmvKziUGD7" target="_blank" class="w-[90%] bg-[#5179bc] hover:bg-[#3d609a] text-white border border-white/30 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-colors duration-300 flex items-center justify-center gap-3 group shadow-md zoom">
+                    <a href="https://maps.app.goo.gl/SRkgbhFnmvKziUGD7" target="_blank" class="w-[90%] bg-[#5179bc] hover:bg-[#3d609a] text-white border border-white/30 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-colors duration-300 flex items-center justify-center gap-3 group shadow-md">
                         <i class="fas fa-map-marker-alt text-[12px] group-hover:animate-bounce"></i> LIHAT GOOGLE MAPS
                     </a>
 
@@ -393,19 +386,19 @@
                     <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
 
                     <!-- Judul Galeri -->
-                    <div class="flex items-center justify-center w-full mb-4 mt-2 zoom">
+                    <div class="flex items-center justify-center w-full mb-4 mt-2">
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                         <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Gallery Foto</h2>
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                     </div>
 
                     <!-- Deskripsi Galeri -->
-                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-2 muncul">
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-2">
                         Momen indah kebersamaan & kehangatan keluarga kami.
                     </p>
 
-                    <!-- Grid Layout Masonry Gallery -->
-                    <div class="grid grid-cols-2 gap-2 w-full zoom">
+                    <!-- Animasi 'zoom' dihapus dari sini agar scroll tidak berat -->
+                    <div class="grid grid-cols-2 gap-2 w-full">
                         <div class="col-span-2 rounded-xl overflow-hidden shadow-sm border-[2px] border-white/50 aspect-square relative">
                             <img src="https://ik.imagekit.io/asetundangan/aset/khitan/muslimboy.jpg" loading="lazy" class="w-full h-full object-cover" alt="Gallery 1">
                         </div>
@@ -434,17 +427,17 @@
                 <div class="w-full max-w-[340px] premium-card rounded-[2rem] px-8 pt-8 pb-12 flex flex-col items-center relative muncul mt-8 mb-6">
                     <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
 
-                    <div class="flex items-center justify-center w-full mb-4 mt-2 zoom">
+                    <div class="flex items-center justify-center w-full mb-4 mt-2">
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                         <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Kirim Hadiah</h2>
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                     </div>
 
-                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-10 px-2 muncul">
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-10 px-2">
                         Kehadiran Anda merupakan sebuah do'a serta rasa syukur bagi kami, namun jika memberi adalah bentuk Do'a & cinta kasih bagi Anda, Anda dapat memberi kado secara cashless.
                     </p>
 
-                    <div class="muncul mb-8 w-max max-w-[250px]">
+                    <div class="mb-8 w-max max-w-[250px]">
                         <button id="btn-toggle-rekening" class="border border-[#5179bc] bg-[#5179bc] rounded-full text-[11px] tracking-widest font-montserrat font-semibold text-white py-3.5 px-8 hover:bg-[#3d609a] transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md">
                             <i id="icon-toggle-rekening" class="fas fa-search"></i>
                             <span id="text-toggle-rekening">Lihat Rekening</span>
@@ -483,25 +476,26 @@
                     
                     <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
 
-                    <div class="flex items-center justify-center w-full mb-4 mt-2 zoom">
+                    <div class="flex items-center justify-center w-full mb-4 mt-2">
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                         <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Doa & Ucapan</h2>
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                     </div>
 
-                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-2 muncul">
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-2">
                         Silahkan tuliskan doa & ucapan selamat untuk Jackson serta konfirmasi kehadiran pada kolom ucapan dibawah ini.
                     </p>
 
+                    <!-- Animasi 'muncul' dihapus dari children form agar scroll ringan -->
                     <div class="w-full bg-white/30 border border-white/50 rounded-2xl p-6 mb-8 shadow-sm relative z-10">
-                        <div class="flex flex-col items-center justify-center mb-6 relative z-10 muncul">
+                        <div class="flex flex-col items-center justify-center mb-6 relative z-10">
                             <i class="far fa-envelope-open text-3xl text-biru-teks mb-3 drop-shadow-sm"></i>
                             <h3 class="font-playfair text-[20px] font-semibold text-biru-teks tracking-wider">Buku Tamu</h3>
                             <div class="w-20 h-[1px] bg-biru-teks/30 mt-3"></div>
                             <p class="font-montserrat text-[9px] text-biru-teks/70 mt-3 text-center tracking-widest uppercase">Tinggalkan Pesan Manis Anda</p>
                         </div>
 
-                        <form id="form-rsvp" class="flex flex-col gap-4 relative z-10 w-full muncul">
+                        <form id="form-rsvp" class="flex flex-col gap-4 relative z-10 w-full">
                             <div class="relative group">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-[#5179bc] text-biru-teks/50"><i class="far fa-user text-[14px]"></i></div>
                                 <input type="text" id="input-nama" placeholder="Nama Lengkap Anda" required class="bg-white/50 border border-white/60 rounded-xl py-3.5 pl-11 pr-4 text-biru-teks font-montserrat text-[12px] w-full transition-colors duration-300 focus:outline-none focus:border-[#5179bc] focus:bg-white/80 placeholder:text-biru-teks/50" maxlength="50">
@@ -529,7 +523,7 @@
                         </form>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-2 w-full mb-8 zoom">
+                    <div class="grid grid-cols-3 gap-2 w-full mb-8">
                         <div class="bg-white/40 text-biru-teks rounded-xl py-3 flex flex-col items-center shadow-sm border border-white/50 relative overflow-hidden">
                             <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#28a745] to-transparent"></div>
                             <strong id="count-hadir" class="font-montserrat text-[20px] font-bold leading-none mb-1 text-[#28a745]">0</strong>
@@ -547,11 +541,11 @@
                         </div>
                     </div>
 
-                    <div id="daftar-ucapan" class="w-full muncul max-h-[350px] overflow-y-auto pr-2 custom-scroll flex flex-col gap-3">
+                    <div id="daftar-ucapan" class="w-full max-h-[350px] overflow-y-auto pr-2 custom-scroll flex flex-col gap-3">
                         <p class="font-montserrat text-biru-teks/60 text-[10px] text-center mb-2 italic">Memuat doa dan ucapan...</p>
                     </div>
 
-                    <div class="w-full mt-8 bg-white/20 border border-white/40 rounded-xl p-5 shadow-sm muncul">
+                    <div class="w-full mt-8 bg-white/20 border border-white/40 rounded-xl p-5 shadow-sm">
                         <p class="font-playfair italic text-biru-teks/90 text-[11.5px] leading-[1.8] text-center">
                             "Sempurnakanlah putra kami dalam ibadahnya setelah melakukan Khitanan ini. Jadikan dia anak yang selalu dalam lindungan-Mu ya Allah, jadi anak yang shalih, hafal Al-Qur'an, faham dalam agama dan diberkahi kehidupannya didunia dan di akhirat, <span class="font-bold">aamiin</span>."
                         </p>
@@ -575,49 +569,42 @@
                     
                     <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
 
-                    <!-- Judul Terima Kasih -->
-                    <div class="flex items-center justify-center w-full mb-6 mt-2 zoom">
+                    <div class="flex items-center justify-center w-full mb-6 mt-2">
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                         <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Terima Kasih</h2>
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                     </div>
 
-                    <!-- Teks Pengantar -->
-                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-6 px-2 muncul">
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-6 px-2">
                         Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bpk / Ibu / Saudara/i dan teman-teman, berkenan hadir dan memberikan do'a.
                     </p>
 
-                    <!-- Icon Praying Hands Divider -->
-                    <div class="flex items-center justify-center w-[60%] mb-6 muncul">
+                    <div class="flex items-center justify-center w-[60%] mb-6">
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                         <i class="fas fa-praying-hands text-biru-teks text-[18px] mx-4"></i>
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                     </div>
 
-                    <!-- Teks Doa -->
-                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-3 px-2 muncul">
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-3 px-2">
                         Semoga Jackson menjadi anak yang shalih, penuh berkah, dan sukses dunia dan akhirat.
                     </p>
-                    <p class="font-montserrat font-medium text-biru-teks text-[11.5px] leading-[1.8] text-center mb-8 px-2 muncul">
+                    <p class="font-montserrat font-medium text-biru-teks text-[11.5px] leading-[1.8] text-center mb-8 px-2">
                         Aamiin yaa robbal 'aalamin.
                     </p>
 
-                    <!-- Foto Keluarga -->
-                    <div class="w-full mb-8 zoom flex flex-col items-center">
+                    <div class="w-full mb-8 flex flex-col items-center">
                         <div class="w-full rounded-xl overflow-hidden shadow-sm border-[2px] border-white/50 relative">
                             <img src="https://ik.imagekit.io/asetundangan/aset/khitan/muslim-family-khitan.jpg" alt="Keluarga" class="w-full h-auto object-cover">
                         </div>
                     </div>
 
-                    <!-- Divider Keluarga Besar -->
-                    <div class="flex items-center justify-center w-[90%] mb-6 opacity-80 muncul">
+                    <div class="flex items-center justify-center w-[90%] mb-6 opacity-80">
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                         <span class="font-montserrat font-bold text-[10.5px] text-biru-teks px-5 uppercase tracking-[0.2em]">Keluarga Besar</span>
                         <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
                     </div>
 
-                    <!-- Nama Orang Tua -->
-                    <div class="flex flex-col items-center gap-2 w-full mb-10 muncul">
+                    <div class="flex flex-col items-center gap-2 w-full mb-10">
                         <p class="font-montserrat font-bold text-biru-teks text-[13.5px] tracking-wide text-center">
                             Bapak Jose Mourinho
                         </p>
@@ -629,8 +616,7 @@
                         </p>
                     </div>
 
-                    <!-- Salam Penutup -->
-                    <h3 class="font-playfair font-bold text-biru-teks text-[14px] tracking-[0.1em] uppercase mb-4 text-center zoom">
+                    <h3 class="font-playfair font-bold text-biru-teks text-[14px] tracking-[0.1em] uppercase mb-4 text-center">
                         WASSALAMUALAIKUM WR. WB.
                     </h3>
 
@@ -645,17 +631,10 @@
             <!-- ========================================= -->
             <section id="footer" class="relative w-full flex flex-col items-center justify-center pb-10 pt-10 z-10 bg-biru-box">
                 
-                <lottie-player 
-                    src="https://ik.imagekit.io/asetundangan/aset/json/thanksjson.json" 
-                    background="transparent" 
-                    speed="1" 
-                    style="width: 200px; height: auto;" 
-                    loop 
-                    autoplay
-                    class="zoom">
-                </lottie-player>
+                <!-- Animasi Lottie diganti ke GIF yang jauh lebih ringan untuk performa browser -->
+                <img src="https://ik.imagekit.io/asetundangan/aset/json/thanksjson.gif" alt="Terima Kasih" class="w-[200px] h-auto zoom muncul">
 
-                <p class="font-montserrat font-medium text-biru-teks/80 text-[10px] leading-relaxed text-center mb-5 muncul">
+                <p class="font-montserrat font-medium text-biru-teks/80 text-[10px] leading-relaxed text-center mb-5 mt-2 muncul">
                     Made with love by undangandari.com<br>
                     Click here if you are interested in us
                 </p>
