@@ -741,15 +741,17 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             
-            // Inisialisasi Lenis untuk efek scrolling mengayun dan premium
+            // Inisialisasi Lenis untuk efek scrolling mengayun dan premium (Diperhalus)
             const lenis = new Lenis({
-                duration: 1.2,
+                duration: 1.5, // Ditingkatkan agar scroll lebih mengayun dan panjang
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 direction: 'vertical',
                 gestureDirection: 'vertical',
                 smooth: true,
-                smoothTouch: false,
-                touchMultiplier: 2
+                smoothWheel: true,
+                wheelMultiplier: 1,
+                smoothTouch: true, // Diaktifkan agar di HP juga terasa efek mengayun
+                touchMultiplier: 1.5
             });
 
             function raf(time) {
@@ -757,6 +759,66 @@
                 requestAnimationFrame(raf);
             }
             requestAnimationFrame(raf);
+
+            // --- FITUR FOKUS GALERI (LIGHTBOX) ---
+            const lightbox = document.createElement('div');
+            lightbox.id = 'gallery-lightbox';
+            lightbox.className = 'fixed inset-0 z-[99999] bg-black/95 hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-md';
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white text-xl hover:bg-emas hover:text-biru-teks transition-all z-50 focus:outline-none shadow-lg border border-white/20 cursor-pointer';
+            closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+            
+            const imgContainer = document.createElement('div');
+            imgContainer.className = 'relative w-[90%] max-w-[500px] max-h-[85vh] flex items-center justify-center';
+            
+            const imgLightbox = document.createElement('img');
+            imgLightbox.className = 'max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] transform scale-95 transition-transform duration-300 border-[2px] border-emas/50';
+            
+            imgContainer.appendChild(imgLightbox);
+            lightbox.appendChild(closeBtn);
+            lightbox.appendChild(imgContainer);
+            document.body.appendChild(lightbox);
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('opacity-100');
+                lightbox.classList.add('opacity-0');
+                imgLightbox.classList.remove('scale-100');
+                imgLightbox.classList.add('scale-95');
+                setTimeout(() => {
+                    lightbox.classList.remove('flex');
+                    lightbox.classList.add('hidden');
+                    document.body.style.overflow = ''; // Kembalikan scroll
+                }, 300);
+            };
+
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if(e.target === lightbox || e.target === imgContainer) closeLightbox();
+            });
+
+            // Pasang event click ke semua gambar di dalam section galeri
+            const galleryImages = document.querySelectorAll('#galeri img');
+            galleryImages.forEach(img => {
+                img.style.cursor = 'zoom-in';
+                img.classList.add('hover:opacity-80', 'transition-opacity', 'duration-300');
+                img.addEventListener('click', () => {
+                    // Gunakan resolusi lebih tinggi jika pakai parameter ImageKit
+                    imgLightbox.src = img.src.replace('w-400', 'w-800').replace('w-600', 'w-1000'); 
+                    lightbox.classList.remove('hidden');
+                    lightbox.classList.add('flex');
+                    document.body.style.overflow = 'hidden'; // Kunci scroll di background
+                    
+                    // Trigger reflow untuk animasi
+                    void lightbox.offsetWidth;
+                    
+                    lightbox.classList.remove('opacity-0');
+                    lightbox.classList.add('opacity-100');
+                    imgLightbox.classList.remove('scale-95');
+                    imgLightbox.classList.add('scale-100');
+                });
+            });
+            // ---------------------------------------------
 
             const btnCover = document.getElementById('tombol-buka-undangan'); 
             const targetSection = document.getElementById('section-profil'); 
@@ -785,7 +847,8 @@
                 if (!targetSection) return; 
                 if (typeof gsap !== 'undefined' && window.ScrollToPlugin) { 
                     const currentY = window.pageYOffset || document.documentElement.scrollTop || 0; const rect = targetSection.getBoundingClientRect(); const targetY = currentY + rect.top; 
-                    gsap.to(window, { duration: 1.5, ease: 'power3.inOut', scrollTo: { y: targetSection, autoKill: false } }); 
+                    // Durasi disesuaikan jadi 1.8 agar lebih halus seperti referensi
+                    gsap.to(window, { duration: 1.8, ease: 'power3.inOut', scrollTo: { y: targetSection, autoKill: false } }); 
                 } else { targetSection.scrollIntoView({ behavior: 'smooth' }); } 
             };
 
@@ -796,7 +859,8 @@
                 setButtonToScroll(); 
                 unlockScroll(); 
                 if(contentUndangan) { contentUndangan.classList.remove('hidden'); contentUndangan.classList.add('flex'); } 
-                setTimeout(() => { scrollKeTujuan(); }, 800); 
+                // Waktu tunggu disamakan dengan referensi (1500ms) agar transisi amplop lebih rapi
+                setTimeout(() => { scrollKeTujuan(); }, 1500); 
                 btnCover.removeEventListener('click', handleFirstClick); 
                 btnCover.addEventListener('click', (ev) => { ev.preventDefault(); scrollKeTujuan(); }); 
             };
