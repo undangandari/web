@@ -73,6 +73,8 @@
             background-size: 120px 120px;
             pointer-events: none;
             z-index: -1;
+            transform: translateZ(0); /* Hardware Acceleration: Meringankan render GPU */
+            will-change: transform;
         }
         
         .mobile-container {
@@ -764,15 +766,15 @@
                 smooth: true,
                 smoothWheel: true,
                 wheelMultiplier: 1,
-                smoothTouch: true, 
-                touchMultiplier: 1.5
+                smoothTouch: false, // MATIKAN INI AGAR HP PAKAI SCROLL NATIVE BAWAAN YANG 100% MULUS
+                touchMultiplier: 2
             });
 
-            function raf(time) {
-                lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
-            requestAnimationFrame(raf);
+            // Sinkronisasi Ticker Lenis dengan GSAP agar animasi super mulus & tidak patah-patah (60fps)
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0);
 
             // PENTING: Hapus class lock-scroll bawaan HTML agar Lenis bisa membaca wheel mouse secara bebas di cover.
             // Tenang saja, section selanjutnya tetap aman karena statusnya 'hidden' (display: none).
