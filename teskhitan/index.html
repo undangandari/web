@@ -59,7 +59,14 @@
     <style>
         /* Anti Native Smooth Scroll (Agar GSAP & Lenis Mulus) */
         html { scroll-behavior: auto !important; }
-        body { background-color: #111; display: flex; justify-content: center; margin: 0; min-height: 100vh; overflow-x: hidden; }
+        body { 
+            background-color: #062352; 
+            /* Opacity motif dikurangi menjadi 0.03 agar sangat halus */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394b4d6' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 120px 120px; /* Memperlebar jarak antar motif */
+            background-attachment: fixed; /* Membuat background diam/sticky saat discroll */
+            display: flex; justify-content: center; margin: 0; min-height: 100vh; overflow-x: hidden; 
+        }
         
         .mobile-container {
             width: 100%;
@@ -770,10 +777,10 @@
             closeBtn.innerHTML = '<i class="fas fa-times"></i>';
             
             const imgContainer = document.createElement('div');
-            imgContainer.className = 'relative w-[90%] max-w-[500px] max-h-[85vh] flex items-center justify-center';
+            imgContainer.className = 'relative w-[95%] max-w-[800px] h-auto max-h-[90vh] flex items-center justify-center';
             
             const imgLightbox = document.createElement('img');
-            imgLightbox.className = 'max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] transform scale-95 transition-transform duration-300 border-[2px] border-emas/50';
+            imgLightbox.className = 'max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] transform scale-95 transition-transform duration-300 border-[2px] border-emas/50';
             
             imgContainer.appendChild(imgLightbox);
             lightbox.appendChild(closeBtn);
@@ -803,8 +810,8 @@
                 img.style.cursor = 'zoom-in';
                 img.classList.add('hover:opacity-80', 'transition-opacity', 'duration-300');
                 img.addEventListener('click', () => {
-                    // Gunakan resolusi lebih tinggi jika pakai parameter ImageKit
-                    imgLightbox.src = img.src.replace('w-400', 'w-800').replace('w-600', 'w-1000'); 
+                    // Gunakan Regex agar secara otomatis menghapus batas tinggi (crop imagekit) dan meload resolusi kualitas tinggi original
+                    imgLightbox.src = img.src.replace(/tr=[a-zA-Z0-9,-]+/, 'tr=w-1200,q-90,f-auto'); 
                     lightbox.classList.remove('hidden');
                     lightbox.classList.add('flex');
                     document.body.style.overflow = 'hidden'; // Kunci scroll di background
