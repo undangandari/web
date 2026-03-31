@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Tasyakuran Khitan Karim</title>
+    
+    <!-- Meta Tags Open Graph -->
+    <meta name="description" content="Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.">
+    <meta property="og:title" content="Undangan Tasyakuran Khitan Karim">
+    <meta property="og:description" content="Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.">
+    <meta property="og:image" content="https://ik.imagekit.io/fotoclient/khitan/sample/muslimboy.jpg?tr=w-300,h-400,q-80,f-auto">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Script Animasi & Fungsionalitas -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'biru-bg': '#062352',      
+                        'biru-box': '#94b4d6',     
+                        'biru-teks': '#112b52',    
+                        'emas': '#d4af37',         
+                        'emas-muda': '#f3e5ab',
+                        'emas-tua': '#997a00'     
+                    },
+                    animation: {
+                        'shine': 'shine 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        shine: {
+                            '0%': { left: '-100%', opacity: '0' },
+                            '10%': { opacity: '1' },
+                            '20%': { left: '100%', opacity: '0' },
+                            '100%': { left: '100%', opacity: '0' },
+                        }
+                    },
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'great-vibes': ['Great Vibes', 'cursive'],
+                        'alex': ['Alex Brush', 'cursive'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Optimasi Scroll bawaan */
+        html { scroll-behavior: auto !important; }
+        body { 
+            background-color: #062352; 
+            display: flex; justify-content: center; margin: 0; min-height: 100vh; overflow-x: hidden; 
+        }
+        
+        @media (min-width: 768px) {
+            body::before {
+                content: ""; position: fixed; inset: 0;
+                background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394b4d6' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                background-size: 120px 120px; pointer-events: none; z-index: -1; transform: translateZ(0); will-change: transform;
+            }
+        }
+        
+        .mobile-container { width: 100%; max-width: 420px; background-color: transparent; position: relative; box-shadow: 0 0 30px rgba(0,0,0,0.8); overflow-x: hidden; }
+
+        /* Optimasi Background Layers (Menggunakan hardware acceleration) */
+        .fixed-bg-layer {
+            position: fixed; top: 0; left: 50%; transform: translateX(-50%) translateZ(0); width: 100%; max-width: 420px; height: 100vh;
+            background-image: url('https://ik.imagekit.io/asetundangan/aset/background/background%20biru%20islami%20khita.jpg?tr=w-600,q-70,f-auto'); 
+            background-size: cover; background-position: center; z-index: 0; pointer-events: none; will-change: transform; 
+        }
+
+        .bg-overlay {
+            position: fixed; top: 0; left: 50%; transform: translateX(-50%) translateZ(0); width: 100%; max-width: 420px; height: 100vh;
+            background: linear-gradient(to bottom, rgba(6,35,82,0.4) 0%, rgba(6,35,82,0.85) 100%); pointer-events: none; z-index: 0; will-change: transform;
+        }
+
+        /* Box Shadow Diperingan untuk Performa GPU */
+        .premium-card {
+            background: linear-gradient(145deg, #a2c1e1 0%, #89aacc 100%); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,0.2); 
+            transform: translateZ(0); 
+            will-change: transform;
+        }
+
+        .img-placeholder { background-color: rgba(255,255,255,0.2); position: relative; }
+        .lock-scroll { overflow: hidden !important; height: 100vh !important; touch-action: none; }
+
+        /* Floating Button */
+        .floating-btn { position: fixed; right: 20px; width: 36px; height: 36px; background: rgba(6, 35, 82, 0.9); border: 1px solid rgba(255, 255, 255, 0.4); color: #ffffff; border-radius: 50%; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; }
+        .floating-btn:hover { background: rgba(17, 43, 82, 1); border-color: rgba(255, 255, 255, 0.8); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); transform: translateY(-2px); color: #ffffff; }
+        .floating-btn:active { transform: scale(0.95); }
+        #enter-fullscreen { bottom: 72px; font-size: 14px; }
+        #audio-toggle { bottom: 25px; }
+        #audio-toggle svg { width: 16px; height: 16px; fill: #ffffff; transition: fill 0.3s ease; }
+        .floating-btn:hover svg { fill: #ffffff; }
+        @keyframes spin-continuous { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        #audio-toggle.rotating svg { animation: spin-continuous 4s linear infinite; }
+
+        /* Efek Lampion Turun Elegan (Sekali Muncul agar sangat ringan) */
+        .lampion-entrance { transform: translateY(-4rem) scale(1) !important; opacity: 0 !important; transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.5s ease !important; will-change: transform, opacity; }
+        .lampion-entrance.active { transform: translateY(0) scale(1) !important; opacity: 0.95 !important; }
+
+        /* ANIMASI SCROLL DENGAN WILL-CHANGE (KUNCI AGAR MULUS) */
+        .muncul, .muncul-kiri, .muncul-kanan, .zoom { will-change: transform, opacity; }
+        .muncul { transform: translateY(3rem) scale(0.95); opacity: 0; transition: transform 1s ease, opacity 0.8s ease; }
+        .muncul.active { transform: translateY(0) scale(1); opacity: 1; }
+        .muncul-kiri { transform: translateX(-2rem) scale(0.95); opacity: 0; transition: transform 1s ease, opacity 0.8s ease; }
+        .muncul-kiri.active { transform: translateX(0) scale(1); opacity: 1; }
+        .muncul-kanan { transform: translateX(2rem) scale(0.95); opacity: 0; transition: transform 1s ease, opacity 0.8s ease; }
+        .muncul-kanan.active { transform: translateX(0) scale(1); opacity: 1; }
+        .zoom { transform: scale(0.85); opacity: 0; transition: transform 1.2s ease, opacity 0.8s ease; }
+        .zoom.active { transform: scale(1); opacity: 1; }
+        @media (prefers-reduced-motion: reduce){ .muncul, .muncul-kiri, .muncul-kanan, .zoom { transition: none !important; } }
+
+        /* Animasi Kilap Foto */
+        .animasi-shine { animation: shine 4s ease-in-out infinite; will-change: transform, opacity; }
+        @keyframes shine { 0% { transform: translateX(-100%); opacity: 0; } 10% { opacity: 1; } 20% { transform: translateX(200%); opacity: 0; } 100% { transform: translateX(200%); opacity: 0; } }
+
+        /* Animasi Bintang Kecil (Ganti pulse menjadi opacity saja agar hemat GPU) */
+        .animasi-kelip { animation: kelip 2s ease-in-out infinite alternate; will-change: opacity; }
+        .animasi-kelip-delay { animation: kelip 2.5s ease-in-out infinite alternate; animation-delay: 0.5s; will-change: opacity; }
+        @keyframes kelip { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        /* Modal Style */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(4px); }
+        .modal-box { background: #062352; border: 1px solid #d4af37; border-radius: 12px; padding: 24px; width: 90%; max-width: 320px; transform: scale(0.9); transition: transform 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        select.input-form option { background-color: #94b4d6; color: #112b52; }
+
+        /* Efek Denyut Ikon Mewah (Dioptimalkan & Hemat GPU) */
+        .grup-ikon { cursor: pointer; }
+        .grup-ikon:hover .ikon-hover { transform: scale(1.15); }
+        .grup-ikon:hover .ornamen-kiri { transform: translateX(-0.5rem); opacity: 0.8; }
+        .grup-ikon:hover .ornamen-kanan { transform: translateX(0.5rem); opacity: 0.8; }
+        .grup-ikon .efek-denyut { opacity: 0; transform: scale(1) translateZ(0); will-change: transform, opacity; }
+        /* Animasi berjalan saat elemen pembungkus (zoom, muncul-kiri, dll) masuk ke layar */
+        .active .efek-denyut, .active.efek-denyut { animation: denyut-halus 2s infinite cubic-bezier(0, 0, 0.2, 1); }
+        @keyframes denyut-halus { 0% { transform: scale(0.85); opacity: 0.95; } 70% { transform: scale(2); opacity: 0; } 100% { transform: scale(2); opacity: 0; } }
+    </style>
+</head>
+<body class="flex justify-center text-emas antialiased lock-scroll">
+
+    <!-- Modal Konfirmasi/Peringatan -->
+    <div id="custom-modal" class="modal-overlay">
+        <div class="modal-box">
+            <h3 id="modal-title" class="font-montserrat text-emas-muda text-base font-bold text-center mb-2 border-b border-emas/30 pb-2">Pemberitahuan</h3>
+            <p id="modal-msg" class="font-montserrat text-gray-200 text-[13px] text-center mb-6 leading-relaxed">Pesan</p>
+            <div id="modal-actions" class="flex gap-3 justify-center"></div>
+        </div>
+    </div>
+
+    <!-- Tombol Floating -->
+    <button id="enter-fullscreen" class="floating-btn"><i class="fas fa-expand-arrows-alt"></i></button>
+    <div id="audio-container">
+        <audio id="audio" loop>
+            <source src="https://github.com/asetundangan/lagu/raw/refs/heads/main/Islami%20-%20Ibu%20Haddad%20Alwi%20Feat%20Farhan.mp3" type="audio/mpeg">
+        </audio>
+        <div id="audio-toggle" class="floating-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 32a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm-96-32a96 96 0 1 0 192 0 96 96 0 1 0 -192 0zM96 240c0-35 17.5-71.1 45.2-98.8S205 96 240 96c8.8 0 16-7.2 16-16s-7.2-16-16-16c-45.4 0-89.2 22.3-121.5 54.5S64 194.6 64 240c0 8.8 7.2 16 16 16s16-7.2 16-16z"/></svg>
+        </div>
+    </div>
+
+    <div class="fixed-bg-layer"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="mobile-container">
+        <!-- COVER -->
+        <section id="cover" class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center p-5 z-20 py-16 shrink-0">
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png?tr=w-750,q-95,f-auto" alt="Lampion" class="absolute top-0 left-0 w-full z-20 zoom lampion-entrance pointer-events-none opacity-95" decoding="async">
+            <div class="w-full max-w-[340px] premium-card rounded-[2rem] p-8 flex flex-col items-center relative z-10 mt-8">
+                <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                <div class="relative w-[150px] mb-8 -mt-20 z-10 flex flex-col items-center zoom active group cursor-pointer">
+                    <svg class="absolute -top-3 -left-3 w-8 h-8 text-emas-muda z-30 animasi-kelip" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg>
+                    <svg class="absolute -bottom-3 -right-3 w-6 h-6 text-emas-muda z-30 animasi-kelip-delay" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg>
+                    <div class="relative w-full h-[190px] bg-gradient-to-b from-emas-muda via-emas to-emas-tua border-[1px] border-emas/50 rounded-t-[6rem] rounded-b-[4px] p-[4px] shadow-md ring-1 ring-white/30 ring-offset-2 ring-offset-[#89aacc]">
+                        <div class="relative w-full h-full rounded-t-[5.8rem] rounded-b-[2px] overflow-hidden bg-white img-placeholder">
+                            <img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza_cr.jpg" alt="Foto Khitan" class="w-full h-full object-cover rounded-t-[5.8rem] rounded-b-[2px]" decoding="async">
+                            <div class="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/70 to-transparent skew-x-[-25deg] animasi-shine z-20 pointer-events-none"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center gap-3 mb-2 z-10 muncul active">
+                    <div class="w-1.5 h-1.5 bg-emas transform rotate-45 opacity-80"></div>
+                    <h3 class="font-montserrat text-biru-teks font-bold text-[8.5px] tracking-[0.3em] uppercase">Undangan Tasyakuran</h3>
+                    <div class="w-1.5 h-1.5 bg-emas transform rotate-45 opacity-80"></div>
+                </div>
+                
+                <h1 class="font-cinzel font-bold text-biru-teks text-[3.8rem] tracking-[0.05em] uppercase leading-none mt-2 mb-1 z-10 zoom active w-full text-center" style="text-shadow: 0 1px 2px rgba(0,0,0,0.1);">KHITAN</h1>
+                <h2 class="font-playfair italic font-normal text-biru-teks text-[1.6rem] sm:text-[2.2rem] md:text-[2.8rem] tracking-normal md:tracking-wide text-center whitespace-nowrap mb-4 z-10 muncul active">
+    Fajri, Furqon <span class="font-serif">&amp;</span> Fayza
+</h2>
+
+                <div class="flex items-center justify-center gap-4 w-[85%] mb-5 z-10 zoom active">
+                    <div class="h-[1px] bg-biru-teks/20 flex-grow"></div>
+                    <div class="flex gap-1.5 opacity-80">
+                        <div class="w-1.5 h-1.5 bg-emas transform rotate-45"></div><div class="w-2 h-2 bg-emas transform rotate-45"></div><div class="w-1.5 h-1.5 bg-emas transform rotate-45"></div>
+                    </div>
+                    <div class="h-[1px] bg-biru-teks/20 flex-grow"></div>
+                </div>
+
+                <div class="w-full bg-white/30 border border-white/50 rounded-2xl py-5 px-4 flex flex-col items-center z-10 shadow-sm relative overflow-hidden">
+                    <p class="font-montserrat text-biru-teks/80 text-[8.5px] font-medium tracking-wide mb-1.5 text-center muncul active" style="transition-delay: 0.1s">Kepada Yth. Bpk/Ibu/Saudara/i</p>
+                    <h4 class="font-playfair font-bold text-biru-teks text-[16px] tracking-wider text-center mb-6 namatamu zoom active" style="transition-delay: 0.2s">Tamu Undangan</h4>
+                    
+                    <button id="tombol-buka-undangan" class="w-[85%] bg-biru-teks border-[1.5px] border-biru-teks text-white hover:bg-transparent hover:text-biru-teks font-montserrat font-bold text-[9px] tracking-[0.25em] py-3.5 rounded-full transition-colors duration-300 flex items-center justify-center gap-3 group mb-4 outline-none muncul active cursor-pointer" style="transition-delay: 0.3s">
+                        <i id="btn-icon" class="fas fa-envelope-open text-[10px] group-hover:scale-110 transition-transform"></i> <span class="elementor-button-text">BUKA UNDANGAN</span>
+                    </button>
+                    <p class="font-montserrat font-medium italic text-biru-teks text-[9px] text-center px-2 leading-relaxed muncul active" style="transition-delay: 0.4s">*) Mohon maaf apabila ada kesalahan penulisan nama/gelar</p>
+                </div>
+            </div>
+            
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -left-4 w-28 opacity-95 z-20 pointer-events-none" decoding="async">
+            <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -right-4 w-28 opacity-95 z-20 transform scale-x-[-1] pointer-events-none" decoding="async">
+        </section>
+
+        <!-- WRAPPER CONTENT UNDANGAN -->
+        <div id="content-undangan" class="hidden flex-col w-full z-10 relative">
+
+            <!-- PROFIL -->
+            <section id="section-profil" class="relative w-full flex flex-col items-center justify-center p-5 z-10 py-16">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png?tr=w-750,q-95,f-auto" alt="Lampion" class="absolute top-0 left-0 w-full z-20 zoom lampion-entrance pointer-events-none opacity-95" loading="lazy" decoding="async">
+                <div class="w-full max-w-[340px] premium-card rounded-[2rem] px-8 pt-8 pb-12 flex flex-col items-center relative mt-8 mb-6">
+                    <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                    <h3 class="font-alex text-biru-teks text-[24px] sm:text-[26px] mb-2 mt-4 text-center zoom leading-none font-normal whitespace-nowrap">Assalamu'alaikum Wr. Wb.</h3>
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-10 px-2 muncul">
+                        Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, insyaaAllah kami akan menyelenggarakan acara Tasyakuran Khitan anak kami :
+                    </p>
+
+                    <div class="relative w-[150px] mb-6 z-10 flex flex-col items-center zoom group cursor-pointer">
+                        <svg class="absolute -top-3 -left-3 w-8 h-8 text-emas-muda z-30 animasi-kelip" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg>
+                        <svg class="absolute -bottom-3 -right-3 w-6 h-6 text-emas-muda z-30 animasi-kelip-delay" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg>
+                        <div class="relative w-full h-[190px] bg-gradient-to-b from-emas-muda via-emas to-emas-tua border-[1px] border-emas/50 rounded-t-[6rem] rounded-b-[4px] p-[4px] shadow-md ring-1 ring-white/30 ring-offset-2 ring-offset-[#89aacc]">
+                            <div class="relative w-full h-full rounded-t-[5.8rem] rounded-b-[2px] overflow-hidden bg-white img-placeholder">
+                                <img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza4_cr.jpeg" alt="Foto Anak" class="w-full h-full object-cover rounded-t-[5.8rem] rounded-b-[2px]" loading="lazy" decoding="async">
+                                <div class="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/70 to-transparent skew-x-[-25deg] animasi-shine z-20 pointer-events-none"></div>
+                            </div>
+                        </div>
+                    </div>
+<div class="flex flex-col items-center justify-center text-center px-4 w-full muncul">
+
+    <div class="mb-2 flex flex-col items-center">
+        <h3 class="font-serif text-biru-teks text-[15px] md:text-[17px] tracking-[0.2em] uppercase leading-snug">
+            Fajri Haikal<br>Munthe
+        </h3>
+        <div class="w-8 h-[1px] bg-biru-teks mt-3 opacity-50"></div>
+    </div>
+
+    <div class="mb-2 flex flex-col items-center">
+        <h3 class="font-serif text-biru-teks text-[15px] md:text-[17px] tracking-[0.2em] uppercase leading-snug">
+            Mhd. Furqon<br>Abdillah Munthe
+        </h3>
+        <div class="w-8 h-[1px] bg-biru-teks mt-3 opacity-50"></div>
+    </div>
+
+    <div class="mb-2 flex flex-col items-center">
+        <h3 class="font-serif text-biru-teks text-[15px] md:text-[17px] tracking-[0.2em] uppercase leading-snug">
+            Fayza<br>Syifaunnisa<br>Munthe
+        </h3>
+    </div>
+
+    <div class="flex items-center space-x-4 text-biru-teks opacity-40 mb-6 mt-2">
+        <div class="w-12 h-[1px] bg-biru-teks"></div>
+        <span class="text-sm">✧</span>
+        <div class="w-12 h-[1px] bg-biru-teks"></div>
+    </div>
+
+    <div class="flex items-center space-x-3 mb-5">
+        <div class="w-8 h-[1px] bg-biru-teks opacity-40"></div>
+        <p class="font-playfair italic text-biru-teks text-[15px]">Putra & Putri dari</p>
+        <div class="w-8 h-[1px] bg-biru-teks opacity-40"></div>
+    </div>
+
+</div>
+
+                        <div class="flex flex-col gap-2 items-center muncul">
+                            <h3 class="font-playfair font-bold text-biru-teks text-[16px] tracking-wide text-center">H. Indra Syahputra Munthe, S.HI</h3>
+                            <h3 class="font-playfair font-bold text-biru-teks text-[16px] tracking-wide text-center">Dewi Susanti, S.Sos, M.I.Kom</h3>
+                            <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-1 muncul">
+                        (Kasubbag. Umum dan Kepegawaian <br>Setcam Sultan Daulat)</p>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -left-4 w-28 opacity-95 z-20 pointer-events-none" loading="lazy" decoding="async">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -right-4 w-28 opacity-95 z-20 transform scale-x-[-1] pointer-events-none" loading="lazy" decoding="async">
+            </section>
+
+            <!-- ACARA -->
+            <section id="acara" class="relative w-full flex flex-col items-center justify-center p-5 z-10 py-16">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png?tr=w-750,q-95,f-auto" alt="Lampion" class="absolute top-0 left-0 w-full z-20 zoom lampion-entrance pointer-events-none opacity-95" loading="lazy" decoding="async">
+                <div class="w-full max-w-[340px] premium-card rounded-[2rem] px-8 pt-8 pb-12 flex flex-col items-center relative mt-8 mb-6">
+                    <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                    <h2 class="font-cinzel text-biru-teks text-[22px] font-bold tracking-[0.15em] text-center leading-snug mb-4 mt-2 zoom">
+                        TASYAKURAN<br>KHITAN
+                    </h2>
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-1 muncul">
+                        Dengan segala kerendahan hati kami berharap kehadiran Bapak/Ibu/Saudara/i dalam acara Tasyakuran Khitan anak kami yang akan diselenggarakan pada :
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-3 w-full mb-8">
+                        <div class="muncul-kiri w-full h-full">
+                            <div class="border-[1.5px] border-white/60 rounded-xl p-4 flex flex-col items-center bg-white/40 shadow-sm group h-full grup-ikon">
+                                <div class="relative flex items-center justify-center mb-3">
+                                    <span class="efek-denyut absolute inline-flex h-9 w-9 rounded-full bg-white/60"></span>
+                                    <div class="w-11 h-11 rounded-full border-[1.5px] border-white/80 bg-white/80 flex items-center justify-center shadow-sm z-10 text-biru-teks ikon-hover transition-transform duration-300">
+                                        <i class="far fa-calendar-alt text-[18px]"></i>
+                                    </div>
+                                </div>
+                                <h4 class="font-montserrat font-bold text-biru-teks text-[15px] tracking-wide mb-1">Hari</h4>
+                                <p class="font-montserrat font-semibold text-biru-teks/80 text-[11.5px] text-center">Senin<br>27 April 2026</p>
+                            </div>
+                        </div>
+                        <div class="muncul-kanan w-full h-full">
+                            <div class="border-[1.5px] border-white/60 rounded-xl p-4 flex flex-col items-center bg-white/40 shadow-sm group h-full grup-ikon">
+                                <div class="relative flex items-center justify-center mb-3">
+                                    <span class="efek-denyut absolute inline-flex h-9 w-9 rounded-full bg-white/60"></span>
+                                    <div class="w-11 h-11 rounded-full border-[1.5px] border-white/80 bg-white/80 flex items-center justify-center shadow-sm z-10 text-biru-teks ikon-hover transition-transform duration-300">
+                                        <i class="far fa-clock text-[18px]"></i>
+                                    </div>
+                                </div>
+                                <h4 class="font-montserrat font-bold text-biru-teks text-[15px] tracking-wide mb-1">Pukul</h4>
+                                <p class="font-montserrat font-semibold text-biru-teks/80 text-[11.5px] text-center">15.00 WIB - Selesai</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-center w-full mb-6 opacity-80 muncul">
+                        <div class="h-[1px] bg-biru-teks/30 flex-grow"></div>
+                        <span class="font-cinzel font-bold text-[12px] text-biru-teks px-4 uppercase tracking-[0.1em]">Menghitung Hari</span>
+                        <div class="h-[1px] bg-biru-teks/30 flex-grow"></div>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-2 w-full mb-6">
+                        <div class="bg-biru-teks rounded-lg py-3 flex flex-col items-center shadow-sm border border-emas/40 zoom"><span id="cd-hari" class="font-cinzel font-bold text-[20px] text-white leading-none mb-1.5">00</span><span class="font-montserrat font-semibold text-[8px] text-emas-muda tracking-widest uppercase">Hari</span></div>
+                        <div class="bg-biru-teks rounded-lg py-3 flex flex-col items-center shadow-sm border border-emas/40 zoom"><span id="cd-jam" class="font-cinzel font-bold text-[20px] text-white leading-none mb-1.5">00</span><span class="font-montserrat font-semibold text-[8px] text-emas-muda tracking-widest uppercase">Jam</span></div>
+                        <div class="bg-biru-teks rounded-lg py-3 flex flex-col items-center shadow-sm border border-emas/40 zoom"><span id="cd-menit" class="font-cinzel font-bold text-[20px] text-white leading-none mb-1.5">00</span><span class="font-montserrat font-semibold text-[8px] text-emas-muda tracking-widest uppercase">Menit</span></div>
+                        <div class="bg-biru-teks rounded-lg py-3 flex flex-col items-center shadow-sm border border-emas/40 zoom"><span id="cd-detik" class="font-cinzel font-bold text-[20px] text-white leading-none mb-1.5">00</span><span class="font-montserrat font-semibold text-[8px] text-emas-muda tracking-widest uppercase">Detik</span></div>
+                    </div>
+
+                    <p class="font-montserrat font-medium text-biru-teks/70 text-[9.5px] leading-relaxed text-center mb-6 px-4 muncul">Klik tombol dibawah untuk menambahkan pengingat otomatis ke kalender Google.</p>
+                    <div class="w-[90%] muncul">
+                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tasyakuran%20Khitan%20Fajri%2C%20Furqon%2C%20Fayza&details=Kami%20sangat%20mengharapkan%20kehadiran%20Bapak%2FIbu%2FSaudara%2Fi%20pada%20acara%20kami.&location=Hotel%20Hermes%20One%20Subulussalam&dates=20260427T150000/20260427T170000" target="_blank" class="w-full bg-biru-teks hover:bg-[#0e2242] text-white border border-emas/40 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-colors duration-300 flex items-center justify-center gap-3 shadow-md"><i class="far fa-calendar-alt text-[12px]"></i> SIMPAN DI KALENDER</a>
+                    </div>
+                </div>
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -left-4 w-28 opacity-95 z-20 pointer-events-none" loading="lazy" decoding="async">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -right-4 w-28 opacity-95 z-20 transform scale-x-[-1] pointer-events-none" loading="lazy" decoding="async">
+            </section>
+
+            <!-- LOKASI -->
+            <section id="lokasi" class="relative w-full flex flex-col items-center justify-center p-5 z-10 py-16">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png?tr=w-750,q-95,f-auto" alt="Lampion" class="absolute top-0 left-0 w-full z-20 zoom lampion-entrance pointer-events-none opacity-95" loading="lazy" decoding="async">
+                <div class="w-full max-w-[340px] premium-card rounded-[2rem] px-8 pt-8 pb-12 flex flex-col items-center relative mt-8 mb-6">
+                    <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                    <div class="flex items-center justify-center w-full mb-6 mt-2 zoom">
+                        <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                        <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Lokasi Acara</h2>
+                        <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                    </div>
+
+                    <div class="flex items-center justify-between w-full mb-5 px-1 muncul">
+                        <span class="font-montserrat text-white/50 text-[18px] font-light leading-none">+</span>
+                        <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center max-w-[80%]">Insyaallah, acara Tasyakuran Khitan ini akan diadakan di:</p>
+                        <span class="font-montserrat text-white/50 text-[18px] font-light leading-none">+</span>
+                    </div>
+
+                    <div class="relative mx-auto w-full max-w-[280px] p-[2px] rounded-2xl bg-gradient-to-r from-transparent via-biru-teks/20 to-transparent muncul shadow-sm mb-8">
+                        <div class="bg-white/30 rounded-[14px] p-4 pt-5">
+                            <div class="flex items-center justify-center w-full mb-4">
+                                <div class="flex items-center justify-center mx-3 grup-ikon zoom">
+                                    <!-- Ornamen Kiri -->
+                                    <div class="flex items-center gap-1.5 opacity-40 ornamen-kiri transition-transform duration-500">
+                                        <div class="w-1 h-1 rounded-full bg-biru-teks"></div>
+                                        <div class="w-1.5 h-1.5 bg-biru-teks transform rotate-45"></div>
+                                        <div class="w-2 h-2 bg-biru-teks transform rotate-45"></div>
+                                    </div>
+                                    
+                                    <div class="relative flex items-center justify-center mx-4">
+                                        <span class="efek-denyut absolute inline-flex h-9 w-9 rounded-full bg-biru-teks/40"></span>
+                                        <div class="w-10 h-10 rounded-full border-[1.5px] border-white/80 bg-white/80 flex items-center justify-center shadow-sm z-10 ikon-hover transition-transform duration-300">
+                                            <i class="fas fa-map-marker-alt text-biru-teks text-[15px]"></i>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ornamen Kanan -->
+                                    <div class="flex items-center gap-1.5 opacity-40 ornamen-kanan transition-transform duration-500">
+                                        <div class="w-2 h-2 bg-biru-teks transform rotate-45"></div>
+                                        <div class="w-1.5 h-1.5 bg-biru-teks transform rotate-45"></div>
+                                        <div class="w-1 h-1 rounded-full bg-biru-teks"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="font-montserrat font-bold text-biru-teks text-[14px] tracking-wide text-center mb-2">
+                                Hotel Hermes One Subulussalam
+                            </h3>
+                            <p class="font-montserrat font-medium text-biru-teks/80 text-[11px] leading-relaxed text-center">
+                                Jl. Teuku Umar, Penanggalan, <br>Kec. Simpang Kiri, Subulussalam, Aceh
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-[250px] rounded-xl border-[2px] border-white overflow-hidden shadow-sm mb-8 bg-white">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.5958905735974!2d98.013706!3d2.6362135999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3030111ccaa162b3%3A0xc918df406722c2cb!2sHermes%20One%20Subulussalam!5e0!3m2!1sid!2sid!4v1774940379687!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                    <div class="w-[90%] muncul">
+                        <a href="https://maps.app.goo.gl/eEU1sTtCgWFSb5Vf9" target="_blank" class="w-full bg-biru-teks hover:bg-[#0e2242] text-white border border-emas/40 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-colors duration-300 flex items-center justify-center gap-3 shadow-md"><i class="fas fa-map-marker-alt text-[12px]"></i> LIHAT GOOGLE MAPS</a>
+                    </div>
+                </div>
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -left-4 w-28 opacity-95 z-20 pointer-events-none" loading="lazy" decoding="async">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -right-4 w-28 opacity-95 z-20 transform scale-x-[-1] pointer-events-none" loading="lazy" decoding="async">
+            </section>
+
+            <!-- GALERI -->
+            <section id="galeri" class="flex relative w-full flex-col items-center justify-center p-5 z-10 py-16">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png?tr=w-750,q-95,f-auto" alt="Lampion" class="absolute top-0 left-0 w-full z-20 zoom lampion-entrance pointer-events-none opacity-95" loading="lazy" decoding="async">
+                <div class="w-full max-w-[340px] premium-card rounded-[2rem] px-8 pt-8 pb-12 flex flex-col items-center relative mt-8 mb-6">
+                    <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                    <div class="flex items-center justify-center w-full mb-4 mt-2 zoom">
+                        <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                        <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Gallery Foto</h2>
+                        <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                    </div>
+
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-2 muncul">
+                        Momen indah kebersamaan & kehangatan keluarga kami.
+                    </p>
+
+                    <!-- GRID-COLS-6 SYSTEM UNTUK FLEKSIBILITAS (1, 2, atau 3 Kolom) -->
+                    <div class="grid grid-cols-6 gap-2 w-full">
+                        <div class="aspect-square col-span-6 rounded-xl overflow-hidden shadow-sm border-[2px] border-white/50 relative img-placeholder zoom" style="transition-delay: 0s"><img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza_cr.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Gallery 1"></div><div class="aspect-[3/4] col-span-3 rounded-xl overflow-hidden shadow-sm border-[2px] border-white/50 relative img-placeholder zoom" style="transition-delay: 0.1s"><img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza%20(1).jpeg" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Gallery 2-1"></div><div class="aspect-[3/4] col-span-3 rounded-xl overflow-hidden shadow-sm border-[2px] border-white/50 relative img-placeholder zoom" style="transition-delay: 0.2s"><img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza%20(12).jpeg" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Gallery 2-2"></div><div class="aspect-[16/9] col-span-6 rounded-xl overflow-hidden shadow-sm border-[2px] border-white/50 relative img-placeholder zoom" style="transition-delay: 0.2s"><img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza%20(5).jpeg" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Gallery 3"></div><div class="aspect-[3/4] col-span-2 rounded-lg overflow-hidden shadow-sm border-[1.5px] border-white/50 relative img-placeholder zoom" style="transition-delay: 0.0s"><img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza%20(10).jpeg" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Gallery 4-1"></div><div class="aspect-[3/4] col-span-2 rounded-lg overflow-hidden shadow-sm border-[1.5px] border-white/50 relative img-placeholder zoom" style="transition-delay: 0.1s"><img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza%20(3).jpeg" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Gallery 4-2"></div><div class="aspect-[3/4] col-span-2 rounded-lg overflow-hidden shadow-sm border-[1.5px] border-white/50 relative img-placeholder zoom" style="transition-delay: 0.2s"><img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza%20(4).jpeg" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Gallery 4-3"></div><div class="aspect-[3/4] col-span-2 rounded-lg overflow-hidden shadow-sm border-[1.5px] border-white/50 relative img-placeholder zoom" style="transition-delay: 0.1s"><img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza%20(11).jpeg" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Gallery 5-1"></div><div class="aspect-[3/4] col-span-2 rounded-lg overflow-hidden shadow-sm border-[1.5px] border-white/50 relative img-placeholder zoom" style="transition-delay: 0.2s"><img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza3.jpeg" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Gallery 5-2"></div><div class="aspect-[3/4] col-span-2 rounded-lg overflow-hidden shadow-sm border-[1.5px] border-white/50 relative img-placeholder zoom" style="transition-delay: 0.3s"><img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza%20(12).jpeg" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Gallery 5-3"></div>
+                    </div>
+                </div>
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -left-4 w-28 opacity-95 z-20 pointer-events-none" loading="lazy" decoding="async">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -right-4 w-28 opacity-95 z-20 transform scale-x-[-1] pointer-events-none" loading="lazy" decoding="async">
+            </section>
+
+            <!-- GIFT -->
+            <section id="gift" class="flex relative w-full flex-col items-center justify-center p-5 z-10 py-16">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png?tr=w-750,q-95,f-auto" alt="Lampion" class="absolute top-0 left-0 w-full z-20 zoom lampion-entrance pointer-events-none opacity-95" loading="lazy" decoding="async">
+                <div class="w-full max-w-[340px] premium-card rounded-[2rem] px-8 pt-8 pb-12 flex flex-col items-center relative mt-8 mb-6">
+                    <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                    <div class="flex items-center justify-center w-full mb-1 mt-2 zoom">
+                        <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                        <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Hadiah Khitan</h2>
+                        <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                    </div>
+
+                    <div class="flex items-center justify-center w-full mb-7 mt-5 zoom grup-ikon" style="transition-delay: 0.1s">
+                        <!-- Ornamen Kiri -->
+                        <div class="flex items-center gap-1.5 opacity-40 ornamen-kiri transition-transform duration-500">
+                            <div class="w-1 h-1 rounded-full bg-biru-teks"></div>
+                            <div class="w-1.5 h-1.5 bg-biru-teks transform rotate-45"></div>
+                            <div class="w-2 h-2 bg-biru-teks transform rotate-45"></div>
+                        </div>
+                        
+                        <div class="relative flex items-center justify-center mx-4">
+                            <span class="efek-denyut absolute inline-flex h-9 w-9 rounded-full bg-white/80"></span>
+                            <div class="w-10 h-10 rounded-full border-[1.5px] border-white/80 bg-white/80 flex items-center justify-center shadow-sm z-10 ikon-hover transition-transform duration-300">
+                                <i class="fas fa-gift text-biru-teks text-[15px]"></i>
+                            </div>
+                        </div>
+
+                        <!-- Ornamen Kanan -->
+                        <div class="flex items-center gap-1.5 opacity-40 ornamen-kanan transition-transform duration-500">
+                            <div class="w-2 h-2 bg-biru-teks transform rotate-45"></div>
+                            <div class="w-1.5 h-1.5 bg-biru-teks transform rotate-45"></div>
+                            <div class="w-1 h-1 rounded-full bg-biru-teks"></div>
+                        </div>
+                    </div>
+
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-10 px-2 muncul" style="transition-delay: 0.2s">
+                        Kehadiran Anda merupakan sebuah do'a serta rasa syukur bagi kami, namun jika memberi adalah bentuk Do'a & cinta kasih bagi Anda, Anda dapat memberi kado secara cashless.
+                    </p>
+
+                    <div class="hidden mb-8 w-[90%] muncul" style="transition-delay: 0.3s">
+                        <button id="btn-toggle-rekening" class="w-full bg-biru-teks hover:bg-[#0e2242] text-white border border-emas/40 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-colors duration-300 flex items-center justify-center gap-3 shadow-md"><i id="icon-toggle-rekening" class="fas fa-search"></i><span id="text-toggle-rekening">LIHAT REKENING</span></button>
+                    </div>
+
+                    <div id="box-rekening" class="flex flex-col gap-4 w-full items-center muncul">
+                        
+            <div class="relative w-full max-w-[280px] aspect-[1.58/1] bg-[#e0e0e0] bg-cover bg-center rounded-xl p-5 shadow-sm flex flex-col justify-between overflow-hidden border border-gray-400" style="background-image: url('https://ik.imagekit.io/asetundangan/aset/icon-bank/Background-atm.webp?tr=w-700,q-95,f-auto');">
+                <div class="flex justify-between items-start w-full z-10">
+                    <img src="https://ik.imagekit.io/asetundangan/aset/icon-bank/chip-atm-undangan.webp" alt="Chip" class="w-10 mix-blend-multiply" loading="lazy">
+                    <img src="https://ik.imagekit.io/asetundangan/aset/icon-bank/logo-BRI.svg?tr=w-250,f-auto" onerror="this.src='https://ik.imagekit.io/asetundangan/aset/icon-bank/Logo-Bank-BCA-1.png?tr=w-250,f-auto'" alt="Bank BRI" class="h-[28px] w-auto object-contain" loading="lazy">
+                </div>
+                <div class="flex flex-col items-end w-full z-10 mt-auto">
+                    <h5 class="font-montserrat text-[10px] font-bold tracking-[0.1em] text-gray-700 mb-1">DEWI SUSANTI</h5>
+                    <p class="font-montserrat text-[20px] tracking-[0.15em] font-semibold text-gray-900 mb-3" id="rek-0">399501014864531</p>
+                    <button onclick="copyRekening('rek-0', this)" class="bg-gray-200 border border-gray-400 text-gray-800 text-[10px] font-montserrat font-semibold px-3 py-1.5 rounded flex items-center gap-1.5 hover:bg-gray-300 transition-colors">
+                        <i class="far fa-copy"></i> <span>Salin Nomor</span>
+                    </button>
+                </div>
+            </div>
+                    </div>
+                </div>
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -left-4 w-28 opacity-95 z-20 pointer-events-none" loading="lazy" decoding="async">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -right-4 w-28 opacity-95 z-20 transform scale-x-[-1] pointer-events-none" loading="lazy" decoding="async">
+            </section>
+
+            <!-- RSVP -->
+            <section id="ucapan" class="relative w-full flex flex-col items-center justify-center p-5 z-10 py-16">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png?tr=w-750,q-95,f-auto" alt="Lampion" class="absolute top-0 left-0 w-full z-20 zoom lampion-entrance pointer-events-none opacity-95" loading="lazy" decoding="async">
+                <div class="w-full max-w-[340px] premium-card rounded-[2rem] p-6 flex flex-col items-center relative mt-8 mb-6">
+                    <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                    <div class="flex items-center justify-center w-full mb-4 mt-2 zoom">
+                        <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                        <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Doa & Ucapan</h2>
+                        <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                    </div>
+
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-8 px-2 muncul">
+                        Silahkan tuliskan doa & ucapan selamat untuk anak kami serta konfirmasi kehadiran pada kolom ucapan dibawah ini.
+                    </p>
+
+                    <div class="w-full bg-white/30 border border-white/50 rounded-2xl p-6 mb-8 shadow-sm relative z-10">
+                        <div class="flex flex-col items-center justify-center mb-6 relative z-10 zoom grup-ikon">
+                            <div class="flex items-center justify-center w-full mb-3">
+                                <!-- Ornamen Kiri -->
+                                <div class="flex items-center gap-1.5 opacity-40 ornamen-kiri transition-transform duration-500">
+                                    <div class="w-1 h-1 rounded-full bg-biru-teks"></div>
+                                    <div class="w-1.5 h-1.5 bg-biru-teks transform rotate-45"></div>
+                                    <div class="w-2 h-2 bg-biru-teks transform rotate-45"></div>
+                                </div>
+                                
+                                <div class="relative flex items-center justify-center mx-4">
+                                    <span class="efek-denyut absolute inline-flex h-10 w-10 rounded-full bg-white/80"></span>
+                                    <div class="w-12 h-12 rounded-full border-[1.5px] border-white/80 bg-white/80 flex items-center justify-center shadow-sm z-10 ikon-hover transition-transform duration-300">
+                                        <i class="far fa-envelope-open text-[18px] text-biru-teks"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Ornamen Kanan -->
+                                <div class="flex items-center gap-1.5 opacity-40 ornamen-kanan transition-transform duration-500">
+                                    <div class="w-2 h-2 bg-biru-teks transform rotate-45"></div>
+                                    <div class="w-1.5 h-1.5 bg-biru-teks transform rotate-45"></div>
+                                    <div class="w-1 h-1 rounded-full bg-biru-teks"></div>
+                                </div>
+                            </div>
+                            <h3 class="font-playfair text-[24px] font-bold text-biru-teks tracking-wide mt-1">Buku Tamu</h3>
+                            <div class="w-20 h-[1.5px] bg-biru-teks/30 mt-3"></div>
+                            <p class="font-montserrat text-[9px] text-biru-teks/70 mt-3 text-center tracking-widest uppercase">Tinggalkan Pesan Manis Anda</p>
+                        </div>
+
+                        <form id="form-rsvp" class="flex flex-col gap-4 relative z-10 w-full">
+                            <div class="relative muncul">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-biru-teks/50"><i class="far fa-user text-[14px]"></i></div>
+                                <input type="text" id="input-nama" placeholder="Nama Lengkap Anda" required class="bg-white/50 border border-white/60 rounded-xl py-3.5 pl-11 pr-4 text-biru-teks font-montserrat text-[12px] w-full focus:outline-none focus:border-[#5179bc] focus:bg-white/80 placeholder:text-biru-teks/50" maxlength="50">
+                            </div>
+
+                            <div class="relative muncul">
+                                <div class="absolute top-3.5 left-0 pl-4 flex items-start pointer-events-none text-biru-teks/50"><i class="fas fa-pen-nib text-[14px]"></i></div>
+                                <textarea id="input-ucapan" placeholder="Tuliskan doa & harapan baik..." rows="4" required class="bg-white/50 border border-white/60 rounded-xl py-3.5 pl-11 pr-4 text-biru-teks font-montserrat text-[12px] w-full focus:outline-none focus:border-[#5179bc] focus:bg-white/80 placeholder:text-biru-teks/50 resize-none" maxlength="300"></textarea>
+                            </div>
+
+                            <div class="relative muncul">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-biru-teks/50"><i class="far fa-check-circle text-[14px]"></i></div>
+                                <select id="input-kehadiran" required class="appearance-none bg-white/50 border border-white/60 rounded-xl py-3.5 pl-11 pr-10 text-biru-teks font-montserrat text-[12px] w-full focus:outline-none focus:border-[#5179bc] focus:bg-white/80 cursor-pointer">
+                                    <option value="" disabled selected class="text-gray-500">Konfirmasi Kehadiran</option>
+                                    <option value="Hadir">Hadir</option>
+                                    <option value="Masih Ragu">Masih Ragu</option>
+                                    <option value="Tidak Hadir">Tidak Hadir</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-biru-teks/50"><i class="fas fa-chevron-down text-[12px]"></i></div>
+                            </div>
+
+                            <div class="w-full mt-2 zoom">
+                                <button type="button" id="btn-preview-kirim" class="w-full relative bg-biru-teks hover:bg-[#0e2242] text-white border border-emas/40 font-montserrat font-bold text-[9.5px] tracking-[0.2em] py-3.5 rounded-md transition-colors duration-300 flex justify-center items-center gap-3 shadow-md">
+                                    <i class="fas fa-paper-plane"></i> KIRIM UCAPAN
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 w-full mb-8">
+                        <div class="bg-white/40 text-biru-teks rounded-xl py-3 flex flex-col items-center shadow-sm border border-white/50 relative overflow-hidden zoom"><div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#28a745] to-transparent"></div><strong id="count-hadir" class="font-montserrat text-[20px] font-bold leading-none mb-1 text-[#28a745]">0</strong><span class="font-montserrat text-[8.5px] font-bold tracking-widest uppercase">Hadir</span></div>
+                        <div class="bg-white/40 text-biru-teks rounded-xl py-3 flex flex-col items-center shadow-sm border border-white/50 relative overflow-hidden zoom"><div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#dc3545] to-transparent"></div><strong id="count-tidak-hadir" class="font-montserrat text-[20px] font-bold leading-none mb-1 text-[#dc3545]">0</strong><span class="font-montserrat text-[8.5px] font-bold tracking-widest uppercase">Absen</span></div>
+                        <div class="bg-white/40 text-biru-teks rounded-xl py-3 flex flex-col items-center shadow-sm border border-white/50 relative overflow-hidden zoom"><div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#ffc107] to-transparent"></div><strong id="count-ragu" class="font-montserrat text-[20px] font-bold leading-none mb-1 text-[#d4af37]">0</strong><span class="font-montserrat text-[8.5px] font-bold tracking-widest uppercase text-center">Ragu</span></div>
+                    </div>
+
+                    <div id="daftar-ucapan" class="w-full max-h-[350px] overflow-y-auto pr-2 custom-scroll flex flex-col gap-3 muncul">
+                        <p class="font-montserrat text-biru-teks/60 text-[10px] text-center mb-2 italic">Memuat doa dan ucapan...</p>
+                    </div>
+
+                    <div class="w-full mt-8 bg-white/20 border border-white/40 rounded-xl p-5 shadow-sm zoom">
+                        <p class="font-playfair italic text-biru-teks/90 text-[11.5px] leading-[1.8] text-center mb-3">
+                            "Sempurnakanlah putra-putri kami dalam ibadahnya setelah melakukan Khitanan ini. Jadikan dia anak yang selalu dalam lindungan-Mu ya Allah, jadi anak yang shalih-shalihah, hafal Al-Qur'an, faham dalam agama dan diberkahi kehidupannya didunia dan di akhirat, aamiin."
+                        </p>
+                        <p class="font-montserrat font-bold text-biru-teks/80 text-[9px] text-center tracking-[0.15em] uppercase">
+                            - Doa Tulus Orangtua -
+                        </p>
+                    </div>
+                </div>
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -left-4 w-28 opacity-95 z-20 pointer-events-none" loading="lazy" decoding="async">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-2 -right-4 w-28 opacity-95 z-20 transform scale-x-[-1] pointer-events-none" loading="lazy" decoding="async">
+            </section>
+
+            <!-- PENUTUP -->
+            <section id="penutup" class="relative w-full flex flex-col items-center justify-center p-5 pt-16 pb-20 z-20">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/lampion%20muslim.png?tr=w-750,q-95,f-auto" alt="Lampion" class="absolute top-0 left-0 w-full z-20 zoom lampion-entrance pointer-events-none opacity-95" loading="lazy" decoding="async">
+                <div class="w-full max-w-[340px] premium-card rounded-[2rem] p-6 md:p-8 flex flex-col items-center relative mt-8 mb-6">
+                    <div class="absolute inset-[8px] border-[1px] border-white/40 rounded-[1.6rem] pointer-events-none z-0"></div>
+
+                    <div class="flex items-center justify-center w-full mb-6 mt-2 zoom">
+                        <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                        <h2 class="font-cinzel text-biru-teks text-[20px] font-bold tracking-[0.1em] px-4 uppercase text-center">Terima Kasih</h2>
+                        <div class="h-[1px] bg-biru-teks/40 flex-grow"></div>
+                    </div>
+
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-4 px-2 muncul">
+                        Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bpk / Ibu / Saudara/i dan teman-teman, berkenan hadir dan memberikan do'a.
+                    </p>
+
+                    <div class="flex items-center justify-center w-full mb-6 zoom grup-ikon" style="transition-delay: 0.1s">
+                        <!-- Ornamen Kiri -->
+                        <div class="flex items-center gap-1.5 opacity-40 ornamen-kiri transition-transform duration-500">
+                            <div class="w-1 h-1 rounded-full bg-biru-teks"></div>
+                            <div class="w-1.5 h-1.5 bg-biru-teks transform rotate-45"></div>
+                            <div class="w-2 h-2 bg-biru-teks transform rotate-45"></div>
+                        </div>
+                        
+                        <div class="relative flex items-center justify-center mx-4">
+                            <span class="efek-denyut absolute inline-flex h-9 w-9 rounded-full bg-white/80"></span>
+                            <div class="w-10 h-10 rounded-full border-[1.5px] border-white/80 bg-white/80 flex items-center justify-center shadow-sm z-10 ikon-hover transition-transform duration-300">
+                                <i class="fas fa-praying-hands text-biru-teks text-[15px]"></i>
+                            </div>
+                        </div>
+
+                        <!-- Ornamen Kanan -->
+                        <div class="flex items-center gap-1.5 opacity-40 ornamen-kanan transition-transform duration-500">
+                            <div class="w-2 h-2 bg-biru-teks transform rotate-45"></div>
+                            <div class="w-1.5 h-1.5 bg-biru-teks transform rotate-45"></div>
+                            <div class="w-1 h-1 rounded-full bg-biru-teks"></div>
+                        </div>
+                    </div>
+
+                    <p class="font-montserrat font-medium text-biru-teks/80 text-[10.5px] leading-[1.8] text-center mb-3 px-2 muncul">
+                        Semoga Fajri, Furqon, Fayza menjadi anak yang shalih-shalihah, penuh berkah, dan sukses dunia dan akhirat.
+                    </p>
+                    <p class="font-montserrat font-medium text-biru-teks text-[11.5px] leading-[1.8] text-center mb-8 px-2 muncul">
+                        Aamiin yaa robbal 'aalamin.
+                    </p>
+
+                    <div class="w-full mb-8 flex flex-col items-center zoom">
+                        <div class="w-full rounded-xl overflow-hidden shadow-sm border-[2px] border-white/50 relative img-placeholder">
+                            <img src="https://ik.imagekit.io/fotoclient/khitan/fajri-furqon-fayza/fajri-furqon-fayza2.jpeg" alt="Keluarga" class="w-full h-auto object-cover" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-3 w-[80%] mb-5 opacity-90 zoom">
+                        <div class="h-[1px] bg-biru-teks/30 flex-grow"></div><span class="font-playfair italic text-[14px] text-biru-teks capitalize">Keluarga Besar</span><div class="h-[1px] bg-biru-teks/30 flex-grow"></div>
+                    </div>
+
+                    <div class="flex flex-col items-center gap-2 w-full mb-12 muncul">
+                        <p class="font-playfair font-bold text-biru-teks text-[16px] tracking-wide text-center">H. Indra Syahputra Munthe, S.HI</p>
+                        <p class="font-playfair font-bold text-biru-teks text-[16px] tracking-wide text-center">Dewi Susanti, S.Sos, M.I.Kom</p>
+                    </div>
+
+                    <h3 class="font-alex text-biru-teks text-[24px] sm:text-[26px] mb-2 text-center zoom leading-none font-normal whitespace-nowrap">
+                        Wassalamualaikum Wr. Wb.
+                    </h3>
+                </div>
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-4 -left-6 w-28 opacity-80 z-30 pointer-events-none" loading="lazy" decoding="async">
+                <img src="https://ik.imagekit.io/asetundangan/aset/khitan/3D-Quran-Kuning.png?tr=w-330,f-auto" alt="Quran" class="absolute -bottom-4 -right-6 w-28 opacity-80 z-30 transform scale-x-[-1] pointer-events-none" loading="lazy" decoding="async">
+            </section>
+
+            <!-- FOOTER -->
+            <section id="footer" class="flex relative w-full flex-col items-center justify-center pb-16 pt-12 z-20 bg-biru-bg mt-6 rounded-t-[2.5rem] shadow-[0_-10px_25px_rgba(0,0,0,0.15)]">
+                <div class="w-[50%] h-[2px] bg-gradient-to-r from-transparent via-biru-box/50 to-transparent mb-8 rounded-full"></div>
+                <lottie-player src="https://ik.imagekit.io/asetundangan/aset/json/thanksjson.json" background="transparent" speed="1" style="width: 150px; height: auto; filter: brightness(0) saturate(100%) invert(77%) sepia(13%) saturate(913%) hue-rotate(182deg) brightness(88%) contrast(88%); opacity: 0.9;" loop autoplay></lottie-player>
+                <p class="font-montserrat font-medium text-biru-box/70 text-[10px] leading-relaxed text-center mb-6 mt-3">Made with love by undangandari.com<br>Click here if you are interested in us</p>
+                <div class="flex items-center gap-4">
+                    <a href="https://katalog.undangandari.com" target="_blank" class="w-9 h-9 rounded-full border-[1.5px] border-biru-box/50 bg-transparent text-biru-box/80 hover:bg-biru-box hover:text-biru-bg flex items-center justify-center transition-all duration-300 shadow-sm"><i class="fas fa-link text-[13px]"></i></a>
+                    <a href="https://www.instagram.com/undangandari" target="_blank" class="w-9 h-9 rounded-full border-[1.5px] border-biru-box/50 bg-transparent text-biru-box/80 hover:bg-biru-box hover:text-biru-bg flex items-center justify-center transition-all duration-300 shadow-sm"><i class="fab fa-instagram text-[14px]"></i></a>
+                    <a href="https://wa.me/6285117173637?text=Halo%20kak%2C%20saya%20ingin%20bertanya%20lebih%20lanjut%20mengenai%20undangan%20digitalnya.%20Boleh%20diinfokan%20lebih%20lanjut%3F%20%F0%9F%93%A9%E2%9C%A8" target="_blank" class="w-9 h-9 rounded-full border-[1.5px] border-biru-box/50 bg-transparent text-biru-box/80 hover:bg-biru-box hover:text-biru-bg flex items-center justify-center transition-all duration-300 shadow-sm"><i class="fab fa-whatsapp text-[14px]"></i></a>
+                </div>
+            </section>
+
+        </div> 
+    </div>
+
+    <!-- SCRIPT INTERAKSI -->
+    <script>
+        // Logika Custom Nama Tamu
+        (function () {
+            'use strict';
+            const config = { selector: '.namatamu', urlParams: ['to', 'dear', 'kepada'], defaultText: 'Tamu Undangan' };
+            function getRecipientName(params, keys) { for (const key of keys) { const value = params.get(key); if (value && value.trim()) return value.trim(); } return ''; }
+            function escapeRegExp(string) { return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+            function replaceTextInNode(node, searchValue, replaceValue) {
+                if (node.nodeType === 1 || node.nodeType === 11) { node.childNodes.forEach(child => { if (child.nodeType === 3) { const safeSearchValue = escapeRegExp(searchValue); const regex = new RegExp(safeSearchValue, 'gi'); child.textContent = child.textContent.replace(regex, replaceValue); } else { replaceTextInNode(child, searchValue, replaceValue); } }); }
+            }
+            window.addEventListener('DOMContentLoaded', () => {
+                const params = new URLSearchParams(window.location.search); const recipient = getRecipientName(params, config.urlParams); const targets = document.querySelectorAll(config.selector);
+                if (targets.length === 0) return;
+                targets.forEach(element => { if (recipient) replaceTextInNode(element, config.defaultText, recipient); else if (!element.textContent.trim()) element.textContent = config.defaultText; });
+            });
+        })();
+
+        if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') { gsap.registerPlugin(ScrollToPlugin); }
+
+        // Lightbox Galeri (Tetap Sama Namun Tanpa Lenis)
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = document.createElement('div'); lightbox.id = 'gallery-lightbox'; lightbox.className = 'fixed inset-0 z-[99999] bg-black/95 hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-md';
+            const closeBtn = document.createElement('button'); closeBtn.className = 'absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white text-xl hover:bg-emas hover:text-biru-teks transition-all z-50 focus:outline-none shadow-lg border border-white/20 cursor-pointer'; closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+            const imgContainer = document.createElement('div'); imgContainer.className = 'relative w-[95%] max-w-[800px] h-auto max-h-[90vh] flex items-center justify-center';
+            const imgLightbox = document.createElement('img'); imgLightbox.className = 'max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] transform scale-95 transition-transform duration-300 border-[2px] border-emas/50';
+            imgContainer.appendChild(imgLightbox); lightbox.appendChild(closeBtn); lightbox.appendChild(imgContainer); document.body.appendChild(lightbox);
+
+            const closeLightbox = () => { lightbox.classList.remove('opacity-100'); lightbox.classList.add('opacity-0'); imgLightbox.classList.remove('scale-100'); imgLightbox.classList.add('scale-95'); setTimeout(() => { lightbox.classList.remove('flex'); lightbox.classList.add('hidden'); }, 300); };
+            closeBtn.addEventListener('click', closeLightbox); lightbox.addEventListener('click', (e) => { if(e.target === lightbox || e.target === imgContainer) closeLightbox(); });
+
+            const galleryImages = document.querySelectorAll('#galeri img');
+            galleryImages.forEach(img => {
+                img.style.cursor = 'zoom-in'; img.classList.add('hover:opacity-80', 'transition-opacity', 'duration-300');
+                img.addEventListener('click', () => { imgLightbox.src = img.src.replace(/tr=[a-zA-Z0-9,-]+/, 'tr=w-1200,q-90,f-auto'); lightbox.classList.remove('hidden'); lightbox.classList.add('flex'); void lightbox.offsetWidth; lightbox.classList.remove('opacity-0'); lightbox.classList.add('opacity-100'); imgLightbox.classList.remove('scale-95'); imgLightbox.classList.add('scale-100'); });
+            });
+        });
+
+        // ===============================================
+        // LOGIKA INTERAKSI & COUNTDOWN (DARI JS PUSAT)
+        // ===============================================
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnCover = document.getElementById('tombol-buka-undangan'); 
+            const targetSection = document.getElementById('section-profil') || document.getElementById('section-tujuan'); 
+            const btnIcon = document.getElementById('btn-icon'); 
+            const btnText = btnCover ? btnCover.querySelector('.elementor-button-text') : null; 
+            const contentUndangan = document.getElementById('content-undangan'); 
+            const audio = document.getElementById('audio'); 
+            const audioToggle = document.getElementById('audio-toggle'); 
+            const fsButton = document.getElementById('enter-fullscreen'); 
+            const fsIcon = fsButton ? fsButton.querySelector('i') : null;
+
+            const lockScroll = () => { document.body.classList.add('lock-scroll'); document.documentElement.classList.add('lock-scroll'); window.scrollTo(0, 0); };
+            const unlockScroll = () => { document.body.classList.remove('lock-scroll'); document.documentElement.classList.remove('lock-scroll'); };
+            lockScroll();
+
+            function isFullscreen() { return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement; }
+            function enterFullscreen(el = document.documentElement) { try { if (el.requestFullscreen) el.requestFullscreen(); else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen(); else if (el.msRequestFullscreen) el.msRequestFullscreen(); } catch (_) {} }
+            function exitFullscreen() { if (isFullscreen()) { if (document.exitFullscreen) document.exitFullscreen(); else if (document.webkitExitFullscreen) document.webkitExitFullscreen(); else if (document.msExitFullscreen) document.msExitFullscreen(); } }
+            function toggleFullscreen() { if (!isFullscreen()) enterFullscreen(document.documentElement); else exitFullscreen(); }
+            function updateFullscreenIcon() { if (isFullscreen()) { if(fsIcon) { fsIcon.classList.remove('fa-expand-arrows-alt'); fsIcon.classList.add('fa-compress-arrows-alt'); } } else { if(fsIcon) { fsIcon.classList.remove('fa-compress-arrows-alt'); fsIcon.classList.add('fa-expand-arrows-alt'); } } }
+            if(fsButton) fsButton.addEventListener('click', toggleFullscreen); 
+            document.addEventListener('fullscreenchange', updateFullscreenIcon); document.addEventListener('webkitfullscreenchange', updateFullscreenIcon); document.addEventListener('msfullscreenchange', updateFullscreenIcon);
+
+            const setButtonToScroll = () => { if (btnText) btnText.textContent = 'SCROLL KE BAWAH'; if (btnIcon) { btnIcon.classList.remove('fa-envelope-open', 'far', 'group-hover:scale-110'); btnIcon.classList.add('fas', 'fa-arrow-down', 'animate-bounce'); } };
+            const scrollKeTujuan = () => { 
+                if (!targetSection) return; 
+                if (typeof gsap !== 'undefined' && window.ScrollToPlugin) { 
+                    const currentY = window.pageYOffset || document.documentElement.scrollTop || 0; const rect = targetSection.getBoundingClientRect(); const targetY = currentY + rect.top; 
+                    gsap.to(window, { duration: 1.5, ease: 'power3.inOut', scrollTo: { y: targetSection, autoKill: false } }); 
+                } else { targetSection.scrollIntoView({ behavior: 'smooth' }); } 
+            };
+
+            const handleFirstClick = (e) => { 
+                e.preventDefault(); 
+                enterFullscreen(document.documentElement); 
+                if (audio && audio.paused) { audio.play().catch(err => console.log("Audio block:", err)); } 
+                setButtonToScroll(); 
+                unlockScroll(); 
+                if(contentUndangan) { contentUndangan.classList.remove('hidden'); contentUndangan.classList.add('flex'); } 
+                setTimeout(() => { scrollKeTujuan(); }, 1200); 
+                btnCover.removeEventListener('click', handleFirstClick); 
+                btnCover.addEventListener('click', (ev) => { ev.preventDefault(); scrollKeTujuan(); }); 
+            };
+            if (btnCover) btnCover.addEventListener('click', handleFirstClick);
+            const onFsChange = () => { if(isFullscreen() && !document.body.classList.contains('lock-scroll')) setButtonToScroll(); }; 
+            document.addEventListener('fullscreenchange', onFsChange);
+
+            if(audioToggle) { audioToggle.addEventListener('click', function () { if (audio.paused) audio.play(); else audio.pause(); }); }
+            if(audio) { audio.addEventListener('play', function () { if(audioToggle) audioToggle.classList.add('rotating'); }); audio.addEventListener('pause', function () { if(audioToggle) audioToggle.classList.remove('rotating'); }); }
+            document.addEventListener('visibilitychange', function () { if (!audio) return; if (document.hidden) { if (!audio.paused) { audio.pause(); audio.dataset.wasPlaying = "true"; } else { audio.dataset.wasPlaying = "false"; } } else { if (audio.dataset.wasPlaying === "true") { audio.play(); } } });
+
+            const selector = ".muncul, .muncul-kiri, .muncul-kanan, .zoom"; const elementVisible = 100; const qAll = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+            if ("IntersectionObserver" in window) { const ioEnter = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("active"); }); }, { root: null, rootMargin: `0px 0px -${elementVisible}px 0px`, threshold: 0 }); const ioExit = new IntersectionObserver((entries) => { entries.forEach(e => { if (!e.isIntersecting) e.target.classList.remove("active"); }); }, { root: null, rootMargin: "0px", threshold: 0 }); qAll(selector).forEach(el => { ioEnter.observe(el); ioExit.observe(el); }); }
+
+            const btnToggleRek = document.getElementById('btn-toggle-rekening'); const boxRekening = document.getElementById('box-rekening');
+            if (btnToggleRek && boxRekening) { btnToggleRek.addEventListener('click', () => { if (boxRekening.classList.contains('hidden')) { boxRekening.classList.remove('hidden'); boxRekening.classList.add('flex', 'fade-in-box'); document.getElementById('icon-toggle-rekening').className = 'far fa-eye-slash'; document.getElementById('text-toggle-rekening').textContent = 'SEMBUNYIKAN REKENING'; } else { boxRekening.classList.add('hidden'); boxRekening.classList.remove('flex', 'fade-in-box'); document.getElementById('icon-toggle-rekening').className = 'fas fa-search'; document.getElementById('text-toggle-rekening').textContent = 'LIHAT REKENING'; } }); }
+        });
+        
+        window.copyRekening = function(elementId, btnElement) { 
+            const norek = document.getElementById(elementId).innerText; 
+            const tempInput = document.createElement('input'); 
+            tempInput.value = norek; 
+            document.body.appendChild(tempInput); 
+            tempInput.select(); 
+            document.execCommand('copy'); 
+            document.body.removeChild(tempInput); 
+            
+            const spanText = btnElement.querySelector('span'); 
+            const originalText = spanText.textContent; 
+            spanText.textContent = 'Tersalin!'; 
+            btnElement.style.color = '#16a34a'; 
+            
+            setTimeout(() => { 
+                spanText.textContent = originalText; 
+                btnElement.style.color = ''; 
+            }, 2000); 
+        };
+        
+        
+                (function(){
+                  const daysEl  = document.getElementById('cd-hari') || document.getElementById('cd-days');
+                  const hoursEl = document.getElementById('cd-jam') || document.getElementById('cd-hours');
+                  const minsEl  = document.getElementById('cd-menit') || document.getElementById('cd-mins');
+                  const secsEl  = document.getElementById('cd-detik') || document.getElementById('cd-secs');
+                  if(!daysEl || !hoursEl || !minsEl || !secsEl) return;
+                  const target = new Date(2026, 3, 27, 15, 0, 0, 0).getTime();
+                  const pad2 = (n) => String(n).padStart(2,'0');
+                  function paintZero(){ daysEl.textContent='00'; hoursEl.textContent='00'; minsEl.textContent='00'; secsEl.textContent='00'; }
+                  if(!Number.isFinite(target)){ paintZero(); return; }
+                  function update(){
+                    const now = Date.now(); let dist = target - now;
+                    if(dist <= 0){ paintZero(); if(timer) clearInterval(timer); return; }
+                    const days = Math.floor(dist / (1000*60*60*24)); dist -= days * (1000*60*60*24);
+                    const hours = Math.floor(dist / (1000*60*60)); dist -= hours * (1000*60*60);
+                    const mins = Math.floor(dist / (1000*60)); dist -= mins * (1000*60);
+                    const secs = Math.floor(dist / 1000);
+                    daysEl.textContent = String(days).padStart(2,'0'); hoursEl.textContent = pad2(hours);
+                    minsEl.textContent = pad2(mins); secsEl.textContent = pad2(secs);
+                  }
+                  let timer = null; update(); timer = setInterval(update, 1000);
+                })();
+    </script>
+
+    <!-- SCRIPT FIREBASE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, where } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAbpnsGjy9p8doAtZx-Jc1U1nod3M-S90Y",
+            authDomain: "sistem-rsvp.firebaseapp.com",
+            projectId: "sistem-rsvp",
+            storageBucket: "sistem-rsvp.firebasestorage.app",
+            messagingSenderId: "634798818741",
+            appId: "1:634798818741:web:83d56bf3122968dc86c5fc"
+        };
+        const app = initializeApp(firebaseConfig); const db = getFirestore(app);
+
+        const brideId = "fajri-furqon-fayza";        
+        const masterCollection = collection(db, 'rsvps');
+        const q = query(masterCollection, where("brideId", "==", brideId));
+        
+        const formRsvp = document.getElementById('form-rsvp'); const inputNama = document.getElementById('input-nama'); const inputUcapan = document.getElementById('input-ucapan'); const inputKehadiran = document.getElementById('input-kehadiran'); const btnKirimPreview = document.getElementById('btn-preview-kirim'); const daftarUcapan = document.getElementById('daftar-ucapan'); const countHadir = document.getElementById('count-hadir'); const countTidakHadir = document.getElementById('count-tidak-hadir'); const countRagu = document.getElementById('count-ragu');
+
+        function timeAgo(dateInput) { if (!dateInput) return "Baru saja"; const date = dateInput.toDate ? dateInput.toDate() : new Date(dateInput); const seconds = Math.round((new Date() - date) / 1000); const minutes = Math.round(seconds / 60); const hours = Math.round(minutes / 60); const days = Math.round(hours / 24); if (seconds < 60) return "Baru saja"; if (minutes < 60) return `${minutes} menit yang lalu`; if (hours < 24) return `${hours} jam yang lalu`; if (days === 1) return `Kemarin`; return `${days} hari yang lalu`; }
+        function getAvatarColor(name) { const colors = ['#5179bc', '#4870b7', '#3d609a', '#94b4d6', '#062352', '#112b52', '#28a745']; let hash = 0; for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash); return colors[Math.abs(hash) % colors.length]; }
+
+        onSnapshot(q, (snapshot) => {
+            let ucapanHTML = ''; let hadir = 0, tidakHadir = 0, ragu = 0;
+            const dataPesan = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            dataPesan.sort((a, b) => { const timeA = a.timestamp ? a.timestamp.toMillis() : Date.now(); const timeB = b.timestamp ? b.timestamp.toMillis() : Date.now(); return timeB - timeA; });
+            
+            if(dataPesan.length === 0) { 
+                daftarUcapan.innerHTML = '<p class="font-montserrat text-biru-teks/60 text-[10px] text-center mb-2 italic">Belum ada ucapan. Jadilah yang pertama!</p>'; 
+                countHadir.innerText = "0"; countTidakHadir.innerText = "0"; countRagu.innerText = "0"; return; 
+            }
+            
+            dataPesan.forEach(data => {
+                if (data.kehadiran === 'Hadir') hadir++; else if (data.kehadiran === 'Tidak Hadir') tidakHadir++; else ragu++;
+                const inisial = data.nama.substring(0, 2).toUpperCase(); const bgColor = getAvatarColor(data.nama); const waktu = timeAgo(data.timestamp);
+                let badgeStatus = '';
+                if (data.kehadiran === 'Hadir') badgeStatus = '<span class="bg-[#28a745] text-white text-[9px] px-2 py-0.5 rounded-md flex items-center gap-1 font-bold shadow-sm">Hadir <i class="fas fa-check text-[8px]"></i></span>';
+                else if (data.kehadiran === 'Tidak Hadir') badgeStatus = '<span class="bg-[#dc3545] text-white text-[9px] px-2 py-0.5 rounded-md flex items-center gap-1 font-bold shadow-sm">Tidak Hadir <i class="fas fa-times text-[8px]"></i></span>';
+                else badgeStatus = '<span class="bg-[#ffc107] text-white text-[9px] px-2 py-0.5 rounded-md flex items-center gap-1 font-bold shadow-sm">Ragu <i class="fas fa-hourglass-half text-[8px]"></i></span>';
+                
+                ucapanHTML += `
+                <div class="flex items-start gap-3 bg-white/50 p-4 rounded-xl border border-white/60 shadow-sm relative overflow-hidden shrink-0 w-full">
+                    <div class="w-10 h-10 min-w-[40px] min-h-[40px] rounded-full text-white flex items-center justify-center font-bold text-[14px] z-10 shadow-sm" style="background-color: ${bgColor}">${inisial}</div>
+                    <div class="flex flex-col w-full z-10">
+                        <div class="flex items-center justify-between mb-1.5 flex-wrap gap-2"><span class="font-bold text-biru-teks text-[12px] font-montserrat tracking-wide">${data.nama}</span>${badgeStatus}</div>
+                        <p class="text-[11px] text-biru-teks/80 mb-2 leading-relaxed font-montserrat font-medium">${data.ucapan}</p>
+                        <span class="text-[9px] text-biru-teks/50 font-montserrat font-semibold">${waktu}</span>
+                    </div>
+                </div>`;
+            });
+            daftarUcapan.innerHTML = ucapanHTML;
+            if(typeof gsap !== 'undefined'){ gsap.to(countHadir, { innerHTML: hadir, duration: 1, snap: { innerHTML: 1 } }); gsap.to(countTidakHadir, { innerHTML: tidakHadir, duration: 1, snap: { innerHTML: 1 } }); gsap.to(countRagu, { innerHTML: ragu, duration: 1, snap: { innerHTML: 1 } }); }
+        });
+
+        // ===============================================
+        // LOGIKA KEAMANAN SPAM (DARI JS PUSAT)
+        // ===============================================
+        
+                document.addEventListener('click', function(e) {
+                    if(e.target.closest('#btn-preview-kirim')) {
+                        e.preventDefault();
+                        const inputNama = document.getElementById('input-nama'); 
+                        const inputUcapan = document.getElementById('input-ucapan'); 
+                        const inputKehadiran = document.getElementById('input-kehadiran');
+                        
+                        const namaVal = inputNama ? inputNama.value.trim() : ''; 
+                        const ucapanVal = inputUcapan ? inputUcapan.value.trim() : ''; 
+                        const kehadiranVal = inputKehadiran ? inputKehadiran.value : '';
+                        
+                        if (!namaVal || !ucapanVal || !kehadiranVal) { 
+                            window.showModal("Peringatan", "Mohon lengkapi semua kolom form RSVP terlebih dahulu.", [{text:"Mengerti", color:"bg-[#062352] text-white", action:"tutupModal()"}]); 
+                            return; 
+                        }
+                        
+                        if(localStorage.getItem('rsvp_fajri-furqon-fayza')) { 
+                            window.showModal("Terima Kasih", "Anda sudah mengirimkan RSVP/Ucapan sebelumnya. 1 perangkat hanya dapat mengirim 1 kali.", [{text:"Tutup", color:"bg-[#062352] text-white", action:"tutupModal()"}]); 
+                            return; 
+                        }
+                        
+                        const badWords = ['anjing', 'babi', 'monyet', 'bangsat', 'kontol', 'memek', 'jembut', 'goblok', 'tolol', 'ngentot', 'fuck', 'shit', 'bitch'];
+                        const urlRegex = /(https?:\/\/|www\.)[a-zA-Z0-9\-\.\+\/?\=\&#]+/gi;
+                        const ucapanLower = ucapanVal.toLowerCase();
+                        
+                        const containsBadWord = badWords.some(word => ucapanLower.includes(word));
+                        if(containsBadWord || urlRegex.test(ucapanVal)) { 
+                            window.showModal("Peringatan Keamanan", "Maaf, ucapan tidak dapat dikirim karena mengandung tautan/link atau kata-kata yang tidak pantas.", [{text:"Ubah Ucapan", color:"bg-[#062352] text-white", action:"tutupModal()"}]); 
+                            return; 
+                        }
+                        
+                        window.showModal("Konfirmasi Pengiriman", "Pastikan ucapan dan kehadiran Anda sudah benar. Pesan yang telah dikirim tidak dapat diubah kembali.", [
+                            {text:"Periksa Lagi", color:"bg-[#062352] text-white opacity-80", action:"tutupModal()"},
+                            {text:"Ya, Kirim", color:"bg-[#28a745] text-white", action:"kirimRsvpFinal()"}
+                        ]);
+                    }
+                });
+        
+        window.kirimRsvpFinal = async function() {
+            const namaVal = inputNama.value.trim(); const ucapanVal = inputUcapan.value.trim(); const kehadiranVal = inputKehadiran.value;
+            const textAwal = btnKirimPreview.innerHTML; btnKirimPreview.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...'; btnKirimPreview.disabled = true; btnKirimPreview.classList.add('opacity-50', 'cursor-not-allowed');
+            tutupModal();
+            try {
+                await addDoc(masterCollection, { brideId: brideId, nama: namaVal, ucapan: ucapanVal, kehadiran: kehadiranVal, timestamp: serverTimestamp() });
+                localStorage.setItem('rsvp_fajri-furqon-fayza', 'true');
+                formRsvp.reset(); btnKirimPreview.innerHTML = '<i class="fas fa-check"></i> Terkirim!'; btnKirimPreview.classList.replace('text-white', 'text-white'); btnKirimPreview.classList.replace('bg-biru-teks', 'bg-[#28a745]'); btnKirimPreview.classList.replace('border-emas/40', 'border-[#28a745]');
+            } catch (error) { 
+                console.error("Firebase Error:", error); showModal("Error", "Gagal mengirim data.", [{text:"Tutup", color:"bg-[#062352] text-white", action:"tutupModal()"}]); 
+            } finally { setTimeout(() => { btnKirimPreview.innerHTML = textAwal; btnKirimPreview.disabled = false; btnKirimPreview.classList.remove('opacity-50', 'cursor-not-allowed', 'bg-[#28a745]', 'border-[#28a745]'); btnKirimPreview.classList.add('bg-biru-teks', 'border-emas/40'); }, 3000); }
+        }
+
+        const modal = document.getElementById('custom-modal');
+        window.showModal = function(title, msg, buttons) {
+            document.getElementById('modal-title').innerText = title; document.getElementById('modal-msg').innerText = msg;
+            let btnHtml = ''; 
+            buttons.forEach(b => { btnHtml += `<button onclick="${b.action}" class="w-full px-5 py-3 rounded-lg text-white text-[13px] font-bold transition-all hover:opacity-80 active:scale-95 ${b.color}">${b.text}</button>`; });
+            document.getElementById('modal-actions').innerHTML = btnHtml; modal.classList.add('active');
+        }
+        window.tutupModal = function() { modal.classList.remove('active'); }
+    </script>
+</body>
+</html>
+
