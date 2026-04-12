@@ -1,1 +1,935 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Custom Nama Tamu (V2)</title>
+    
+    <!-- Tailwind CSS for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Tailwind Configuration for Original Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#1a1a24',      
+                            card: '#292938',      
+                            accent: '#4cb5f9',    
+                            purple: '#b066ff',    
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #1a1a24; 
+            color: #ffffff;
+        }
+        .hero-bg-overlay {
+            background: linear-gradient(to right, rgba(30, 30, 40, 0.95), rgba(45, 35, 60, 0.85));
+        }
+        .glass-glow {
+            border: 2px solid #4cb5f9;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(76, 181, 249, 0.1);
+        }
+        .shape-divider svg {
+            fill: #1a1a24;
+            width: 100%;
+            height: 80px;
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a24; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #4cb5f9; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3ba4e8; }
+        @media (max-width: 768px) {
+            .shape-divider svg { height: 40px; }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative pb-20 md:pb-0">
+
+    <!-- Main Header Section (Diberi ID agar bisa disembunyikan saat masuk tab tutorial) -->
+    <header id="main-header" class="relative w-full pt-16 pb-32 md:pt-24 md:pb-48 bg-[#1f1e2e] flex flex-col items-center justify-center overflow-hidden z-10 transition-all duration-300">
+        <div class="relative w-[90%] max-w-5xl overflow-hidden glass-glow mx-auto z-20">
+            <div class="absolute inset-0 bg-[url('https://ik.imagekit.io/undangandigital/general/hero-custom-nama-tamu.webp')] bg-cover bg-center bg-no-repeat"></div>
+            <div class="absolute inset-0 hero-bg-overlay"></div>
+            <div class="relative z-30 px-6 py-16 md:py-24 flex flex-col items-center text-center">
+                <p class="text-gray-300 text-sm md:text-base tracking-[0.2em] uppercase mb-4">
+                    Custom Nama Tamu
+                </p>
+                <h1 class="font-serif text-4xl md:text-6xl lg:text-[64px] font-bold leading-tight mb-6 text-white drop-shadow-md">
+                    Dashboard 
+                    <span class="bg-gradient-to-r from-[#c084fc] to-[#a855f7] text-transparent bg-clip-text">
+                        Kirim
+                    </span> 
+                    Undangan
+                </h1>
+                <p class="text-gray-300 text-sm md:text-base lg:text-lg max-w-4xl leading-relaxed md:leading-loose font-medium px-4">
+                    Solusi praktis dan cepat untuk langsung mengirim undangan ke tamu tanpa ribet! Hanya dengan satu klik, undangan bisa langsung terkirim ke WhatsApp atau cukup copy link undangan untuk dibagikan ke mana saja.
+                </p>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full shape-divider translate-y-[1px]">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="elementor-shape-fill" d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow bg-brand-dark px-4 py-8 -mt-12 relative z-20 transition-all duration-300">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Desktop Tabs Menu (Sticky & More Proper Shape) -->
+            <div class="hidden md:flex justify-center mb-8 sticky top-4 z-50 bg-[#292938]/90 backdrop-blur-md p-1.5 rounded-xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] mx-auto w-fit">
+                <button id="btn-tab-kirim-desktop" onclick="switchTab('kirim')" class="px-6 py-2.5 rounded-lg font-bold transition-all bg-[#4cb5f9] text-[#1a1a24] shadow-md">
+                    <i class="fa-regular fa-paper-plane mr-2"></i> Kirim Undangan
+                </button>
+                <button id="btn-tab-tutorial-desktop" onclick="switchTab('tutorial')" class="px-6 py-2.5 rounded-lg font-bold transition-all bg-transparent text-gray-400 hover:text-white hover:bg-white/5 opacity-80 hover:opacity-100">
+                    <i class="fa-solid fa-book-open mr-2"></i> Cara Kirim Undangan
+                </button>
+            </div>
+
+            <!-- TAB CONTENT 1: KIRIM UNDANGAN (Default Active) -->
+            <div id="tab-kirim-content" class="block transition-opacity duration-300">
+                <!-- SECTION 2: Form Input -->
+                <section id="wdpdku-form-undangan" class="bg-brand-card rounded-3xl p-6 md:p-8 shadow-2xl border border-white/5">
+                    
+                    <!-- Kolom 1 : Nama Tamu -->
+                    <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.05)] relative overflow-hidden group transition-all hover:border-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]">
+                        <label for="wdpdku-namaTamuInput" class="block text-blue-200 font-semibold mb-4 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                <i class="fa-solid fa-users text-sm"></i>
+                            </div>
+                            Kolom 1 : Nama Tamu Undangan
+                        </label>
+                        <textarea id="wdpdku-namaTamuInput" rows="4" class="w-full bg-[#1a1a24]/80 border border-blue-500/30 rounded-xl p-4 text-white focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-all duration-300 placeholder-gray-500 resize-y" placeholder="Bisa diisi dengan banyak nama tamu sekaligus (Enter untuk baris baru)" required></textarea>
+                        <div id="error-message" class="text-red-400 text-sm mt-2 font-medium"></div>
+                    </div>
+
+                    <!-- Kolom 2 : Nama Mempelai -->
+                    <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-pink-900/20 to-transparent border border-pink-500/40 shadow-[0_0_15px_rgba(236,72,153,0.05)] relative overflow-hidden group transition-all hover:border-pink-400 hover:shadow-[0_0_20px_rgba(236,72,153,0.15)]">
+                        <label for="wdpdku-namaMempelaiInput" class="block text-pink-200 font-semibold mb-4 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400">
+                                <i class="fa-solid fa-heart text-sm"></i>
+                            </div>
+                            Kolom 2 : Nama Mempelai
+                        </label>
+                        <input type="text" id="wdpdku-namaMempelaiInput" class="w-full bg-[#1a1a24]/80 border border-pink-500/30 rounded-xl p-4 text-white focus:border-pink-400 focus:ring-1 focus:ring-pink-400 outline-none transition-all placeholder-gray-500" placeholder="Contoh: Cole Palmer & Lisa Blackpink">
+                    </div>
+
+                    <!-- Kolom 3 : Jenis Acara -->
+                    <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-purple-900/20 to-transparent border border-purple-500/40 shadow-[0_0_15px_rgba(168,85,247,0.05)] relative overflow-hidden group transition-all hover:border-purple-400 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)]">
+                        <label for="wdpdku-jenisAcara" class="block text-purple-200 font-semibold mb-4 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-champagne-glasses text-sm"></i>
+                            </div>
+                            Kolom 3 : Jenis Acara
+                        </label>
+                        <div class="relative">
+                            <select id="wdpdku-jenisAcara" class="w-full bg-[#1a1a24]/80 border border-purple-500/30 rounded-xl p-4 text-white focus:border-purple-400 focus:ring-1 focus:ring-purple-400 outline-none transition-all appearance-none cursor-pointer">
+                                <option value="Pernikahan">Pernikahan</option>
+                                <option value="Ngunduh Mantu">Ngunduh Mantu</option>
+                                <option value="The Wedding of">The Wedding of</option>
+                                <option value="Resepsi Pernikahan">Resepsi Pernikahan</option>
+                                <option value="custom">Custom (Ketik Sendiri)</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <!-- Input Custom Acara (Hidden by default) -->
+                        <input type="text" id="wdpdku-customAcaraInput" class="hidden mt-3 w-full bg-[#1a1a24]/80 border border-purple-500/30 rounded-xl p-4 text-white focus:border-purple-400 focus:ring-1 focus:ring-purple-400 outline-none transition-all placeholder-gray-500" placeholder="Ketik jenis acara Anda di sini (misal: Walimatul Ursy)">
+                    </div>
+
+                    <!-- Kolom 4 : Opsi Teks Pengantar -->
+                    <div class="mb-8 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-emerald-900/20 to-transparent border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.05)] relative overflow-hidden group transition-all hover:border-emerald-400 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+                        
+                        <label for="wdpdku-teksPengantar" class="block text-emerald-200 font-semibold mb-4 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                <i class="fa-solid fa-envelope-open-text text-sm"></i>
+                            </div>
+                            Kolom 4 : Pilih Teks Pengantar
+                        </label>
+                        <div class="relative">
+                            <select id="wdpdku-teksPengantar" required class="w-full bg-[#1a1a24]/80 border border-emerald-500/30 rounded-xl p-4 text-white focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 outline-none transition-all appearance-none cursor-pointer">
+                                <option value="formal">Wedding - Formal</option>
+                                <option value="muslim">Wedding - Muslim</option>
+                                <option value="nasrani">Wedding - Kristen</option>
+                                <option value="hindu">Wedding - Hindu</option>
+                                <option value="teksundangananda">Custom Text Undangan</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+
+                        <!-- Teks Pengantar Preview (With Toggle) -->
+                        <div class="mt-8 border-t border-emerald-500/20 pt-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <label for="wdpdku-toggle-editor" class="text-emerald-200 font-semibold flex items-center gap-2 cursor-pointer mb-0">
+                                    <i class="fa-solid fa-pen-nib text-emerald-400 ml-1"></i> Edit Teks Pengantar (opsional)
+                                </label>
+                                <!-- Toggle Switch -->
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="wdpdku-toggle-editor" class="sr-only peer" onchange="toggleEditor()">
+                                    <div class="w-11 h-6 bg-[#1a1a24] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-gray-400 peer-checked:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 border border-emerald-500/30"></div>
+                                </label>
+                            </div>
+                            
+                            <!-- Editor Container (Hidden by Default) -->
+                            <div id="wdpdku-editor-container" class="hidden transition-all duration-300">
+                                <!-- Formatting Toolbar -->
+                                <div id="wdpdku-formatting-toolbar" class="flex gap-2 mb-3">
+                                    <button onclick="applyFormatting('bold')" class="bg-[#1a1a24]/80 hover:bg-[#3f3f5a] border border-emerald-500/30 text-emerald-300 w-10 h-10 rounded-lg flex items-center justify-center transition-colors" title="Bold">
+                                        <i class="fa-solid fa-bold"></i>
+                                    </button>
+                                    <button onclick="applyFormatting('italic')" class="bg-[#1a1a24]/80 hover:bg-[#3f3f5a] border border-emerald-500/30 text-emerald-300 w-10 h-10 rounded-lg flex items-center justify-center transition-colors" title="Italic">
+                                        <i class="fa-solid fa-italic"></i>
+                                    </button>
+                                </div>
+
+                                <textarea id="wdpdku-teksPengantarPreview" rows="10" class="w-full bg-[#1a1a24]/80 border border-emerald-500/30 rounded-xl p-4 text-gray-200 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 outline-none transition-all resize-y leading-relaxed" placeholder="Tulis atau edit teks pengantar di sini..." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buttons Area -->
+                    <div class="flex flex-col md:flex-row gap-4 mt-6">
+                        <button id="wdpdku-generateButton" class="w-full md:w-auto bg-gradient-to-r from-[#4cb5f9] to-[#2b8cdb] hover:from-[#3ba4e8] hover:to-[#1a7bc8] text-white font-bold py-4 px-8 rounded-xl shadow-lg transform transition hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed">
+                            Generate Nama Tamu
+                        </button>
+                        
+                        <button id="wdpdku-resetButton" class="w-full md:w-auto bg-[#1a1a24] border border-[#3f3f5a] hover:bg-[#3f3f5a] text-gray-300 font-bold py-4 px-8 rounded-xl shadow-lg transform transition hover:-translate-y-1">
+                            <i class="fa-solid fa-rotate-right mr-2"></i> Reset Data
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Table Preview -->
+                    <div id="wdpdku-daftarNamaContainer" class="hidden mt-12 overflow-hidden rounded-xl border border-[#3f3f5a]">
+                        <table class="w-full text-left border-collapse table-fixed">
+                            <thead>
+                                <tr class="bg-[#1a1a24] text-gray-300 text-sm uppercase tracking-wider border-b border-[#3f3f5a]">
+                                    <th class="p-3 md:p-4 font-semibold w-1/2 md:w-3/5">Nama Tamu</th>
+                                    <th class="p-3 md:p-4 font-semibold text-center w-1/2 md:w-2/5">Options</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wdpdku-tbody" class="divide-y divide-[#3f3f5a]">
+                                <!-- Tabel dijamin 100% kosong dari HTML, murni diisi oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+            </div>
+
+            <!-- TAB CONTENT 2: CARA KIRIM UNDANGAN -->
+            <div id="tab-tutorial-content" class="hidden transition-opacity duration-300 w-full">
+                <section class="bg-brand-card rounded-3xl p-6 md:p-10 shadow-2xl border border-white/5 overflow-hidden">
+                    
+                    <!-- Hero Image Full Width (Menempel di atas tanpa space pada mobile, dibatasi di desktop) -->
+                    <div class="-mx-6 -mt-6 md:-mx-4 md:-mt-4 mb-8 md:mb-10 flex justify-center bg-[#1a1a24]/30 rounded-t-3xl border-b border-white/5 pb-6 pt-6 px-4">
+                        <img src="https://ik.imagekit.io/undangandigital/general/hero%20tutorial%20nama%20tamu.png" alt="Contoh Hasil Undangan" class="w-full md:max-w-3xl object-cover border-b-[4px] border-[#4cb5f9]/70 shadow-[0_8px_30px_rgba(76,181,249,0.3)] md:rounded-2xl md:border-[3px] cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox(this.src)">
+                    </div>
+
+                    <!-- Highlight Teks -->
+                    <div class="p-5 md:p-6 rounded-2xl border-2 border-[#4cb5f9]/60 bg-[#4cb5f9]/10 text-blue-100 text-left font-medium shadow-[0_0_20px_rgba(76,181,249,0.15)] mb-10 flex items-start gap-4 md:max-w-3xl md:mx-auto">
+                        <i class="fa-solid fa-circle-info text-2xl text-[#4cb5f9] mt-0.5"></i>
+                        <p class="leading-relaxed">Ini adalah contoh undangan yang sudah ditulis nama tamunya, dan kita akan membuat seperti ini.</p>
+                    </div>
+
+                    <div class="text-left mb-10 md:mb-12 md:max-w-3xl md:mx-auto">
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
+                            Panduan <span class="bg-gradient-to-r from-[#c084fc] to-[#a855f7] text-transparent bg-clip-text">Cara Kirim</span> Undangan
+                        </h2>
+                        <p class="text-gray-400">Ikuti langkah-langkah mudah di bawah ini untuk mulai membagikan undangan digital kamu dengan praktis.</p>
+                    </div>
+
+                    <div class="space-y-6 md:space-y-8 text-gray-300 text-sm md:text-base">
+                        
+                        <!-- Step 1 -->
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                            <div class="w-full md:w-3/5 order-1">
+                                <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                                    <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-lg md:text-xl border border-blue-500/30">1</div>
+                                    <h4 class="text-white font-semibold text-lg md:text-xl m-0">Input Nama Tamu</h4>
+                                </div>
+                                <p class="text-gray-400 leading-relaxed text-left">Masukkan nama tamu yang ingin diundang di <span class="text-blue-300 font-medium">Kolom 1</span>. Kamu bisa memasukkan banyak nama sekaligus dengan <span class="text-white font-medium">menekan Enter</span> untuk setiap nama baru.</p>
+                            </div>
+                            <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                                <img src="https://ik.imagekit.io/undangandigital/general/kolom01.png" alt="Panduan Kolom 1" class="w-full rounded-xl border-[3px] border-blue-400/70 shadow-[0_4px_20px_rgba(59,130,246,0.3)] cursor-pointer hover:border-blue-400 transition-colors" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2 -->
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                            <div class="w-full md:w-3/5 order-1">
+                                <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                                    <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-bold text-lg md:text-xl border border-pink-500/30">2</div>
+                                    <h4 class="text-white font-semibold text-lg md:text-xl m-0">Tentukan Nama Mempelai</h4>
+                                </div>
+                                <p class="text-gray-400 leading-relaxed text-left">Masukkan nama kamu dan pasangan di <span class="text-pink-300 font-medium">Kolom 2</span> (Contoh: <span class="text-white font-medium">Feliz & Felix</span>).</p>
+                            </div>
+                            <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                                <img src="https://ik.imagekit.io/undangandigital/general/kolom02.png" alt="Panduan Kolom 2" class="w-full rounded-xl border-[3px] border-pink-400/70 shadow-[0_4px_20px_rgba(236,72,153,0.3)] cursor-pointer hover:border-pink-400 transition-colors" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                            <div class="w-full md:w-3/5 order-1">
+                                <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                                    <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-lg md:text-xl border border-purple-500/30">3</div>
+                                    <h4 class="text-white font-semibold text-lg md:text-xl m-0">Pilih Jenis Acara</h4>
+                                </div>
+                                <p class="text-gray-400 leading-relaxed text-left">Tentukan jenis acara kamu pada <span class="text-purple-300 font-medium">Kolom 3</span>. Jika acara kamu spesifik, pilih opsi <span class="text-white font-medium">"Custom"</span> dan ketik nama acaranya sendiri.</p>
+                            </div>
+                            <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                                <img src="https://ik.imagekit.io/undangandigital/general/kolom03.png" alt="Panduan Kolom 3" class="w-full rounded-xl border-[3px] border-purple-400/70 shadow-[0_4px_20px_rgba(168,85,247,0.3)] cursor-pointer hover:border-purple-400 transition-colors" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                            <div class="w-full md:w-3/5 order-1">
+                                <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                                    <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg md:text-xl border border-emerald-500/30">4</div>
+                                    <h4 class="text-white font-semibold text-lg md:text-xl m-0">Sesuaikan Teks Pengantar</h4>
+                                </div>
+                                <p class="text-gray-400 leading-relaxed text-left">Pilih template teks pengantar di <span class="text-emerald-300 font-medium">Kolom 4</span> sesuai dengan salam agama yang kamu mau. Kamu juga bisa mengedit template chatnya dengan menyalakan toggle switch <span class="text-white font-medium">"Edit Teks Pengantar"</span>.</p>
+                            </div>
+                            <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                                <img src="https://ik.imagekit.io/undangandigital/general/kolom04.png" alt="Panduan Kolom 4" class="w-full rounded-xl border-[3px] border-emerald-400/70 shadow-[0_4px_20px_rgba(16,185,129,0.3)] cursor-pointer hover:border-emerald-400 transition-colors" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                            <div class="w-full md:w-3/5 order-1">
+                                <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                                    <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#4cb5f9]/20 text-[#4cb5f9] flex items-center justify-center font-bold text-lg md:text-xl border border-[#4cb5f9]/30">5</div>
+                                    <h4 class="text-white font-semibold text-lg md:text-xl m-0">Generate Nama Tamu</h4>
+                                </div>
+                                <p class="text-gray-400 leading-relaxed text-left">Klik tombol <strong class="text-[#4cb5f9]">"Generate Nama Tamu"</strong>. Lalu akan muncul <span class="text-white font-medium">5 tombol aksi</span> untuk mengirim undangan.</p>
+                            </div>
+                            <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                                <img src="https://ik.imagekit.io/undangandigital/general/kolom05.png" alt="Panduan Kolom 5" class="w-full rounded-xl border-[3px] border-[#4cb5f9]/70 shadow-[0_4px_20px_rgba(76,181,249,0.3)] cursor-pointer hover:border-[#4cb5f9] transition-colors" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+
+                        <!-- Step 6 -->
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                            <div class="w-full md:w-3/5 order-1">
+                                <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                                    <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg md:text-xl border border-amber-500/30">6</div>
+                                    <h4 class="text-white font-semibold text-lg md:text-xl m-0">Bagikan Undangan</h4>
+                                </div>
+                                <p class="text-gray-400 leading-relaxed text-left">Klik <strong class="text-amber-300">tombol whatsapp (tombol ke-4)</strong> untuk mengirim undangan kepada <span class="text-white font-medium">masing-masing tamu</span>.</p>
+                            </div>
+                            <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                                <img src="https://ik.imagekit.io/undangandigital/general/kolom06.png" alt="Panduan Bagikan Undangan" class="w-full rounded-xl border-[3px] border-amber-400/70 shadow-[0_4px_20px_rgba(245,158,11,0.3)] cursor-pointer hover:border-amber-400 transition-colors" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+
+                        <!-- Step 7 -->
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                            <div class="w-full md:w-3/5 order-1">
+                                <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                                    <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold text-lg md:text-xl border border-orange-500/30">7</div>
+                                    <h4 class="text-white font-semibold text-lg md:text-xl m-0">Cari kontak WA Tamu</h4>
+                                </div>
+                                <p class="text-gray-400 leading-relaxed text-left">Whatsapp akan secara otomatis terbuka, <strong class="text-orange-300">cari kontak WA tamu</strong>. Sebagai contoh, disini saya mencari kontak <span class="bg-orange-500/20 text-orange-200 px-2 py-0.5 rounded font-medium border border-orange-500/30">"Budiono Siregar"</span></p>
+                            </div>
+                            <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                                <img src="https://ik.imagekit.io/undangandigital/general/kolom07.png" alt="Panduan Cari Kontak WA" class="w-full rounded-xl border-[3px] border-orange-400/70 shadow-[0_4px_20px_rgba(249,115,22,0.3)] cursor-pointer hover:border-orange-400 transition-colors" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+
+                        <!-- Step 8 -->
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                            <div class="w-full md:w-3/5 order-1">
+                                <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                                    <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-lg md:text-xl border border-teal-500/30">8</div>
+                                    <h4 class="text-white font-semibold text-lg md:text-xl m-0">Preview Undangan</h4>
+                                </div>
+                                <p class="text-gray-400 leading-relaxed text-left"><strong class="text-teal-300">Tunggu sekitar 5 detik</strong> agar foto preview undangan muncul di kolom chat Whatsapp sambil <span class="text-white font-medium">mengecek ulang template chat kamu</span>.</p>
+                            </div>
+                            <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                                <img src="https://ik.imagekit.io/undangandigital/general/kolom08.png" alt="Panduan Preview Undangan" class="w-full rounded-xl border-[3px] border-teal-400/70 shadow-[0_4px_20px_rgba(20,184,166,0.3)] cursor-pointer hover:border-teal-400 transition-colors" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+
+                        <!-- Step 9 -->
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                            <div class="w-full md:w-3/5 order-1">
+                                <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                                    <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center font-bold text-lg md:text-xl border border-green-500/30">9</div>
+                                    <h4 class="text-white font-semibold text-lg md:text-xl m-0">Kirim Undangan</h4>
+                                </div>
+                                <p class="text-gray-400 leading-relaxed text-left">Ketika semua sudah oke, foto preview sudah muncul. Tinggal <strong class="text-green-300">tekan tombol kirim</strong> di Whatsapp.</p>
+                            </div>
+                            <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                                <img src="https://ik.imagekit.io/undangandigital/general/kolom09.png" alt="Panduan Kirim Undangan" class="w-full rounded-xl border-[3px] border-green-400/70 shadow-[0_4px_20px_rgba(34,197,94,0.3)] cursor-pointer hover:border-green-400 transition-colors" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+                        
+                        <!-- Step 10 -->
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                            <div class="w-full md:w-3/5 order-1">
+                                <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                                    <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-lg md:text-xl border border-indigo-500/30">10</div>
+                                    <h4 class="text-white font-semibold text-lg md:text-xl m-0">Kirim ke Tamu Selanjutnya</h4>
+                                </div>
+                                <p class="text-gray-400 leading-relaxed text-left"><strong class="text-indigo-300">Lakukan hal yang sama</strong> untuk tamu kedua dan seterusnya. Klik icon WA dan <span class="text-white font-medium">cari kembali kontak WA</span> yang sesuai dengan tamu tersebut</p>
+                            </div>
+                            <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                                <img src="https://ik.imagekit.io/undangandigital/general/kolom10.png" alt="Panduan Kirim ke Tamu Selanjutnya" class="w-full rounded-xl border-[3px] border-indigo-400/70 shadow-[0_4px_20px_rgba(99,102,241,0.3)] cursor-pointer hover:border-indigo-400 transition-colors" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer / Closing Section -->
+    <footer class="relative w-full pt-32 pb-16 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#1a1a24] via-[#241c38] to-[#2d1b4e]">
+        <div class="absolute top-0 left-0 w-full leading-[0]">
+            <svg class="block w-full h-[60px] md:h-[100px] fill-[#1a1a24]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7 c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4 c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z"></path>
+            </svg>
+        </div>
+        <div class="relative z-20 px-6 max-w-3xl mx-auto text-center mt-8">
+            <p class="text-gray-200 text-sm md:text-base leading-relaxed font-medium">
+                Jangan ragu untuk menghubungi kami untuk informasi lebih lanjut tentang layanan kami<br class="hidden md:block">
+                dan untuk membuat undangan digital yang sesuai dengan kebutuhan Anda.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation (Visible on Mobile Only) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#1a1a24]/95 backdrop-blur-md border-t border-[#3f3f5a] z-40 flex justify-around items-center">
+        <button id="btn-tab-kirim-mobile" onclick="switchTab('kirim')" class="flex-1 py-3.5 flex flex-col items-center gap-1.5 text-[#4cb5f9] transition-colors relative bg-gradient-to-t from-[#4cb5f9]/10 to-transparent">
+            <div id="indicator-kirim-mobile" class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-[#4cb5f9] rounded-b-full transition-colors"></div>
+            <i class="fa-regular fa-paper-plane text-xl"></i>
+            <span class="text-[9px] px-1 text-center leading-tight font-bold tracking-wide">Kirim Undangan</span>
+        </button>
+        <button id="btn-tab-tutorial-mobile" onclick="switchTab('tutorial')" class="flex-1 py-3.5 flex flex-col items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors relative opacity-60 hover:opacity-100">
+            <div id="indicator-tutorial-mobile" class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-transparent rounded-b-full transition-colors"></div>
+            <i class="fa-solid fa-book-open text-xl"></i>
+            <span class="text-[9px] px-1 text-center leading-tight font-semibold tracking-wide">Cara Kirim Undangan</span>
+        </button>
+    </nav>
+
+    <!-- POPUP MODAL WARNING NAMA TAMU KOSONG -->
+    <div id="wdpdku-modal-empty" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300">
+        <div id="wdpdku-modal-content" class="bg-[#292938] border border-[#4cb5f9] rounded-2xl p-8 shadow-[0_0_40px_rgba(76,181,249,0.2)] max-w-sm w-[90%] text-center transform scale-95 transition-transform duration-300">
+            <div class="w-16 h-16 bg-[#4cb5f9]/10 rounded-full flex items-center justify-center mx-auto mb-5">
+                <i class="fa-solid fa-user-pen text-[#4cb5f9] text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Oops, ada yang terlewat!</h3>
+            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                Jangan lupa input <strong class="text-white">Nama Tamu Undangan</strong> terlebih dahulu di Kolom 1 sebelum meng-generate ya.
+            </p>
+            <button onclick="closeEmptyModal()" class="w-full bg-gradient-to-r from-[#4cb5f9] to-[#2b8cdb] hover:from-[#3ba4e8] hover:to-[#1a7bc8] text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition-transform hover:-translate-y-1">
+                Oke, Mengerti
+            </button>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div id="wdpdku-lightbox" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[60] hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300" onclick="if(event.target === this) closeLightbox()">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 bg-red-500/20 hover:bg-red-500/40 text-red-500 rounded-full flex items-center justify-center transition-colors text-2xl z-10">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="wdpdku-lightbox-img" src="" alt="Preview Gambar" class="max-w-[95%] max-h-[90vh] object-contain rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.8)] transform scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- Logic Script -->
+    <script>
+        // param helper
+        function getParameterByName(name){
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        const paramId       = getParameterByName('id');
+        const paramLink     = getParameterByName('link');
+        const paramAcara    = getParameterByName('acara');
+        const paramMempelai = getParameterByName('mempelai') || getParameterByName('couple');
+
+        // tentukan base target (prioritas link, lalu id)
+        function getTargetBase(){
+            if (paramLink){
+                let l = paramLink.trim();
+                if (!/^https?:\/\//i.test(l)) l = 'https://' + l; 
+                return l;
+            }
+            if (paramId){
+                return `${window.location.origin}/${paramId}`;
+            }
+            return null;
+        }
+
+        // DOM Elements
+        const wdpdku_teksPengantarSelect  = document.getElementById("wdpdku-teksPengantar");
+        const wdpdku_teksPengantarPreview = document.getElementById("wdpdku-teksPengantarPreview");
+        const wdpdku_jenisAcara           = document.getElementById("wdpdku-jenisAcara");
+        const wdpdku_customAcaraInput     = document.getElementById("wdpdku-customAcaraInput");
+        const wdpdku_namaMempelaiInput    = document.getElementById("wdpdku-namaMempelaiInput");
+
+        // templates (Mengganti Pernikahan menjadi [acara] agar dinamis)
+        const wdpdku_teksDefault = {
+            formal: `Dengan penuh rasa hormat, kami mengundang Bapak/Ibu/Saudara/i\n*[nama-tamu]*\nagar kiranya dapat hadir dalam acara:\n\n===============\n💕 *[acara] [nama-mempelai]* 💕\n===============\n\nBerikut link undangan kami, untuk informasi lebih lengkap mengenai acara dapat diakses melalui tautan berikut:\n\n[link-undangan]\n\nMerupakan suatu kebahagiaan bagi kami bila Bapak/Ibu/Saudara/i berkenan meringankan langkah untuk hadir maupun memberikan doa restu.\n\nKami yang berbahagia,\n_[nama-mempelai]_`,
+            muslim: `Assalamualaikum, Wr. Wb.\n\nDengan penuh rasa hormat, kami mengundang Bapak/Ibu/Saudara/i *[nama-tamu]*\nagar kiranya dapat hadir dalam acara:\n\n===============\n💕 *[acara] [nama-mempelai]* 💕\n===============\n\nBerikut link undangan kami, untuk informasi lebih lengkap mengenai acara dapat diakses melalui tautan berikut:\n\n[link-undangan]\n\nMerupakan suatu kebahagiaan bagi kami bila Bapak/Ibu/Saudara/i berkenan meringankan langkah untuk hadir maupun memberikan doa restu.\n\nWassalamualaikum Wr. Wb.\n\nKami yang berbahagia,\n_[nama-mempelai]_`,
+            nasrani: `Shalom, Salam Sejahtera Bagi Kita Semua.\n\nYth. Bapak/Ibu/Saudara/i \n*[nama-tamu]* \ndi Tempat\n\nDengan penuh sukacita dan berlandaskan kasih, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara:\n\n===============\n💕 *[acara] [nama-mempelai]* 💕\n===============\n\nBerikut link undangan kami, untuk informasi lebih lengkap mengenai acara dapat diakses melalui tautan berikut:\n\n[link-undangan]\n\nMerupakan suatu kebahagiaan bagi kami bila Bapak/Ibu/Saudara/i berkenan meringankan langkah untuk hadir maupun memberikan doa restu.\nTerima kasih.\n\nKami yang berbahagia,\n[nama-mempelai]`,
+            hindu: `Yth. Bapak/Ibu/Saudara/i *[nama-tamu]* di Tempat\n\nOm Swastiastu\n\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara:\n\n===============\n💕 *[acara] [nama-mempelai]* 💕\n===============\n\nBerikut link undangan kami, untuk informasi lebih lengkap mengenai acara dapat diakses melalui tautan berikut:\n\n[link-undangan]\n\nMerupakan suatu kebahagiaan bagi kami bila Bapak/Ibu/Saudara/i berkenan meringankan langkah untuk hadir maupun memberikan doa restu.\nTerima kasih.\n\nOm Shanti, Shanti, Shanti, Om.\n\nKami yang berbahagia,\n[nama-mempelai]`,
+            teksundangananda: `Silahkan isikan teks undangan yang akan Anda gunakan!`
+        };
+
+        const elementsToSave = [
+            'wdpdku-namaTamuInput',
+            'wdpdku-namaMempelaiInput',
+            'wdpdku-jenisAcara',
+            'wdpdku-customAcaraInput',
+            'wdpdku-teksPengantar',
+            'wdpdku-teksPengantarPreview'
+        ];
+
+        // Fitur Auto-Save & Default Data Load
+        document.addEventListener("DOMContentLoaded", function(){
+            // Map parameter acara ke nilai Dropdown
+            const acaraMap = {
+                "0": "Pernikahan",
+                "1": "Ngunduh Mantu",
+                "2": "The Wedding of",
+                "3": "Resepsi Pernikahan"
+            };
+
+            // Load data dari Local Storage terlebih dahulu
+            elementsToSave.forEach(id => {
+                const el = document.getElementById(id);
+                const saved = localStorage.getItem(id);
+                if (saved !== null) {
+                    el.value = saved;
+                }
+            });
+
+            // Prioritaskan Parameter URL ?acara= jika ada (akan menimpa local storage)
+            if (paramAcara && acaraMap[paramAcara]) {
+                wdpdku_jenisAcara.value = acaraMap[paramAcara];
+                localStorage.setItem('wdpdku-jenisAcara', acaraMap[paramAcara]);
+            }
+
+            // Prioritaskan Parameter URL ?mempelai= atau ?couple= jika ada (akan menimpa local storage)
+            if (paramMempelai) {
+                // Browser akan otomatis men-decode URL encoding seperti %20 (spasi) atau %26 (&)
+                wdpdku_namaMempelaiInput.value = paramMempelai;
+                localStorage.setItem('wdpdku-namaMempelaiInput', paramMempelai);
+            }
+
+            // Atur visibilitas input custom jika yg terpilih adalah "custom"
+            if(wdpdku_jenisAcara.value === 'custom') {
+                wdpdku_customAcaraInput.classList.remove('hidden');
+            } else {
+                wdpdku_customAcaraInput.classList.add('hidden');
+            }
+
+            // Jika template kosong (baru pertama kali load/direset), set formal default
+            if (!localStorage.getItem('wdpdku-teksPengantarPreview')) {
+                wdpdku_teksPengantarSelect.value = "formal";
+                wdpdku_teksPengantarPreview.value = wdpdku_teksDefault["formal"];
+            }
+
+            // Save data on input/change
+            elementsToSave.forEach(id => {
+                const el = document.getElementById(id);
+                el.addEventListener('input', () => {
+                    localStorage.setItem(id, el.value);
+                });
+            });
+        });
+
+        // Event listener saat memilih dropdown template teks pengantar
+        wdpdku_teksPengantarSelect.addEventListener("change", function(){
+            const selected = wdpdku_teksPengantarSelect.value;
+            wdpdku_teksPengantarPreview.value = wdpdku_teksDefault[selected];
+            localStorage.setItem('wdpdku-teksPengantar', selected);
+            localStorage.setItem('wdpdku-teksPengantarPreview', wdpdku_teksDefault[selected]);
+        });
+
+        // Event listener dropdown jenis acara
+        wdpdku_jenisAcara.addEventListener("change", function(){
+            if(this.value === 'custom') {
+                wdpdku_customAcaraInput.classList.remove('hidden');
+            } else {
+                wdpdku_customAcaraInput.classList.add('hidden');
+            }
+            localStorage.setItem('wdpdku-jenisAcara', this.value);
+        });
+
+        // Toggle visibility untuk editor pengantar teks
+        function toggleEditor() {
+            const container = document.getElementById('wdpdku-editor-container');
+            const checkbox = document.getElementById('wdpdku-toggle-editor');
+            if (checkbox.checked) {
+                container.classList.remove('hidden');
+                container.classList.add('block');
+            } else {
+                container.classList.remove('block');
+                container.classList.add('hidden');
+            }
+        }
+
+        // Function Close Modal & Focus to Textarea
+        function closeEmptyModal() {
+            const modal = document.getElementById("wdpdku-modal-empty");
+            const modalContent = document.getElementById("wdpdku-modal-content");
+            const namaTamuInput = document.getElementById("wdpdku-namaTamuInput");
+            
+            // Animasi tutup
+            modal.classList.add("opacity-0");
+            modalContent.classList.remove("scale-100");
+            modalContent.classList.add("scale-95");
+            
+            setTimeout(() => {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex"); // remove flex property
+                
+                // Fokus otomatis ke input nama tamu
+                namaTamuInput.focus();
+                
+                // Tambahkan efek ring/glow sebentar sebagai petunjuk visual
+                // Karena kita menggunakan border warna biru di Kolom 1, kita berikan ring warna serasi
+                namaTamuInput.classList.add("ring-4", "ring-blue-400/50");
+                setTimeout(() => {
+                    namaTamuInput.classList.remove("ring-4", "ring-blue-400/50");
+                }, 1000); // Hilang dalam 1 detik
+            }, 300);
+        }
+
+        // generate button click
+        document.getElementById("wdpdku-generateButton").addEventListener("click", function(){
+            const button = this;
+            const originalContent = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> Memproses...`;
+
+            setTimeout(() => {
+                const namaTamuRaw   = document.getElementById("wdpdku-namaTamuInput").value.trim();
+                const namaMempelai  = document.getElementById("wdpdku-namaMempelaiInput").value.trim();
+                const teksPengantar = document.getElementById("wdpdku-teksPengantarPreview").value;
+                
+                // Menentukan nilai teks Acara
+                let nilaiAcara = wdpdku_jenisAcara.value === 'custom' ? wdpdku_customAcaraInput.value.trim() : wdpdku_jenisAcara.value;
+                if(!nilaiAcara) nilaiAcara = "Pernikahan"; // fallback
+
+                // Modifikasi: Tampilkan Popup Modal jika kosong
+                if(!namaTamuRaw){
+                    document.getElementById("error-message").textContent = ""; // Hapus teks inline error lama
+                    
+                    const modal = document.getElementById("wdpdku-modal-empty");
+                    const modalContent = document.getElementById("wdpdku-modal-content");
+                    
+                    modal.classList.remove("hidden");
+                    modal.classList.add("flex"); // add flex for centering
+                    // Trigger reflow untuk memutar animasi transisi CSS
+                    void modal.offsetWidth; 
+                    
+                    modal.classList.remove("opacity-0");
+                    modalContent.classList.remove("scale-95");
+                    modalContent.classList.add("scale-100");
+
+                    button.disabled = false; 
+                    button.innerHTML = originalContent;
+                    return;
+                }
+
+                let targetBase = getTargetBase();
+                if(!targetBase){
+                    // Fallback jika tidak ada link parameter agar sistem tetap berjalan di lokal
+                    targetBase = window.location.origin + window.location.pathname;
+                }
+
+                const daftarNama = namaTamuRaw.split("\n");
+                const tbody = document.getElementById("wdpdku-tbody");
+                tbody.innerHTML = "";
+
+                let hasGenerated = false;
+
+                for(let nama of daftarNama) {
+                    if(nama.trim() !== ""){
+                        hasGenerated = true;
+
+                        const sep = targetBase.includes('?') ? '&' : '?';
+                        const linkUndangan = `${targetBase}${sep}to=${encodeURIComponent(nama.trim())}`;
+
+                        let personalized = teksPengantar
+                            .replace(/\[nama-tamu\]/g, nama.trim())
+                            .replace(/\[link-undangan\]/g, linkUndangan)
+                            .replace(/\[nama-mempelai\]/g, namaMempelai || "")
+                            .replace(/\[acara\]/g, nilaiAcara);
+
+                        if(personalized.includes("[link-undangan]")){
+                            alert("Pastikan placeholder [link-undangan] tidak sengaja terhapus dan diganti link manual.");
+                            button.disabled = false; 
+                            button.innerHTML = originalContent;
+                            return;
+                        }
+
+                        // Proteksi Karakter Spesial (misal tanda petik) pada parameter JS
+                        const safePersonalized = encodeURIComponent(personalized).replace(/'/g, "%27");
+                        const safeLink = encodeURIComponent(linkUndangan).replace(/'/g, "%27");
+
+                        const tr = document.createElement("tr");
+                        tr.className = "hover:bg-white/5 transition-colors";
+                        tr.innerHTML = `
+                            <td class="p-3 md:p-4 text-white font-medium break-words">${nama.trim()}</td>
+                            <td class="p-3 md:p-4">
+                                <div class="flex flex-wrap justify-center gap-1.5 md:gap-2">
+                                    <button class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white transition-colors flex items-center justify-center" onclick="window.open(decodeURIComponent('${safeLink}'),'_blank')" title="Buka Link">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                                    </button>
+                                    <button class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-white transition-colors flex items-center justify-center" onclick="copyLinkToClipboard(decodeURIComponent('${safeLink}'))" title="Salin Link Saja">
+                                        <i class="fa-solid fa-link text-sm"></i>
+                                    </button>
+                                    <button class="w-8 h-8 rounded-lg bg-orange-500/10 text-orange-400 hover:bg-orange-500 hover:text-white transition-colors flex items-center justify-center" onclick="copyTextToClipboard('${safePersonalized}')" title="Salin Link + Kata Pengantar">
+                                        <i class="fa-solid fa-copy text-sm"></i>
+                                    </button>
+                                    <!-- Fitur WA Sent Indicator -->
+                                    <button class="w-8 h-8 rounded-lg bg-green-500/10 text-green-400 hover:bg-green-500 hover:text-white transition-colors flex items-center justify-center" onclick="sendWA(this, 'https://wa.me/?text=' + '${safePersonalized}')" title="Kirim ke WhatsApp">
+                                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                                    </button>
+                                    <button class="w-8 h-8 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-colors flex items-center justify-center" onclick="this.parentElement.parentElement.parentElement.remove()" title="Delete">
+                                        <i class="fa-solid fa-trash text-sm"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    }
+                }
+
+                if(hasGenerated){
+                    document.getElementById("wdpdku-daftarNamaContainer").classList.remove("hidden");
+                }
+
+                button.disabled = false;
+                button.innerHTML = originalContent;
+            }, 500);
+        });
+
+        // Fitur Tombol Reset
+        document.getElementById("wdpdku-resetButton").addEventListener("click", function(){
+            if(confirm("Apakah Anda yakin ingin menghapus semua data nama tamu dan mereset form?")) {
+                // Clear localStorage
+                elementsToSave.forEach(id => localStorage.removeItem(id));
+                
+                // Clear text inputs & select
+                document.getElementById("wdpdku-namaTamuInput").value = "";
+                document.getElementById("wdpdku-namaMempelaiInput").value = "";
+                
+                wdpdku_jenisAcara.value = "Pernikahan";
+                wdpdku_customAcaraInput.value = "";
+                wdpdku_customAcaraInput.classList.add('hidden');
+                
+                // Reset to default template formal
+                wdpdku_teksPengantarSelect.value = "formal";
+                wdpdku_teksPengantarPreview.value = wdpdku_teksDefault["formal"];
+                
+                // Clear error & hide table
+                document.getElementById("error-message").textContent = "";
+                document.getElementById("wdpdku-tbody").innerHTML = "";
+                document.getElementById("wdpdku-daftarNamaContainer").classList.add("hidden");
+            }
+        });
+
+        // Fitur WA Sent Indicator Helper
+        function sendWA(btn, url) {
+            window.open(url, '_blank');
+            btn.classList.remove('bg-green-500/10', 'text-green-400', 'hover:bg-green-500');
+            btn.classList.add('bg-gray-600/50', 'text-gray-400', 'hover:bg-gray-500');
+            btn.innerHTML = '<i class="fa-solid fa-check-double text-sm"></i>';
+            btn.title = "Sudah Dikirim";
+        }
+
+        // Copy helpers
+        async function copyTextToClipboard(text){
+            text = decodeURIComponent(text);
+            try{
+                await navigator.clipboard.writeText(text);
+                alert('Teks berhasil disalin ke clipboard.');
+            }catch(err){
+                const temp = document.createElement("textarea");
+                temp.value = text;
+                document.body.appendChild(temp);
+                temp.select();
+                try{ document.execCommand("copy"); alert('Teks berhasil disalin ke clipboard (fallback).'); }
+                catch(e){ alert('Gagal menyalin teks ke clipboard.'); }
+                document.body.removeChild(temp);
+            }
+        }
+
+        async function copyLinkToClipboard(link){
+            try{
+                await navigator.clipboard.writeText(link);
+                alert('Link berhasil disalin.');
+            }catch(err){
+                const temp = document.createElement("textarea");
+                temp.value = link;
+                document.body.appendChild(temp);
+                temp.select();
+                try{ document.execCommand("copy"); alert('Link berhasil disalin (fallback).'); }
+                catch(e){ alert('Gagal menyalin link.'); }
+                document.body.removeChild(temp);
+            }
+        }
+
+        /* Formatting: hanya bold & italic */
+        function applyFormatting(type){
+            const textarea = document.getElementById("wdpdku-teksPengantarPreview");
+            const start = textarea.selectionStart;
+            const end   = textarea.selectionEnd;
+            const selected = textarea.value.substring(start, end);
+
+            const map = {
+                bold:   `*${selected}*`,
+                italic: `_${selected}_`
+            };
+
+            const out = map[type] ?? selected;
+            textarea.value = textarea.value.substring(0, start) + out + textarea.value.substring(end);
+            textarea.setSelectionRange(start + out.length, start + out.length);
+            textarea.focus();
+            
+            // Trigger auto-save untuk formatting manual
+            localStorage.setItem('wdpdku-teksPengantarPreview', textarea.value);
+        }
+
+        // Fitur Open & Close Lightbox
+        function openLightbox(src) {
+            const lightbox = document.getElementById("wdpdku-lightbox");
+            const lightboxImg = document.getElementById("wdpdku-lightbox-img");
+            
+            lightboxImg.src = src;
+            lightbox.classList.remove("hidden");
+            lightbox.classList.add("flex");
+            
+            // Trigger reflow
+            void lightbox.offsetWidth;
+            
+            lightbox.classList.remove("opacity-0");
+            lightboxImg.classList.remove("scale-95");
+            lightboxImg.classList.add("scale-100");
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById("wdpdku-lightbox");
+            const lightboxImg = document.getElementById("wdpdku-lightbox-img");
+            
+            lightbox.classList.add("opacity-0");
+            lightboxImg.classList.remove("scale-100");
+            lightboxImg.classList.add("scale-95");
+            
+            setTimeout(() => {
+                lightbox.classList.add("hidden");
+                lightbox.classList.remove("flex");
+                lightboxImg.src = "";
+            }, 300);
+        }
+
+        // Tab Navigation Logic
+        function switchTab(tabId) {
+            // Tab Contents
+            const tabKirimContent = document.getElementById('tab-kirim-content');
+            const tabTutorialContent = document.getElementById('tab-tutorial-content');
+            
+            const mainHeader = document.getElementById('main-header');
+            const mainContent = document.getElementById('main-content');
+            
+            // Desktop Buttons
+            const btnKirimDesktop = document.getElementById('btn-tab-kirim-desktop');
+            const btnTutorialDesktop = document.getElementById('btn-tab-tutorial-desktop');
+            
+            // Mobile Buttons & Indicators
+            const btnKirimMobile = document.getElementById('btn-tab-kirim-mobile');
+            const btnTutorialMobile = document.getElementById('btn-tab-tutorial-mobile');
+            const indKirimMobile = document.getElementById('indicator-kirim-mobile');
+            const indTutorialMobile = document.getElementById('indicator-tutorial-mobile');
+
+            if (tabId === 'kirim') {
+                // Show Kirim, Hide Tutorial
+                tabKirimContent.classList.remove('hidden');
+                tabTutorialContent.classList.add('hidden');
+
+                // Tampilkan kembali main header
+                if(mainHeader) {
+                    mainHeader.classList.remove('hidden');
+                    mainHeader.classList.add('flex');
+                }
+                if(mainContent) {
+                    mainContent.classList.add('-mt-12', 'py-8');
+                    mainContent.classList.remove('mt-0', 'pt-0', 'md:pt-6', 'pb-8');
+                }
+
+                // Style Desktop (Active vs Inactive)
+                btnKirimDesktop.className = "px-6 py-2.5 rounded-lg font-bold transition-all bg-[#4cb5f9] text-[#1a1a24] shadow-md";
+                btnTutorialDesktop.className = "px-6 py-2.5 rounded-lg font-bold transition-all bg-transparent text-gray-400 hover:text-white hover:bg-white/5 opacity-80 hover:opacity-100";
+
+                // Style Mobile (Active vs Inactive)
+                btnKirimMobile.className = "flex-1 py-3.5 flex flex-col items-center gap-1.5 text-[#4cb5f9] transition-colors relative bg-gradient-to-t from-[#4cb5f9]/10 to-transparent";
+                indKirimMobile.className = "absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-[#4cb5f9] rounded-b-full transition-colors";
+                
+                btnTutorialMobile.className = "flex-1 py-3.5 flex flex-col items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors relative opacity-60 hover:opacity-100";
+                indTutorialMobile.className = "absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-transparent rounded-b-full transition-colors";
+                
+            } else if (tabId === 'tutorial') {
+                // Show Tutorial, Hide Kirim
+                tabTutorialContent.classList.remove('hidden');
+                tabKirimContent.classList.add('hidden');
+
+                // Sembunyikan main header agar tutorial langsung fokus ke atas
+                if(mainHeader) {
+                    mainHeader.classList.add('hidden');
+                    mainHeader.classList.remove('flex');
+                }
+                if(mainContent) {
+                    mainContent.classList.remove('-mt-12', 'py-8');
+                    mainContent.classList.add('mt-0', 'pt-0', 'md:pt-6', 'pb-8');
+                }
+
+                // Style Desktop (Active vs Inactive)
+                btnTutorialDesktop.className = "px-6 py-2.5 rounded-lg font-bold transition-all bg-[#4cb5f9] text-[#1a1a24] shadow-md";
+                btnKirimDesktop.className = "px-6 py-2.5 rounded-lg font-bold transition-all bg-transparent text-gray-400 hover:text-white hover:bg-white/5 opacity-80 hover:opacity-100";
+
+                // Style Mobile (Active vs Inactive)
+                btnTutorialMobile.className = "flex-1 py-3.5 flex flex-col items-center gap-1.5 text-[#4cb5f9] transition-colors relative bg-gradient-to-t from-[#4cb5f9]/10 to-transparent";
+                indTutorialMobile.className = "absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-[#4cb5f9] rounded-b-full transition-colors";
+                
+                btnKirimMobile.className = "flex-1 py-3.5 flex flex-col items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors relative opacity-60 hover:opacity-100";
+                indKirimMobile.className = "absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-transparent rounded-b-full transition-colors";
+            }
+        }
+    </script>
+</body>
+</html>
