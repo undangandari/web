@@ -477,6 +477,7 @@
         const paramLink     = getParameterByName('link');
         const paramAcara    = getParameterByName('acara');
         const paramMempelai = getParameterByName('mempelai') || getParameterByName('couple');
+        const paramTemplate = getParameterByName('template'); // Parameter baru untuk template teks
 
         // tentukan base target (prioritas link, lalu id)
         function getTargetBase(){
@@ -548,6 +549,26 @@
                 localStorage.setItem('wdpdku-namaMempelaiInput', paramMempelai);
             }
 
+            // Prioritaskan Parameter URL ?template= jika ada (akan menimpa local storage)
+            if (paramTemplate) {
+                let tempVal = paramTemplate.toLowerCase();
+                if (tempVal === 'kristen') tempVal = 'nasrani'; // memetakan input 'kristen' ke value 'nasrani'
+                
+                // Pastikan value yang dimasukkan valid ada di template default
+                if (wdpdku_teksDefault[tempVal]) {
+                    wdpdku_teksPengantarSelect.value = tempVal;
+                    wdpdku_teksPengantarPreview.value = wdpdku_teksDefault[tempVal];
+                    localStorage.setItem('wdpdku-teksPengantar', tempVal);
+                    localStorage.setItem('wdpdku-teksPengantarPreview', wdpdku_teksDefault[tempVal]);
+                }
+            } else {
+                // Pastikan select option sinkron dengan localStorage jika tidak ada paramTemplate
+                const savedTemplate = localStorage.getItem('wdpdku-teksPengantar');
+                if(savedTemplate) {
+                    wdpdku_teksPengantarSelect.value = savedTemplate;
+                }
+            }
+
             // Atur visibilitas input custom jika yg terpilih adalah "custom"
             if(wdpdku_jenisAcara.value === 'custom') {
                 wdpdku_customAcaraInput.classList.remove('hidden');
@@ -555,8 +576,8 @@
                 wdpdku_customAcaraInput.classList.add('hidden');
             }
 
-            // Jika template kosong (baru pertama kali load/direset), set formal default
-            if (!localStorage.getItem('wdpdku-teksPengantarPreview')) {
+            // Jika template masih kosong (baru pertama kali load/direset), set formal default
+            if (!wdpdku_teksPengantarPreview.value) {
                 wdpdku_teksPengantarSelect.value = "formal";
                 wdpdku_teksPengantarPreview.value = wdpdku_teksDefault["formal"];
             }
