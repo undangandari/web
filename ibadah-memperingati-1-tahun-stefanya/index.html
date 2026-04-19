@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibadah 1 Tahun Berpulangnya - Stefanya</title>
+
+    <!-- Meta Tags Open Graph -->
+    <meta name="description" content="Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk bersama-sama menaikkan doa dan syukur.">
+    <meta property="og:title" content="Undangan Ibadah Ucapan Syukur 1 Tahun Berpulangnya Stefanya">
+    <meta property="og:description" content="Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk bersama-sama menaikkan doa dan syukur.">
+    <meta property="og:image" content="https://ik.imagekit.io/fotoclient/memoar-kematian/thumbnail-stefanya.jpg">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'emas': '#cda557',         
+                        'emas-gelap': '#b88f57',
+                        'teks-gelap': '#333333',
+                        'bg-box': '#e6e4dc'     
+                    },
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth !important; }
+        body { 
+            background-color: #f4f4f4; 
+            display: flex; justify-content: center; margin: 0; min-height: 100vh; overflow-x: hidden; 
+        }
+
+        .mobile-container { 
+            width: 100%; max-width: 420px; background-color: transparent; position: relative; 
+            box-shadow: 0 0 30px rgba(0,0,0,0.1); overflow-x: hidden; 
+        }
+
+        /* Background Layer (Marmer Keramik) */
+        .fixed-bg-layer {
+            position: fixed; top: 0; left: 50%; transform: translateX(-50%) translateZ(0); 
+            width: 100%; max-width: 420px; height: 100vh;
+            background-image: url('https://ik.imagekit.io/asetundangan/aset/background/white-ceramic.jpeg'); 
+            background-size: cover; background-position: center; z-index: 0; pointer-events: none; 
+        }
+
+        /* Animasi Masuk Multi-Arah - Diperkuat Jarak Tarikannya */
+        .muncul, .zoom, .muncul-kiri, .muncul-kanan { will-change: transform, opacity; }
+        .muncul { transform: translateY(3.5rem); opacity: 0; transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s ease; }
+        .muncul.active { transform: translateY(0); opacity: 1; }
+        
+        .zoom { transform: scale(0.85); opacity: 0; transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s ease; }
+        .zoom.active { transform: scale(1); opacity: 1; }
+        
+        .muncul-kiri { transform: translateX(-3.5rem); opacity: 0; transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s ease; }
+        .muncul-kiri.active { transform: translateX(0); opacity: 1; }
+        
+        .muncul-kanan { transform: translateX(3.5rem); opacity: 0; transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s ease; }
+        .muncul-kanan.active { transform: translateX(0); opacity: 1; }
+
+        /* Floating Buttons (Musik & Fullscreen) */
+        .floating-btn { position: fixed; right: 20px; width: 36px; height: 36px; background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(205, 165, 87, 0.5); color: #b88f57; border-radius: 50%; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); transition: all 0.3s ease; }
+        .floating-btn:hover { background: #b88f57; color: #ffffff; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); }
+        .floating-btn:active { transform: scale(0.95); }
+        #enter-fullscreen { bottom: 72px; font-size: 14px; }
+        #audio-toggle { bottom: 25px; }
+        #audio-toggle svg { width: 16px; height: 16px; fill: currentColor; transition: fill 0.3s ease; }
+        @keyframes spin-continuous { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        #audio-toggle.rotating svg { animation: spin-continuous 4s linear infinite; }
+
+        /* Mencegah Scroll Sebelum Buka Undangan */
+        .lock-scroll { overflow: hidden !important; height: 100vh !important; touch-action: none; }
+    </style>
+</head>
+<body class="flex justify-center text-teks-gelap antialiased lock-scroll">
+
+    <!-- Tombol Floating (Audio & Fullscreen) -->
+    <button id="enter-fullscreen" class="floating-btn"><i class="fas fa-expand-arrows-alt"></i></button>
+    <div id="audio-container">
+        <audio id="audio" loop>
+            <source src="https://github.com/asetundangan/lagu/raw/main/Kristen%20-%20Yesus%20Kau%20Sungguh%20Baik%20(Full%20-%20Start).mp3" type="audio/mpeg">
+        </audio>
+        <div id="audio-toggle" class="floating-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 32a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm-96-32a96 96 0 1 0 192 0 96 96 0 1 0 -192 0zM96 240c0-35 17.5-71.1 45.2-98.8S205 96 240 96c8.8 0 16-7.2 16-16s-7.2-16-16-16c-45.4 0-89.2 22.3-121.5 54.5S64 194.6 64 240c0 8.8 7.2 16 16 16s16-7.2 16-16z"/></svg>
+        </div>
+    </div>
+
+    <!-- Background Dasar (Keramik) -->
+    <div class="fixed-bg-layer"></div>
+
+    <div class="mobile-container flex flex-col items-center">
+        
+               <!-- COVER SECTION -->
+        <section id="cover" class="relative w-full min-h-screen flex flex-col items-center justify-center p-4 sm:p-5 z-20 py-10">
+            
+            <!-- ALAS PUTIH (White Card Utama) -->
+            <div class="relative w-full max-w-[380px] min-h-[90vh] bg-white/95 shadow-[0_15px_40px_rgba(0,0,0,0.18)] flex flex-col items-center pt-8 pb-12 border border-white/50 rounded-sm">
+                
+                <!-- Garis Bingkai Emas (Double Frame Elegan) -->
+                <div class="absolute inset-[14px] border-[1.5px] border-emas/80 z-10 pointer-events-none"></div>
+                <div class="absolute inset-[19px] border-[0.5px] border-emas/50 z-10 pointer-events-none"></div>
+
+                <!-- ORNAMEN BUNGA SAMPUL-->
+                <div class="absolute -top-[8px] -right-[8px] w-[155px] sm:w-[170px] z-20 pointer-events-none zoom active" style="transition-duration: 1.5s;">
+                    <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kanan-atas.png" alt="Bunga Atas Kanan" class="w-full h-full">
+                </div>
+                <div class="absolute -top-[8px] -left-[8px] w-[155px] sm:w-[170px] z-20 pointer-events-none zoom active" style="transition-duration: 1.5s;">
+                    <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kanan-atas.png" alt="Bunga Atas Kiri" class="w-full h-full transform -scale-x-100">
+                </div>
+                <div class="absolute bottom-0 left-0 w-[165px] sm:w-[185px] z-40 pointer-events-none zoom active" style="transition-duration: 1.5s;">
+                    <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kiri-bawah.png" alt="Bunga Lilin Kiri" class="w-full h-full">
+                </div>
+                <div class="absolute bottom-0 right-0 w-[165px] sm:w-[185px] z-40 pointer-events-none zoom active" style="transition-duration: 1.5s;">
+                    <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kiri-bawah.png" alt="Bunga Lilin Kanan" class="w-full h-full transform -scale-x-100">
+                </div>
+
+                <!-- KONTEN UTAMA SAMPUL -->
+                <div class="relative z-30 flex flex-col items-center w-full mt-4">
+                    
+                    <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/salib.png" alt="Salib" class="w-9 sm:w-11 mb-6 zoom active" style="transition-delay: 0.2s;">
+
+                    <!-- Foto Oval Portrait Cover -->
+                    <div class="relative w-[170px] h-[230px] rounded-[50%] bg-gradient-to-br from-emas-gelap via-[#fdf5d3] to-emas p-[3px] zoom active mb-8 shadow-[0_5px_15px_rgba(0,0,0,0.1)]" style="transition-delay: 0.3s;">
+                        <div class="w-full h-full rounded-[50%] bg-white p-[3px]">
+                            <div class="w-full h-full rounded-[50%] bg-gradient-to-br from-emas via-[#fdf5d3] to-emas-gelap p-[1px]">
+                                <div class="w-full h-full rounded-[50%] overflow-hidden bg-white">
+                                    <img src="https://ik.imagekit.io/fotoclient/memoar-kematian/Stefanya.jpg" alt="Foto Almarhum" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tipografi Sampul -->
+                    <p class="font-montserrat text-[10px] sm:text-[11px] font-medium tracking-[0.4em] uppercase text-emas-gelap mb-3 muncul active" style="transition-delay: 0.4s;">
+                        IN LOVING MEMORY
+                    </p>
+                    <h1 class="font-cinzel text-[28px] sm:text-[32px] font-bold text-teks-gelap tracking-wide mb-1 zoom active text-center leading-none" style="transition-delay: 0.5s;">
+                        MEMOAR 1 TAHUN
+                    </h1>
+                    <h2 class="font-playfair italic text-[28px] sm:text-[34px] text-emas-gelap mb-8 muncul active text-center leading-tight" style="transition-delay: 0.6s;">
+                        Stefanya Putri Bakar
+                    </h2>
+
+                    <!-- Kotak Tamu -->
+                    <div class="w-[85%] max-w-[300px] bg-white/60 border border-emas/40 rounded-2xl py-6 px-5 flex flex-col items-center shadow-md relative z-30 muncul active" style="transition-delay: 0.8s;">
+                        <p class="font-montserrat text-[10.5px] font-medium text-gray-500 mb-2 text-center">Kepada Yth. Bpk/Ibu/Saudara/i</p>
+                        <h3 class="font-playfair font-bold text-[18px] text-teks-gelap mb-5 text-center namatamu">Yang Terkasih</h3>
+                        
+                        <button id="tombol-buka-undangan" class="w-full bg-emas-gelap hover:bg-[#9c7b48] border-[1.5px] border-emas-gelap text-white font-montserrat font-bold text-[11px] tracking-[0.15em] py-3.5 rounded-full transition-colors duration-300 flex items-center justify-center gap-3 shadow-md outline-none">
+                            <i class="fas fa-envelope-open text-[11px]"></i> <span>BUKA UNDANGAN</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- WRAPPER CONTENT UNDANGAN (Awalnya Sembunyi) -->
+        <div id="content-undangan" class="hidden flex-col w-full z-10 relative">
+
+            <!-- PROFIL SECTION (SLIDE 2) -->
+            <section id="profil" class="relative w-full min-h-screen flex flex-col items-center justify-center p-4 sm:p-5 z-20 py-10">
+                
+                <!-- ALAS PUTIH (White Card Profil) -->
+                <div class="relative w-full max-w-[380px] min-h-[90vh] bg-white/95 shadow-[0_15px_40px_rgba(0,0,0,0.18)] flex flex-col items-center pt-24 pb-20 border border-white/50 rounded-sm overflow-hidden">
+                    
+                    <!-- Garis Bingkai Emas (Double Frame Elegan) -->
+                    <div class="absolute inset-[14px] border-[1.5px] border-emas/80 z-10 pointer-events-none"></div>
+                    <div class="absolute inset-[19px] border-[0.5px] border-emas/50 z-10 pointer-events-none"></div>
+
+                    <!-- ORNAMEN BUNGA PROFIL -->
+                    <div class="absolute -top-[8px] -right-[8px] w-[155px] sm:w-[170px] z-20 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kanan-atas.png" alt="Bunga Atas Kanan" class="w-full h-full">
+                    </div>
+                    <div class="absolute -top-[8px] -left-[8px] w-[155px] sm:w-[170px] z-20 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kanan-atas.png" alt="Bunga Atas Kiri" class="w-full h-full transform -scale-x-100">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-[165px] sm:w-[185px] z-40 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kiri-bawah.png" alt="Bunga Lilin Kiri" class="w-full h-full">
+                    </div>
+                    <div class="absolute bottom-0 right-0 w-[165px] sm:w-[185px] z-40 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kiri-bawah.png" alt="Bunga Lilin Kanan" class="w-full h-full transform -scale-x-100">
+                    </div>
+
+                    <!-- KONTEN UTAMA PROFIL -->
+                    <div class="relative z-30 flex flex-col items-center w-full px-6">
+                        
+                        <!-- Sapaan & Tujuan -->
+                        <h3 class="font-cinzel text-[22px] sm:text-[24px] font-bold text-emas-gelap tracking-[0.2em] mb-4 zoom">SHALOM</h3>
+                        
+                        <p class="font-montserrat font-medium text-teks-gelap/90 text-[11.5px] leading-[1.8] text-center mb-8 muncul px-2">
+                            Terpujilah Tuhan Allah, Yesus Kristus, dan Roh Kudus, Pencipta langit dan bumi, serta segala isinya. Kiranya berkat dan penyertaanNya yang selalu menaungi kita.<br><br>
+                            Untuk mengenang satu tahun kasih karunia Tuhan atas keluarga kami, setelah berpulangnya Anak kami yang terkasih, yang telah dipanggil Bapa di surga.
+                        </p>
+
+                        <!-- Foto Oval Portrait Profil -->
+                        <div class="relative w-[160px] h-[215px] rounded-[50%] bg-gradient-to-br from-emas-gelap via-[#fdf5d3] to-emas p-[3px] zoom mb-6 shadow-[0_5px_15px_rgba(0,0,0,0.1)]">
+                            <div class="w-full h-full rounded-[50%] bg-white p-[3px]">
+                                <div class="w-full h-full rounded-[50%] bg-gradient-to-br from-emas via-[#fdf5d3] to-emas-gelap p-[1px]">
+                                    <div class="w-full h-full rounded-[50%] overflow-hidden bg-white">
+                                        <img src="https://ik.imagekit.io/fotoclient/memoar-kematian/Stefanya.jpg" alt="Foto Almarhum" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Almarhum & Orang Tua -->
+                        <h2 class="font-playfair italic text-[24px] sm:text-[28px] text-emas-gelap mb-1 zoom text-center leading-tight whitespace-nowrap">
+                            Stefanya Putri Bakar
+                        </h2>
+                        <p class="font-montserrat text-[11px] font-semibold text-teks-gelap/80 mb-6 muncul text-center">
+                            Tanggal Berpulang: 25 April 2025
+                        </p>
+
+                        <div class="flex items-center justify-center gap-3 w-[90%] mb-4 opacity-90 zoom">
+                            <div class="h-[1px] bg-emas/40 flex-grow"></div>
+                            <span class="font-playfair italic text-[12px] sm:text-[13px] text-emas-gelap capitalize tracking-wide whitespace-nowrap">Putri Tercinta Dari</span>
+                            <div class="h-[1px] bg-emas/40 flex-grow"></div>
+                        </div>
+
+                        <div class="flex flex-col items-center gap-1.5 w-full mb-8 muncul">
+                            <p class="font-playfair font-bold text-teks-gelap text-[15px] tracking-wide text-center">Bapak Oktavianus Bakar</p>
+                            <p class="font-playfair font-bold text-teks-gelap text-[15px] tracking-wide text-center">Ibu Olgha Mangosa</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACARA & LOKASI SECTION (SLIDE 3) -->
+            <section id="acara" class="relative w-full min-h-screen flex flex-col items-center justify-center p-4 sm:p-5 z-20 py-10">
+                
+                <!-- ALAS PUTIH (White Card Acara) -->
+                <div class="relative w-full max-w-[380px] min-h-[90vh] bg-white/95 shadow-[0_15px_40px_rgba(0,0,0,0.18)] flex flex-col items-center pt-24 pb-20 border border-white/50 rounded-sm overflow-hidden">
+                    
+                    <!-- Garis Bingkai Emas (Double Frame Elegan) -->
+                    <div class="absolute inset-[14px] border-[1.5px] border-emas/80 z-10 pointer-events-none"></div>
+                    <div class="absolute inset-[19px] border-[0.5px] border-emas/50 z-10 pointer-events-none"></div>
+
+                    <!-- ORNAMEN BUNGA ACARA -->
+                    <div class="absolute -top-[8px] -right-[8px] w-[155px] sm:w-[170px] z-20 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kanan-atas.png" alt="Bunga Atas Kanan" class="w-full h-full">
+                    </div>
+                    <div class="absolute -top-[8px] -left-[8px] w-[155px] sm:w-[170px] z-20 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kanan-atas.png" alt="Bunga Atas Kiri" class="w-full h-full transform -scale-x-100">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-[165px] sm:w-[185px] z-40 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kiri-bawah.png" alt="Bunga Lilin Kiri" class="w-full h-full">
+                    </div>
+                    <div class="absolute bottom-0 right-0 w-[165px] sm:w-[185px] z-40 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kiri-bawah.png" alt="Bunga Lilin Kanan" class="w-full h-full transform -scale-x-100">
+                    </div>
+
+                    <!-- KONTEN UTAMA ACARA -->
+                    <div class="relative z-30 flex flex-col items-center w-full px-5 mt-2">
+                        
+                        <!-- Judul Acara -->
+                        <h3 class="font-cinzel text-[22px] sm:text-[24px] font-bold text-emas-gelap tracking-[0.2em] mb-4 zoom text-center">IBADAH SYUKUR</h3>
+                        
+                        <p class="font-montserrat font-medium text-teks-gelap/90 text-[11.5px] leading-[1.8] text-center mb-8 muncul px-2">
+                            Oleh karena itu, kami mengundang kehadiran Bapak/Ibu/Saudara/i untuk mengikuti Ibadah Syukur, mengenang 1 Tahun Kepergian Anak Kami terkasih, <strong class="font-semibold text-emas-gelap whitespace-nowrap">Stefanya Putri Bakar</strong>.<br>Yang akan diselenggarakan pada:
+                        </p>
+
+                        <!-- Grid Jadwal (Elegan dengan Ikon Overlap dan Animasi Kiri-Kanan) -->
+                        <div class="grid grid-cols-2 gap-4 w-[95%] mb-12 mt-2">
+                            <!-- Box Hari -->
+                            <div class="muncul-kiri relative border border-emas/40 rounded-xl pt-8 pb-4 px-3 flex flex-col items-center bg-white/60 shadow-sm mt-4">
+                                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md border-[1.5px] border-emas/30 z-10">
+                                    <i class="far fa-calendar-alt text-emas-gelap text-[16px]"></i>
+                                </div>
+                                <h4 class="font-playfair font-bold text-teks-gelap text-[16px] tracking-wider mb-1.5">Hari</h4>
+                                <p class="font-montserrat font-medium text-teks-gelap/80 text-[13px] text-center leading-relaxed">Sabtu<br>25 April 2026</p>
+                            </div>
+                            <!-- Box Pukul -->
+                            <div class="muncul-kanan relative border border-emas/40 rounded-xl pt-8 pb-4 px-3 flex flex-col items-center bg-white/60 shadow-sm mt-4">
+                                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md border-[1.5px] border-emas/30 z-10">
+                                    <i class="far fa-clock text-emas-gelap text-[16px]"></i>
+                                </div>
+                                <h4 class="font-playfair font-bold text-teks-gelap text-[16px] tracking-wider mb-1.5">Pukul</h4>
+                                <p class="font-montserrat font-medium text-teks-gelap/80 text-[13px] text-center leading-relaxed">13.00 WITA<br>- Selesai</p>
+                            </div>
+                        </div>
+
+                        <!-- Pembatas Elegan LOKASI -->
+                        <div class="flex items-center justify-center gap-4 w-[90%] mb-7 opacity-90 zoom">
+                            <div class="h-[0.5px] bg-teks-gelap/30 flex-grow"></div>
+                            <span class="font-cinzel font-bold text-[17px] sm:text-[19px] text-teks-gelap tracking-[0.15em] text-center">LOKASI ACARA</span>
+                            <div class="h-[0.5px] bg-teks-gelap/30 flex-grow"></div>
+                        </div>
+
+                        <!-- Info Lokasi & Tombol dengan Box Elegan -->
+                        <div class="w-[95%] relative border border-emas/40 rounded-xl pt-6 pb-8 px-4 flex flex-col items-center bg-white/60 shadow-sm muncul mb-6">
+                            
+                            <!-- Ornamen Diamond & Ikon -->
+                            <div class="flex items-center justify-center gap-4 mb-4">
+                                <div class="flex gap-1.5 opacity-60">
+                                    <div class="w-1.5 h-1.5 bg-emas-gelap transform rotate-45"></div>
+                                    <div class="w-2 h-2 bg-emas-gelap transform rotate-45"></div>
+                                    <div class="w-1.5 h-1.5 bg-emas-gelap transform rotate-45"></div>
+                                </div>
+                                <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center shadow-md border-[1.5px] border-emas/30 z-10">
+                                    <i class="fas fa-map-marker-alt text-emas-gelap text-[17px]"></i>
+                                </div>
+                                <div class="flex gap-1.5 opacity-60">
+                                    <div class="w-1.5 h-1.5 bg-emas-gelap transform rotate-45"></div>
+                                    <div class="w-2 h-2 bg-emas-gelap transform rotate-45"></div>
+                                    <div class="w-1.5 h-1.5 bg-emas-gelap transform rotate-45"></div>
+                                </div>
+                            </div>
+
+                            <h4 class="font-playfair font-bold text-teks-gelap text-[18px] tracking-wide mb-2 text-center">Rummah Kediaman Keluarga<br> Bakar-Mangosa</h4>
+                            <p class="font-montserrat font-medium text-teks-gelap/80 text-[12px] leading-[1.8] text-center mb-8">
+                                Perum Residence Suwaan<br>Kec. Kalawat, Minahasa Utara
+                            </p>
+                            
+                            <!-- Tombol Maps -->
+                            <a href="https://maps.app.goo.gl/4kvFALxcSh5QFt2M7" target="_blank" class="w-[90%] max-w-[260px] bg-emas-gelap hover:bg-[#9c7b48] border-[1.5px] border-emas-gelap text-white font-montserrat font-bold text-[10.5px] tracking-[0.15em] py-3.5 rounded-full transition-colors duration-300 flex items-center justify-center gap-3 shadow-md outline-none">
+                                <i class="fas fa-map-marked-alt text-[12px]"></i> <span>BUKA MAPS ACARA</span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- PENUTUP & AYAT SECTION (SLIDE 4) -->
+            <section id="penutup" class="relative w-full min-h-screen flex flex-col items-center justify-center p-4 sm:p-5 z-20 py-10">
+                
+                <!-- ALAS PUTIH (White Card Penutup) -->
+                <div class="relative w-full max-w-[380px] min-h-[90vh] bg-white/95 shadow-[0_15px_40px_rgba(0,0,0,0.18)] flex flex-col items-center pt-20 pb-20 border border-white/50 rounded-sm overflow-hidden">
+                    
+                    <!-- Garis Bingkai Emas (Double Frame Elegan) -->
+                    <div class="absolute inset-[14px] border-[1.5px] border-emas/80 z-10 pointer-events-none"></div>
+                    <div class="absolute inset-[19px] border-[0.5px] border-emas/50 z-10 pointer-events-none"></div>
+
+                    <!-- ORNAMEN BUNGA PENUTUP -->
+                    <div class="absolute -top-[8px] -right-[8px] w-[155px] sm:w-[170px] z-20 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kanan-atas.png" alt="Bunga Atas Kanan" class="w-full h-full">
+                    </div>
+                    <div class="absolute -top-[8px] -left-[8px] w-[155px] sm:w-[170px] z-20 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kanan-atas.png" alt="Bunga Atas Kiri" class="w-full h-full transform -scale-x-100">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-[165px] sm:w-[185px] z-40 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kiri-bawah.png" alt="Bunga Lilin Kiri" class="w-full h-full">
+                    </div>
+                    <div class="absolute bottom-0 right-0 w-[165px] sm:w-[185px] z-40 pointer-events-none zoom">
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/bunga-pojok-kiri-bawah.png" alt="Bunga Lilin Kanan" class="w-full h-full transform -scale-x-100">
+                    </div>
+
+                    <!-- KONTEN UTAMA PENUTUP -->
+                    <div class="relative z-30 flex flex-col items-center w-full px-5 mt-2">
+                        
+                        <!-- Salib Mini -->
+                        <img src="https://ik.imagekit.io/asetundangan/aset/white-memoar/salib.png" alt="Salib" class="w-7 sm:w-9 mb-8 zoom">
+
+                        <!-- Kotak Ayat Simetris -->
+                        <div class="relative w-[95%] bg-white/60 border border-emas/40 rounded-xl pt-12 pb-7 px-5 flex flex-col items-center shadow-sm mb-10 muncul">
+                            <!-- Icon Quote Melayang Simetris Tengah Atas -->
+                            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md border-[1.5px] border-emas/30 z-10 text-emas-gelap text-[20px]">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            
+                            <p class="font-playfair italic font-medium text-teks-gelap/90 text-[13.5px] leading-[1.8] text-center mb-5">
+                                "Karena kami tahu, bahwa jika kemah tempat kediaman kita di bumi ini dibongkar, Allah menyediakan suatu tempat kediaman di sorga bagi kita, suatu tempat kediaman yang kekal, yang tidak dibuat oleh tangan manusia."
+                            </p>
+                            
+                            <!-- Divider Emas -->
+                            <div class="w-16 h-[1.5px] bg-emas/50 mb-4"></div>
+                            
+                            <h4 class="font-cinzel font-bold text-emas-gelap text-[11.5px] tracking-[0.2em] uppercase text-center">2 Korintus 5:1 (TB)</h4>
+                        </div>
+
+                        <!-- Teks Ucapan Terima Kasih -->
+                        <p class="font-montserrat font-medium text-teks-gelap/90 text-[11.5px] leading-[1.8] text-center mb-4 muncul px-2">
+                            Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir untuk bersama-sama menaikkan doa dan syukur.
+                        </p>
+                        <p class="font-montserrat font-medium text-teks-gelap/90 text-[11.5px] leading-[1.8] text-center mb-12 muncul px-2">
+                            Atas kehadiran, doa, dan perhatian yang diberikan, kami mengucapkan terima kasih.<br>
+                            <span class="font-semibold text-emas-gelap mt-1 inline-block tracking-wide">Tuhan Yesus Memberkati.</span>
+                        </p>
+
+                        <!-- Keluarga yang ditinggalkan -->
+                        <div class="flex flex-col items-center w-full mb-12 zoom">
+                            <p class="font-playfair italic text-emas-gelap text-[18px] sm:text-[20px] mb-3 text-center">
+                                Kami yang mengasihi,
+                            </p>
+                            <h3 class="font-montserrat font-bold text-teks-gelap text-[14px] sm:text-[15px] tracking-wide text-center uppercase whitespace-nowrap">
+                                Bapak Oktavianus Bakar <br> Ibu Olgha Mangosa
+                            </h3>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div> 
+    </div>
+
+    <!-- Script Pengganti Nama Tamu, Animasi & Fungsionalitas Ekstra -->
+    <script>
+        // Logika Custom Nama Tamu
+        (function () {
+            'use strict';
+            const config = { selector: '.namatamu', urlParams: ['to', 'dear', 'kepada'], defaultText: 'Yang Terkasih' };
+            function getRecipientName(params, keys) { for (const key of keys) { const value = params.get(key); if (value && value.trim()) return value.trim(); } return ''; }
+            function escapeRegExp(string) { return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+            function replaceTextInNode(node, searchValue, replaceValue) {
+                if (node.nodeType === 1 || node.nodeType === 11) { node.childNodes.forEach(child => { if (child.nodeType === 3) { const safeSearchValue = escapeRegExp(searchValue); const regex = new RegExp(safeSearchValue, 'gi'); child.textContent = child.textContent.replace(regex, replaceValue); } else { replaceTextInNode(child, searchValue, replaceValue); } }); }
+            }
+            window.addEventListener('DOMContentLoaded', () => {
+                const params = new URLSearchParams(window.location.search); const recipient = getRecipientName(params, config.urlParams); const targets = document.querySelectorAll(config.selector);
+                if (targets.length === 0) return;
+                targets.forEach(element => { if (recipient) replaceTextInNode(element, config.defaultText, recipient); else if (!element.textContent.trim()) element.textContent = config.defaultText; });
+            });
+        })();
+
+        // Logika Intersection Observer untuk Animasi Scroll Berulang
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    // Animasi memicu ulang ketika elemen menghilang lalu muncul lagi
+                    entry.target.classList.remove('active'); 
+                }
+            });
+        }, observerOptions);
+
+        function initScrollAnimations() {
+            // Observasi semua elemen dengan class target
+            const elementsToAnimate = document.querySelectorAll('.muncul, .zoom, .muncul-kiri, .muncul-kanan');
+            elementsToAnimate.forEach(el => observer.observe(el));
+        }
+
+        // ==========================================
+        // Logika Audio & Fullscreen Control
+        // ==========================================
+        const audio = document.getElementById('audio'); 
+        const audioToggle = document.getElementById('audio-toggle'); 
+        const fsButton = document.getElementById('enter-fullscreen'); 
+        const fsIcon = fsButton ? fsButton.querySelector('i') : null;
+
+        function isFullscreen() { return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement; }
+        function enterFullscreen(el = document.documentElement) { try { if (el.requestFullscreen) el.requestFullscreen(); else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen(); else if (el.msRequestFullscreen) el.msRequestFullscreen(); } catch (_) {} }
+        function exitFullscreen() { if (isFullscreen()) { if (document.exitFullscreen) document.exitFullscreen(); else if (document.webkitExitFullscreen) document.webkitExitFullscreen(); else if (document.msExitFullscreen) document.msExitFullscreen(); } }
+        function toggleFullscreen() { if (!isFullscreen()) enterFullscreen(document.documentElement); else exitFullscreen(); }
+        function updateFullscreenIcon() { if (isFullscreen()) { if(fsIcon) { fsIcon.classList.remove('fa-expand-arrows-alt'); fsIcon.classList.add('fa-compress-arrows-alt'); } } else { if(fsIcon) { fsIcon.classList.remove('fa-compress-arrows-alt'); fsIcon.classList.add('fa-expand-arrows-alt'); } } }
+        
+        if(fsButton) fsButton.addEventListener('click', toggleFullscreen); 
+        document.addEventListener('fullscreenchange', updateFullscreenIcon); document.addEventListener('webkitfullscreenchange', updateFullscreenIcon); document.addEventListener('msfullscreenchange', updateFullscreenIcon);
+
+        // Memutar/Memberhentikan Musik dan Animasinya
+        if(audioToggle) { 
+            audioToggle.addEventListener('click', function () { 
+                if (audio.paused) { 
+                    audio.play(); 
+                    audioToggle.classList.add('rotating'); 
+                } else { 
+                    audio.pause(); 
+                    audioToggle.classList.remove('rotating'); 
+                } 
+            }); 
+        }
+
+        // ==========================================
+        // Logika Buka Undangan (Start Experience)
+        // ==========================================
+        document.getElementById('tombol-buka-undangan').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 1. Eksekusi Fullscreen Otomatis
+            enterFullscreen(document.documentElement);
+            
+            // 2. Play Audio Secara Otomatis
+            if (audio && audio.paused) { 
+                audio.play().catch(err => console.log("Peramban memblokir pemutaran otomatis:", err)); 
+                audioToggle.classList.add('rotating');
+            }
+
+            const btnIcon = this.querySelector('i');
+            const btnText = this.querySelector('span');
+            const contentUndangan = document.getElementById('content-undangan');
+            const profilSection = document.getElementById('profil');
+            
+            // Ubah text tombol 
+            btnText.textContent = 'SCROLL KE BAWAH';
+            btnIcon.classList.remove('fa-envelope-open');
+            btnIcon.classList.add('fa-arrow-down', 'animate-bounce');
+            
+            // Unlock scroll
+            document.body.classList.remove('lock-scroll');
+            document.documentElement.classList.remove('lock-scroll');
+
+            // Munculkan konten undangan
+            if(contentUndangan) {
+                contentUndangan.classList.remove('hidden');
+                contentUndangan.classList.add('flex');
+            }
+
+            // Inisiasi animasi scroll multi-arah
+            initScrollAnimations();
+
+            // Lakukan Scroll perlahan ke bagian profil
+            setTimeout(() => {
+                profilSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        });
+    </script>
+</body>
+</html>
