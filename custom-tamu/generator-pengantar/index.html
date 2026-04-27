@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Pengantar Undangan - Internal Tim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f8fafc; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* CSS Tambahan agar Panel bisa di-scroll terpisah */
+        .panel-scroll {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-6">
+            <h1 class="text-2xl font-bold text-blue-700">Tool Generator Pengantar (Internal)</h1>
+            <p class="text-sm text-slate-500 mt-1">Pilih tab, isi data, dan salin template untuk dikirim ke klien/tamu.</p>
+        </header>
+
+        <div class="mb-6 border-b border-slate-200 overflow-x-auto hide-scrollbar">
+            <div id="wadah-kategori-induk" class="flex gap-6 px-1"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 relative items-start">
+            
+            <div class="lg:col-span-5 bg-white p-5 rounded-xl shadow-sm border border-slate-200 panel-scroll">
+                
+                <div class="mb-5">
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">1. Pilihan Template</label>
+                    <select id="dropdown-salam" class="w-full bg-slate-50 border border-slate-300 text-slate-700 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none cursor-pointer font-medium"></select>
+                </div>
+
+                <hr class="border-slate-100 my-5">
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">2. Detail Data</label>
+                    <div id="wadah-form-input" class="space-y-3"></div>
+                </div>
+
+            </div>
+
+            <div class="lg:col-span-7 bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col h-fit sticky top-6 panel-scroll">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Preview Pesan WhatsApp</label>
+                    <span id="status-copy" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded opacity-0 transition-opacity">✔ Tersalin!</span>
+                </div>
+                
+                <div class="relative flex-grow">
+                    <textarea id="hasil-teks" readonly class="w-full h-full bg-slate-50 border border-slate-200 text-slate-700 rounded-lg p-4 focus:outline-none resize-none min-h-[450px] text-sm leading-relaxed whitespace-pre-wrap font-mono"></textarea>
+                    
+                    <button onclick="salinTeks()" class="absolute top-3 right-3 p-2 bg-white border border-slate-200 text-slate-400 hover:text-blue-600 hover:bg-slate-50 rounded-md shadow-sm transition-all active:scale-95" title="Salin Teks">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    </button>
+                </div>
+                
+                <button onclick="salinTeks()" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-all active:scale-[0.98] flex justify-center items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    Salin Teks ke Clipboard
+                </button>
+            </div>
+
+        </div>
+
+        <div id="tool2-container" style="display: none;">
+            <hr class="border-slate-200 border-dashed border-2 my-10 rounded-full">
+
+            <header class="mb-6">
+                <h2 class="text-xl font-bold text-teal-700">Tool Tutorial Custom Nama Tamu (Untuk Klien)</h2>
+                <p class="text-sm text-slate-500 mt-1">Generate panduan cara mengisi nama tamu di Dashboard Sender Kit untuk dikirim ke Klien.</p>
+            </header>
+
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col h-fit">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Preview Tutorial</label>
+                    <div class="flex items-center gap-2">
+                        <a id="btn-buka-link" href="#" target="_blank" class="text-xs font-bold text-teal-600 bg-teal-50 hover:bg-teal-100 border border-teal-200 px-3 py-1.5 rounded transition-colors flex items-center gap-1" title="Buka Link di Tab Baru">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Buka Link Poin 1
+                        </a>
+                        <span id="status-copy-tutorial" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded opacity-0 transition-opacity">✔ Tersalin!</span>
+                    </div>
+                </div>
+                
+                <div class="relative flex-grow">
+                    <textarea id="hasil-tutorial" readonly class="w-full h-full bg-slate-50 border border-slate-200 text-slate-700 rounded-lg p-4 focus:outline-none resize-none min-h-[350px] text-sm leading-relaxed whitespace-pre-wrap font-mono"></textarea>
+                    
+                    <button onclick="salinTutorial()" class="absolute top-3 right-3 p-2 bg-white border border-slate-200 text-slate-400 hover:text-teal-600 hover:bg-slate-50 rounded-md shadow-sm transition-all active:scale-95" title="Salin Teks">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    </button>
+                </div>
+                
+                <button onclick="salinTutorial()" class="mt-4 w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded-lg transition-all active:scale-[0.98] flex justify-center items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    Salin Tutorial ke Clipboard
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="data-template.js"></script>
+
+    <script>
+        let state = {
+            kategoriAktif: '',
+            salamAktif: '',
+            defaultInput: {
+                "pendek": "Lely & Wedi",
+                "slug": "lely-dan-wedi",
+                "pihak1": "Nurlely Rahmadani, S.Pd.,",
+                "pihak2": "Sarwedi Manullang",
+                "namaAnak": "Budi Santoso",
+                "pendekAnak": "Budi",
+                "namaOrtu": "Bapak Andi & Ibu Ani"
+            },
+            dataInput: {} // Data spesifik per tab agar tidak saling bocor
+        };
+
+        // --- FUNGSI PENGELOLAAN DATA PER-TAB ---
+        function getInputValue(kunci) {
+            if (state.dataInput[state.kategoriAktif] && state.dataInput[state.kategoriAktif][kunci] !== undefined) {
+                return state.dataInput[state.kategoriAktif][kunci];
+            }
+            // Perbaikan nilai default slug berdasarkan tab yang aktif
+            if (kunci === 'slug') {
+                if (state.kategoriAktif === 'Acara Anak' || state.kategoriAktif === 'Birthday') {
+                    return 'budi-santoso';
+                }
+            }
+            return state.defaultInput[kunci];
+        }
+
+        function simpanInput(kunci, nilai) {
+            if (!state.dataInput[state.kategoriAktif]) {
+                state.dataInput[state.kategoriAktif] = {};
+            }
+            state.dataInput[state.kategoriAktif][kunci] = nilai;
+            perbaruiHasil();
+        }
+
+        function toTitleCase(str) {
+            return str.toLowerCase().replace(/\b\w/g, function(txt) {
+                return txt.toUpperCase();
+            });
+        }
+
+        function smartFormatNama(text) {
+            if (!text) return "";
+            let result = toTitleCase(text).trim();
+            if (text.endsWith(',') && !result.endsWith(',')) result += ',';
+            return result.replace(/\s+,/g, ',');
+        }
+
+        function swapPihak() {
+            let p1 = getInputValue('pihak1') || "";
+            let p2 = getInputValue('pihak2') || "";
+            
+            let p1HadComma = p1.endsWith(',');
+            let p2HadComma = p2.endsWith(',');
+            
+            let baseP1 = p1.replace(/,+$/, '').trim();
+            let baseP2 = p2.replace(/,+$/, '').trim();
+            
+            let newP1 = baseP2 + (p1HadComma ? ',' : '');
+            let newP2 = baseP1 + (p2HadComma ? ',' : '');
+            
+            simpanInput('pihak1', newP1);
+            simpanInput('pihak2', newP2);
+            
+            const safeTabId = state.kategoriAktif.replace(/[^a-zA-Z0-9]/g, '');
+            const in1 = document.getElementById(`input-${safeTabId}-pihak1`);
+            const in2 = document.getElementById(`input-${safeTabId}-pihak2`);
+            if(in1) in1.value = newP1;
+            if(in2) in2.value = newP2;
+            
+            perbaruiHasil();
+        }
+
+        function init() {
+            if (typeof DATABASE_TEMPLATE === 'undefined') {
+                alert("File data-template.js tidak ditemukan atau ada error di dalamnya!");
+                return;
+            }
+
+            // Murni mengikuti data pertama di DATABASE_TEMPLATE
+            state.kategoriAktif = Object.keys(DATABASE_TEMPLATE)[0];
+            state.salamAktif = Object.keys(DATABASE_TEMPLATE[state.kategoriAktif].templateSalam)[0];
+
+            renderKategoriInduk();
+            renderDropdownSalam();
+            renderFormInput();
+            perbaruiHasil();
+        }
+
+        function renderKategoriInduk() {
+            const wadah = document.getElementById('wadah-kategori-induk');
+            wadah.innerHTML = '';
+            
+            // Render tab murni berdasarkan urutan di DATABASE_TEMPLATE
+            const finalTabs = Object.keys(DATABASE_TEMPLATE);
+
+            finalTabs.forEach(kategori => {
+                const btn = document.createElement('button');
+                if (state.kategoriAktif === kategori) {
+                    btn.className = "pb-3 border-b-2 border-blue-600 text-blue-700 font-bold whitespace-nowrap text-sm transition-all";
+                } else {
+                    btn.className = "pb-3 border-b-2 border-transparent text-slate-500 font-medium hover:text-slate-800 whitespace-nowrap text-sm transition-all";
+                }
+                btn.innerText = kategori;
+                btn.onclick = () => {
+                    state.kategoriAktif = kategori;
+                    state.salamAktif = Object.keys(DATABASE_TEMPLATE[kategori].templateSalam)[0];
+                    renderKategoriInduk();
+                    renderDropdownSalam();
+                    renderFormInput();
+                    perbaruiHasil();
+                };
+                wadah.appendChild(btn);
+            });
+        }
+
+        function renderDropdownSalam() {
+            const dropdown = document.getElementById('dropdown-salam');
+            dropdown.innerHTML = '';
+            Object.keys(DATABASE_TEMPLATE[state.kategoriAktif].templateSalam).forEach(salam => {
+                const opt = document.createElement('option');
+                opt.value = salam;
+                opt.innerText = salam;
+                if(salam === state.salamAktif) opt.selected = true;
+                dropdown.appendChild(opt);
+            });
+            dropdown.onchange = (e) => {
+                state.salamAktif = e.target.value;
+                perbaruiHasil();
+            };
+        }
+
+        function renderFormInput() {
+            const wadah = document.getElementById('wadah-form-input');
+            wadah.innerHTML = ''; 
+            
+            // Ambil murni apa adanya dari data-template.js tanpa dimanipulasi
+            const kolomDibutuhkan = DATABASE_TEMPLATE[state.kategoriAktif].kolomInput;
+            const safeTabId = state.kategoriAktif.replace(/[^a-zA-Z0-9]/g, '');
+
+            kolomDibutuhkan.forEach(kunci => {
+                const config = KAMUS_INPUT[kunci];
+                if (!config) return;
+
+                // pihak2 di-skip karena digambar bersamaan dengan pihak1 dalam 1 komponen
+                if (kunci === 'pihak2') return;
+
+                const div = document.createElement('div');
+                div.className = "flex flex-col mb-2";
+
+                const label = document.createElement('label');
+                label.className = "text-xs font-semibold text-slate-600 mb-1";
+                label.htmlFor = `input-${safeTabId}-${kunci}`; 
+                label.innerText = config.label; // Murni mengambil label dari KAMUS_INPUT
+                
+                div.appendChild(label);
+
+                // --- EKSEKUSI RENDER ---
+                let renderType = config.type;
+                let renderOpsi = config.opsi ? [...config.opsi] : [];
+
+                if (renderType === 'dropdown' || renderType === 'dropdown_custom' || renderType === 'dropdown_custom_tamu') {
+                    const select = document.createElement('select');
+                    select.id = `input-${safeTabId}-${kunci}-select`;
+                    select.className = "w-full bg-slate-50 border border-slate-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none";
+
+                    renderOpsi.forEach(opsiText => {
+                        const opt = document.createElement('option');
+                        opt.value = opsiText;
+                        if (renderType === 'dropdown_custom_tamu' && opsiText === "") {
+                            opt.innerText = "-- Kosongkan (Default) --";
+                        } else {
+                            opt.innerText = opsiText;
+                        }
+                        select.appendChild(opt);
+                    });
+
+                    const customInput = document.createElement('input');
+                    customInput.type = "text";
+                    customInput.id = `input-${safeTabId}-${kunci}-custom`;
+                    customInput.placeholder = (kunci === 'tamu') ? "Ketik nama tamu undangan..." : "Ketik custom...";
+                    customInput.className = "w-full bg-white border border-blue-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 outline-none mt-2 hidden";
+
+                    let currentVal = getInputValue(kunci);
+                    let isCustomValue = (renderType === 'dropdown_custom' || renderType === 'dropdown_custom_tamu') && !renderOpsi.includes(currentVal) && currentVal !== undefined && currentVal !== "";
+                    
+                    if (currentVal === undefined || (!renderOpsi.includes(currentVal) && !isCustomValue)) {
+                        currentVal = renderOpsi[0];
+                        simpanInput(kunci, currentVal);
+                    }
+
+                    if (renderOpsi.includes(currentVal)) {
+                        select.value = currentVal;
+                    } else if (renderType === 'dropdown_custom' || renderType === 'dropdown_custom_tamu') {
+                        select.value = "Custom (isi sendiri)";
+                        customInput.value = currentVal;
+                        customInput.classList.remove('hidden');
+                    }
+
+                    select.onchange = (e) => {
+                        if ((renderType === 'dropdown_custom' || renderType === 'dropdown_custom_tamu') && e.target.value === "Custom (isi sendiri)") {
+                            customInput.classList.remove('hidden');
+                            simpanInput(kunci, customInput.value);
+                            customInput.focus();
+                        } else {
+                            if (renderType === 'dropdown_custom' || renderType === 'dropdown_custom_tamu') customInput.classList.add('hidden');
+                            simpanInput(kunci, e.target.value);
+                        }
+                    };
+
+                    customInput.oninput = (e) => simpanInput(kunci, e.target.value);
+
+                    div.appendChild(select);
+                    if (renderType === 'dropdown_custom' || renderType === 'dropdown_custom_tamu') div.appendChild(customInput);
+                
+                } else if (kunci === 'pihak1') {
+                    const flexRow = document.createElement('div');
+                    flexRow.className = "flex items-center gap-2";
+
+                    const in1 = document.createElement('input');
+                    in1.type = "text";
+                    in1.id = `input-${safeTabId}-pihak1`;
+                    in1.placeholder = KAMUS_INPUT['pihak1'].placeholder;
+                    in1.className = "w-full bg-slate-50 border border-slate-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 outline-none";
+                    in1.value = getInputValue('pihak1') || "";
+                    
+                    in1.oninput = (e) => simpanInput('pihak1', e.target.value);
+                    in1.onblur = (e) => {
+                        let fmt = smartFormatNama(e.target.value);
+                        e.target.value = fmt;
+                        simpanInput('pihak1', fmt);
+                    };
+
+                    const btnSwap = document.createElement('button');
+                    btnSwap.innerHTML = "🔁";
+                    btnSwap.className = "p-2 bg-slate-100 hover:bg-blue-100 rounded-md border border-slate-300 transition-all text-sm shadow-sm flex-shrink-0";
+                    btnSwap.title = "Tukar Posisi Nama";
+                    btnSwap.onclick = swapPihak;
+
+                    const in2 = document.createElement('input');
+                    in2.type = "text";
+                    in2.id = `input-${safeTabId}-pihak2`;
+                    in2.placeholder = KAMUS_INPUT['pihak2'].placeholder;
+                    in2.className = "w-full bg-slate-50 border border-slate-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 outline-none";
+                    in2.value = getInputValue('pihak2') || "";
+                    
+                    in2.oninput = (e) => simpanInput('pihak2', e.target.value);
+                    in2.onblur = (e) => {
+                        let fmt = smartFormatNama(e.target.value);
+                        e.target.value = fmt;
+                        simpanInput('pihak2', fmt);
+                    };
+
+                    flexRow.appendChild(in1);
+                    flexRow.appendChild(btnSwap);
+                    flexRow.appendChild(in2);
+                    div.appendChild(flexRow);
+
+                } else {
+                    const input = document.createElement('input');
+                    input.type = "text";
+                    input.id = `input-${safeTabId}-${kunci}`;
+                    input.placeholder = config.placeholder;
+                    input.className = "w-full bg-slate-50 border border-slate-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none";
+                    if(getInputValue(kunci)) input.value = getInputValue(kunci);
+
+                    input.oninput = (e) => {
+                        if (kunci === 'pendek' || kunci === 'namaAnak' || kunci === 'namaOrtu' || kunci === 'pendekAnak') {
+                            let start = e.target.selectionStart;
+                            let formatted = toTitleCase(e.target.value);
+                            e.target.value = formatted;
+                            e.target.setSelectionRange(start, start);
+                            simpanInput(kunci, formatted);
+
+                            if (kolomDibutuhkan.includes('slug')) {
+                                // Logika penentuan apakah slug perlu diupdate otomatis
+                                let triggerSlug = false;
+                                if ((state.kategoriAktif === 'Wedding' || state.kategoriAktif === 'Pernikahan') && kunci === 'pendek') {
+                                    triggerSlug = true;
+                                } else if ((state.kategoriAktif === 'Acara Anak' || state.kategoriAktif === 'Birthday') && kunci === 'namaAnak') {
+                                    // Slug di Acara Anak dan Birthday selalu mengambil nilai dari "Nama Panjang Anak"
+                                    triggerSlug = true;
+                                } else if (!['Wedding', 'Pernikahan', 'Acara Anak', 'Birthday'].includes(state.kategoriAktif) && kunci === 'pendek') {
+                                    triggerSlug = true;
+                                }
+
+                                if (triggerSlug) {
+                                    const slugInput = document.getElementById(`input-${safeTabId}-slug`);
+                                    if (slugInput && !getInputValue('slug_manual')) {
+                                        const autoSlug = e.target.value.toLowerCase().replace(/&/g, 'dan').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                                        slugInput.value = autoSlug;
+                                        simpanInput('slug', autoSlug);
+                                    }
+                                }
+                            }
+                        } else {
+                            simpanInput(kunci, e.target.value);
+                            if (kunci === 'slug') simpanInput('slug_manual', true);
+                        }
+                    };
+                    div.appendChild(input);
+                }
+                wadah.appendChild(div);
+            });
+        }
+
+        function perbaruiHasil() {
+            let teksMentah = DATABASE_TEMPLATE[state.kategoriAktif].templateSalam[state.salamAktif] || "";
+            const kolomDibutuhkan = DATABASE_TEMPLATE[state.kategoriAktif].kolomInput;
+
+            kolomDibutuhkan.forEach(kunci => {
+                let nilai = getInputValue(kunci);
+
+                if (kunci === 'tamu') {
+                    nilai = (nilai && nilai.trim() !== '') ? nilai : 'Tamu Undangan';
+                } else if (!nilai && nilai !== "") {
+                    nilai = `[${kunci}]`;
+                }
+
+                const regex = new RegExp(`\\[${kunci}\\]`, 'g');
+                teksMentah = teksMentah.replace(regex, nilai);
+            });
+
+            const tamuInput = getInputValue('tamu');
+            if (tamuInput && tamuInput.trim() !== '') {
+                const tamuUrl = encodeURIComponent(tamuInput.trim());
+                teksMentah = teksMentah.replace(/\[tamu_url\]/g, tamuUrl);
+            } else {
+                teksMentah = teksMentah.replace(/\?to=\[tamu_url\]/g, "");
+                teksMentah = teksMentah.replace(/\[tamu_url\]/g, ""); 
+            }
+
+            document.getElementById('hasil-teks').value = teksMentah;
+            
+            // Panggil fungsi sinkronisasi Tutorial Tool 2 secara live
+            perbaruiTutorial();
+        }
+
+        function salinTeks() {
+            const textarea = document.getElementById('hasil-teks');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999);
+            try {
+                navigator.clipboard.writeText(textarea.value).then(tampilkanNotifCopy);
+            } catch (err) {
+                document.execCommand('copy');
+                tampilkanNotifCopy();
+            }
+        }
+
+        function tampilkanNotifCopy() {
+            const notif = document.getElementById('status-copy');
+            notif.classList.remove('opacity-0');
+            setTimeout(() => notif.classList.add('opacity-0'), 2000);
+        }
+
+        // --- FUNGSI TOOL 2: TUTORIAL CUSTOM NAMA TAMU ---
+        function perbaruiTutorial() {
+            const tool2Container = document.getElementById('tool2-container');
+            
+            // Logika Smart Hide: Tampilkan di tab Wedding, Acara Anak, atau Birthday
+            if (tool2Container) {
+                if (state.kategoriAktif === 'Wedding' || state.kategoriAktif === 'Pernikahan' || state.kategoriAktif === 'Acara Anak' || state.kategoriAktif === 'Birthday') {
+                    tool2Container.style.display = 'block';
+                } else {
+                    tool2Container.style.display = 'none';
+                    return; 
+                }
+            }
+
+            // Base Utama Link (Sama untuk semua tab, parameter link= tetap ada agar sender kit terhubung)
+            let domain = getInputValue('domain') || "web.undangandari.com";
+            if (!domain.startsWith('http')) domain = 'https://' + domain;
+            const slug = getInputValue('slug') || "slug-undangan";
+            const dashboardBaseUrl = "https://web.undangandari.com/custom-tamu/";
+            const baseLinkParam = `link=${domain}/${slug}`;
+            
+            let tutorialText = "";
+            let generatedLink = "";
+
+            // ====== CABANG LOGIKA 1: WEDDING ======
+            if (state.kategoriAktif === 'Wedding' || state.kategoriAktif === 'Pernikahan') {
+                let namaPendek = getInputValue('pendek') || "Nama";
+                const namaPendekEncoded = encodeURIComponent(namaPendek);
+                
+                let p1 = getInputValue('pihak1') || "Mempelai 1";
+                let p2 = getInputValue('pihak2') || "Mempelai 2";
+                let namaLengkap = `${p1} & ${p2}`;
+                const namaLengkapEncoded = encodeURIComponent(namaLengkap);
+
+                let namaAcara = getInputValue('acara') || "Pernikahan";
+                let idAcara = "1"; 
+                if (namaAcara === "Pernikahan") idAcara = "1";
+                else if (namaAcara === "Ngunduh Mantu") idAcara = "2";
+                else if (namaAcara === "The Wedding of") idAcara = "3";
+                else if (namaAcara === "Resepsi Pernikahan") idAcara = "4";
+                else idAcara = encodeURIComponent(namaAcara); 
+
+                let templateId = "muslim";
+                let templateName = "Muslim";
+
+                if (state.salamAktif === "Islam" || state.salamAktif === "Muslim") { templateId = "muslim"; templateName = "Muslim"; }
+                else if (state.salamAktif === "Kristen") { templateId = "kristen"; templateName = "Kristen"; }
+                else if (state.salamAktif === "Hindu") { templateId = "hindu"; templateName = "Hindu"; }
+                else if (state.salamAktif === "Formal") { templateId = "formal"; templateName = "Formal"; }
+                else if (state.salamAktif === "English") { templateId = "english"; templateName = "English"; }
+
+                generatedLink = `${dashboardBaseUrl}?${baseLinkParam}&tab=wedding&mempelai=${namaPendekEncoded}&namaLengkap=${namaLengkapEncoded}&acara=${idAcara}&template=${templateId}`;
+
+                tutorialText = `Cara membuat custom nama tamu: 𓂃🪶📝\n\n[1] Kakak klik link yang admin bagikan dibawah ini\n\n${generatedLink}\n\n[2] Kakak tuliskan semua nama tamu di kolom Nama Tamu\n[3] Kakak pastikan nama mempelai terisi *${namaLengkap}* di kolom Nama Mempelai\n[4] Kakak pilih opsi "${templateName}" untuk mengundang pakai kata pengantar khusus ${templateName}\n[5] Kakak klik tombol "Generate Nama Tamu"\n[6] Kakak klik tombol share "Whatsapp" atau bisa juga salin text`;
+            }
+            
+            // ====== CABANG LOGIKA 2: ACARA ANAK ======
+            else if (state.kategoriAktif === 'Acara Anak') {
+                let namaAnak = getInputValue('namaAnak') || "Nama Anak";
+                const namaAnakEncoded = encodeURIComponent(namaAnak);
+                
+                let namaOrtu = getInputValue('namaOrtu') || "Nama Ortu";
+                const namaOrtuEncoded = encodeURIComponent(namaOrtu);
+
+                let templateName = state.salamAktif || "Khitan";
+                let templateId = "khitan";
+                
+                if (templateName === "Khitan") templateId = "khitan";
+                else if (templateName === "Aqiqah") templateId = "aqiqah";
+                else if (templateName === "Tasyakuran") templateId = "tasyakuran";
+                else if (templateName === "Nelu Bulanin (Hindu)") templateId = "nelubulanin";
+                else templateId = encodeURIComponent(templateName.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
+
+                generatedLink = `${dashboardBaseUrl}?${baseLinkParam}&tab=anak&anak=${namaAnakEncoded}&ortu=${namaOrtuEncoded}&template=${templateId}`;
+
+                tutorialText = `Cara membuat custom nama tamu: 𓂃🪶📝\n\n[1] Kakak klik link yang admin bagikan dibawah ini\n\n${generatedLink}\n\n[2] Kakak tuliskan semua nama tamu di kolom Nama Tamu\n[3] Kakak pastikan isian sudah sesuai (Nama Anak: *${namaAnak}*, Orang Tua: *${namaOrtu}*)\n[4] Kakak pilih opsi "${templateName}" untuk menggunakan kata pengantar ${templateName}\n[5] Kakak klik tombol "Generate Nama Tamu"\n[6] Kakak klik tombol share "Whatsapp" atau bisa juga salin text`;
+            }
+
+            // ====== CABANG LOGIKA 3: BIRTHDAY ======
+            else if (state.kategoriAktif === 'Birthday') {
+                let namaAnak = getInputValue('namaAnak') || "Nama Anak";
+                const namaAnakEncoded = encodeURIComponent(namaAnak);
+
+                let pendekAnak = getInputValue('pendekAnak') || namaAnak;
+                const pendekAnakEncoded = encodeURIComponent(pendekAnak);
+                
+                let namaOrtu = getInputValue('namaOrtu') || "Nama Ortu";
+                const namaOrtuEncoded = encodeURIComponent(namaOrtu);
+
+                let templateName = state.salamAktif || "Ultah Anak";
+                let templateId = "birthday-anak";
+                
+                if (templateName === "Ultah Anak Islami Formal") templateId = "birthday-islami";
+                else if (templateName === "Ultah Anak") templateId = "birthday-anak";
+                else if (templateName === "Ultah Anak Kristen Formal") templateId = "birthday-kristen";
+                else templateId = "birthday-anak";
+
+                generatedLink = `${dashboardBaseUrl}?${baseLinkParam}&tab=birthday&anak=${namaAnakEncoded}&panggilan=${pendekAnakEncoded}&ortu=${namaOrtuEncoded}&template=${templateId}`;
+
+                tutorialText = `Cara membuat custom nama tamu: 𓂃🪶📝\n\n[1] Kakak klik link yang admin bagikan dibawah ini\n\n${generatedLink}\n\n[2] Kakak tuliskan semua nama tamu di kolom Nama Tamu\n[3] Kakak pastikan isian sudah sesuai (Nama Panggilan: *${pendekAnak}*, Orang Tua: *${namaOrtu}*)\n[4] Kakak pilih opsi "${templateName}" untuk menggunakan kata pengantar ${templateName}\n[5] Kakak klik tombol "Generate Nama Tamu"\n[6] Kakak klik tombol share "Whatsapp" atau bisa juga salin text`;
+            }
+
+            document.getElementById('hasil-tutorial').value = tutorialText;
+            
+            const btnBukaLink = document.getElementById('btn-buka-link');
+            if (btnBukaLink) btnBukaLink.href = generatedLink;
+        }
+
+        function salinTutorial() {
+            const textarea = document.getElementById('hasil-tutorial');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999);
+            try {
+                navigator.clipboard.writeText(textarea.value).then(() => {
+                    const notif = document.getElementById('status-copy-tutorial');
+                    notif.classList.remove('opacity-0');
+                    setTimeout(() => notif.classList.add('opacity-0'), 2000);
+                });
+            } catch (err) {
+                document.execCommand('copy');
+            }
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
