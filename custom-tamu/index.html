@@ -1,1 +1,966 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Custom Nama Tamu</title>
+    <meta name="description" content="Solusi praktis dan cepat membuat serta membagikan link undangan digital dengan nama tamu yang dikhususkan. Tanpa ribet, langsung kirim via WhatsApp!">
+    
+    <!-- Open Graph / WhatsApp / Facebook Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dashboard Custom Nama Tamu">
+    <meta property="og:description" content="Solusi praktis dan cepat membuat serta membagikan link undangan digital dengan nama tamu yang dikhususkan. Tanpa ribet, langsung kirim via WhatsApp!">
+    <meta property="og:image" content="https://ik.imagekit.io/undangandigital/general/preview-custom-nama-tamu.jpeg">
+    
+    <!-- Twitter Preview -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Dashboard Custom Nama Tamu">
+    <meta property="twitter:description" content="Solusi praktis dan cepat membuat serta membagikan link undangan digital dengan nama tamu yang dikhususkan. Tanpa ribet, langsung kirim via WhatsApp!">
+    <meta property="twitter:image" content="https://ik.imagekit.io/undangandigital/general/preview-custom-nama-tamu.jpeg">
+    
+    <!-- Tailwind CSS for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Tailwind Configuration for Original Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#1a1a24',      
+                            card: '#292938',      
+                            accent: '#4cb5f9',    
+                            purple: '#b066ff',    
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #1a1a24; 
+            color: #ffffff;
+        }
+        .hero-bg-overlay {
+            background: linear-gradient(to right, rgba(30, 30, 40, 0.95), rgba(45, 35, 60, 0.85));
+        }
+        .glass-glow {
+            border: 2px solid #4cb5f9;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(76, 181, 249, 0.1);
+        }
+        .shape-divider svg {
+            fill: #1a1a24;
+            width: 100%;
+            height: 80px;
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a24; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #4cb5f9; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3ba4e8; }
+        @media (max-width: 768px) {
+            .shape-divider svg { height: 40px; }
+        }
+        
+        /* Hide scrollbar for category menu */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative pb-20 md:pb-0">
+
+    <!-- Main Header Section -->
+    <header id="main-header" class="relative w-full pt-16 pb-32 md:pt-24 md:pb-48 bg-[#1f1e2e] flex flex-col items-center justify-center overflow-hidden z-10 transition-all duration-300">
+        <div class="relative w-[90%] max-w-5xl overflow-hidden glass-glow mx-auto z-20">
+            <div class="absolute inset-0 bg-[url('https://ik.imagekit.io/undangandigital/general/hero-custom-nama-tamu.webp')] bg-cover bg-center bg-no-repeat"></div>
+            <div class="absolute inset-0 hero-bg-overlay"></div>
+            <div class="relative z-30 px-6 py-16 md:py-24 flex flex-col items-center text-center">
+                <p class="text-gray-300 text-sm md:text-base tracking-[0.2em] uppercase mb-4">
+                    Custom Nama Tamu
+                </p>
+                <h1 class="font-serif text-4xl md:text-6xl lg:text-[64px] font-bold leading-tight mb-6 text-white drop-shadow-md">
+                    Dashboard 
+                    <span class="bg-gradient-to-r from-[#c084fc] to-[#a855f7] text-transparent bg-clip-text">
+                        Kirim
+                    </span> 
+                    Undangan
+                </h1>
+                <p class="text-gray-300 text-sm md:text-base lg:text-lg max-w-4xl leading-relaxed md:leading-loose font-medium px-4">
+                    Solusi praktis dan cepat untuk langsung mengirim undangan ke tamu tanpa ribet! Hanya dengan satu klik, undangan bisa langsung terkirim ke WhatsApp atau cukup copy link undangan untuk dibagikan ke mana saja.
+                </p>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full shape-divider translate-y-[1px]">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="elementor-shape-fill" d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow bg-brand-dark px-4 py-8 -mt-12 relative z-20 transition-all duration-300">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Kategori Acara Horizontal Menu (TAB UTAMA) - Konten Render via JS -->
+            <div id="app-category-menu" class="mb-8 overflow-hidden rounded-2xl bg-[#292938]/50 border border-white/5 p-2 shadow-lg backdrop-blur-sm transition-all duration-300">
+                <div id="category-container" class="flex gap-2 overflow-x-auto no-scrollbar scroll-smooth items-center px-1">
+                    <!-- Tombol kategori akan digenerate otomatis di sini -->
+                </div>
+            </div>
+
+            <!-- Desktop Tabs Menu (Kirim vs Tutorial) -->
+            <div class="hidden md:flex justify-center mb-8 sticky top-4 z-50 bg-[#292938]/90 backdrop-blur-md p-1.5 rounded-xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] mx-auto w-fit">
+                <button id="btn-tab-kirim-desktop" onclick="switchTab('kirim')" class="px-6 py-2.5 rounded-lg font-bold transition-all bg-[#4cb5f9] text-[#1a1a24] shadow-md">
+                    <i class="fa-regular fa-paper-plane mr-2"></i> Kirim Undangan
+                </button>
+                <button id="btn-tab-tutorial-desktop" onclick="switchTab('tutorial')" class="px-6 py-2.5 rounded-lg font-bold transition-all bg-transparent text-gray-400 hover:text-white hover:bg-white/5 opacity-80 hover:opacity-100">
+                    <i class="fa-solid fa-book-open mr-2"></i> Cara Kirim Undangan
+                </button>
+            </div>
+
+            <!-- TAB CONTENT 1: KIRIM UNDANGAN -->
+            <div id="tab-kirim-content" class="block transition-opacity duration-300">
+                <section class="bg-brand-card rounded-3xl p-6 md:p-8 shadow-2xl border border-white/5">
+                    
+                    <!-- ============================================== -->
+                    <!-- WADAH FORM WEDDING -->
+                    <!-- ============================================== -->
+                    <div id="form-wedding" class="hidden">
+                        <!-- Kolom 1 : Nama Tamu -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.05)] relative overflow-hidden group transition-all hover:border-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]">
+                            <label for="wedding-namaTamuInput" class="block text-blue-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400"><i class="fa-solid fa-users text-sm"></i></div>
+                                Kolom 1 : Nama Tamu Undangan
+                            </label>
+                            <textarea id="wedding-namaTamuInput" rows="4" class="w-full bg-[#1a1a24]/80 border border-blue-500/30 rounded-xl p-4 text-white focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-all duration-300 placeholder-gray-500 resize-y" placeholder="Bisa diisi dengan banyak nama tamu sekaligus (Enter untuk baris baru)" required></textarea>
+                            <div id="error-message-wedding" class="text-red-400 text-sm mt-2 font-medium"></div>
+                        </div>
+
+                        <!-- Kolom 2 : Nama Panggilan -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-pink-900/20 to-transparent border border-pink-500/40 shadow-[0_0_15px_rgba(236,72,153,0.05)] relative overflow-hidden group transition-all hover:border-pink-400 hover:shadow-[0_0_20px_rgba(236,72,153,0.15)]">
+                            <label for="wedding-namaMempelaiInput" class="block text-pink-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400"><i class="fa-solid fa-heart text-sm"></i></div>
+                                Kolom 2 : Nama Panggilan Mempelai
+                            </label>
+                            <input type="text" id="wedding-namaMempelaiInput" class="w-full bg-[#1a1a24]/80 border border-pink-500/30 rounded-xl p-4 text-white focus:border-pink-400 focus:ring-1 focus:ring-pink-400 outline-none transition-all placeholder-gray-500" placeholder="Contoh: Cole & Lisa">
+                        </div>
+
+                        <!-- Kolom Tambahan : Nama Lengkap -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-orange-900/20 to-transparent border border-orange-500/40 shadow-[0_0_15px_rgba(249,115,22,0.05)] relative overflow-hidden group transition-all hover:border-orange-400 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)]">
+                            <label for="wedding-namaLengkapInput" class="block text-orange-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400"><i class="fa-solid fa-address-card text-sm"></i></div>
+                                Kolom Tambahan : Nama Lengkap Mempelai
+                            </label>
+                            <input type="text" id="wedding-namaLengkapInput" class="w-full bg-[#1a1a24]/80 border border-orange-500/30 rounded-xl p-4 text-white focus:border-orange-400 focus:ring-1 focus:ring-orange-400 outline-none transition-all placeholder-gray-500" placeholder="Contoh: Nurlely Rahmadani, S.Pd., & Sarwedi Manullang">
+                        </div>
+
+                        <!-- Kolom 3 : Jenis Acara -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-purple-900/20 to-transparent border border-purple-500/40 shadow-[0_0_15px_rgba(168,85,247,0.05)] relative overflow-hidden group transition-all hover:border-purple-400 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)]">
+                            <label for="wedding-jenisAcara" class="block text-purple-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400"><i class="fa-solid fa-champagne-glasses text-sm"></i></div>
+                                Kolom 3 : Jenis Acara
+                            </label>
+                            <div class="relative">
+                                <!-- Option list rendered by JS -->
+                                <select id="wedding-jenisAcara" class="w-full bg-[#1a1a24]/80 border border-purple-500/30 rounded-xl p-4 text-white focus:border-purple-400 focus:ring-1 focus:ring-purple-400 outline-none transition-all appearance-none cursor-pointer" onchange="toggleCustomAcara('wedding')"></select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400"><i class="fa-solid fa-chevron-down"></i></div>
+                            </div>
+                            <input type="text" id="wedding-customAcaraInput" class="hidden mt-3 w-full bg-[#1a1a24]/80 border border-purple-500/30 rounded-xl p-4 text-white focus:border-purple-400 focus:ring-1 focus:ring-purple-400 outline-none transition-all placeholder-gray-500" placeholder="Ketik jenis acara Anda di sini (misal: Walimatul Ursy)">
+                        </div>
+
+                        <!-- Kolom 4 : Teks Pengantar -->
+                        <div class="mb-8 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-emerald-900/20 to-transparent border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.05)] relative overflow-hidden group transition-all hover:border-emerald-400 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+                            <label for="wedding-teksPengantar" class="block text-emerald-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-envelope-open-text text-sm"></i></div>
+                                Kolom 4 : Pilih Teks Pengantar
+                            </label>
+                            <div class="relative">
+                                <!-- Option list rendered by JS -->
+                                <select id="wedding-teksPengantar" class="w-full bg-[#1a1a24]/80 border border-emerald-500/30 rounded-xl p-4 text-white focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 outline-none transition-all appearance-none cursor-pointer" onchange="changeTemplate('wedding')"></select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400"><i class="fa-solid fa-chevron-down"></i></div>
+                            </div>
+
+                            <div class="mt-8 border-t border-emerald-500/20 pt-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <label for="wedding-toggle-editor" class="text-emerald-200 font-semibold flex items-center gap-2 cursor-pointer mb-0">
+                                        <i class="fa-solid fa-pen-nib text-emerald-400 ml-1"></i> Edit Teks Pengantar (opsional)
+                                    </label>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="wedding-toggle-editor" class="sr-only peer" onchange="toggleEditor('wedding')">
+                                        <div class="w-11 h-6 bg-[#1a1a24] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-gray-400 peer-checked:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 border border-emerald-500/30"></div>
+                                    </label>
+                                </div>
+                                
+                                <div id="wedding-editor-container" class="hidden transition-all duration-300">
+                                    <div class="flex gap-2 mb-3">
+                                        <button onclick="applyFormatting('wedding', 'bold')" class="bg-[#1a1a24]/80 hover:bg-[#3f3f5a] border border-emerald-500/30 text-emerald-300 w-10 h-10 rounded-lg flex items-center justify-center transition-colors"><i class="fa-solid fa-bold"></i></button>
+                                        <button onclick="applyFormatting('wedding', 'italic')" class="bg-[#1a1a24]/80 hover:bg-[#3f3f5a] border border-emerald-500/30 text-emerald-300 w-10 h-10 rounded-lg flex items-center justify-center transition-colors"><i class="fa-solid fa-italic"></i></button>
+                                    </div>
+                                    <textarea id="wedding-teksPengantarPreview" rows="10" class="w-full bg-[#1a1a24]/80 border border-emerald-500/30 rounded-xl p-4 text-gray-200 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 outline-none transition-all resize-y leading-relaxed" oninput="saveManualEdit('wedding')"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================== -->
+                    <!-- WADAH FORM ACARA ANAK -->
+                    <!-- ============================================== -->
+                    <div id="form-anak" class="hidden">
+                        <!-- Kolom 1 : Nama Tamu -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.05)] relative overflow-hidden group transition-all hover:border-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]">
+                            <label for="anak-namaTamuInput" class="block text-blue-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400"><i class="fa-solid fa-users text-sm"></i></div>
+                                Kolom 1 : Nama Tamu Undangan
+                            </label>
+                            <textarea id="anak-namaTamuInput" rows="4" class="w-full bg-[#1a1a24]/80 border border-blue-500/30 rounded-xl p-4 text-white focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-all duration-300 placeholder-gray-500 resize-y" placeholder="Bisa diisi dengan banyak nama tamu sekaligus (Enter untuk baris baru)" required></textarea>
+                            <div id="error-message-anak" class="text-red-400 text-sm mt-2 font-medium"></div>
+                        </div>
+
+                        <!-- Kolom 2 : Nama Anak -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-pink-900/20 to-transparent border border-pink-500/40 shadow-[0_0_15px_rgba(236,72,153,0.05)] relative overflow-hidden group transition-all hover:border-pink-400 hover:shadow-[0_0_20px_rgba(236,72,153,0.15)]">
+                            <label for="anak-namaAnakInput" class="block text-pink-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400"><i class="fa-solid fa-child-reaching text-sm"></i></div>
+                                Kolom 2 : Nama Anak
+                            </label>
+                            <input type="text" id="anak-namaAnakInput" class="w-full bg-[#1a1a24]/80 border border-pink-500/30 rounded-xl p-4 text-white focus:border-pink-400 focus:ring-1 focus:ring-pink-400 outline-none transition-all placeholder-gray-500" placeholder="Contoh: Rayyanza Malik Ahmad">
+                        </div>
+
+                        <!-- Kolom Tambahan : Nama Ortu -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-orange-900/20 to-transparent border border-orange-500/40 shadow-[0_0_15px_rgba(249,115,22,0.05)] relative overflow-hidden group transition-all hover:border-orange-400 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)]">
+                            <label for="anak-namaOrtuInput" class="block text-orange-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400"><i class="fa-solid fa-person-breastfeeding text-sm"></i></div>
+                                Kolom Tambahan : Nama Orang Tua
+                            </label>
+                            <input type="text" id="anak-namaOrtuInput" class="w-full bg-[#1a1a24]/80 border border-orange-500/30 rounded-xl p-4 text-white focus:border-orange-400 focus:ring-1 focus:ring-orange-400 outline-none transition-all placeholder-gray-500" placeholder="Contoh: Raffi Ahmad & Nagita Slavina">
+                        </div>
+
+                        <!-- Kolom 3 : Teks Pengantar -->
+                        <div class="mb-8 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-emerald-900/20 to-transparent border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.05)] relative overflow-hidden group transition-all hover:border-emerald-400 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+                            <label for="anak-teksPengantar" class="block text-emerald-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-envelope-open-text text-sm"></i></div>
+                                Kolom 3 : Pilih Teks Pengantar
+                            </label>
+                            <div class="relative">
+                                <!-- Option list rendered by JS -->
+                                <select id="anak-teksPengantar" class="w-full bg-[#1a1a24]/80 border border-emerald-500/30 rounded-xl p-4 text-white focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 outline-none transition-all appearance-none cursor-pointer" onchange="changeTemplate('anak')"></select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400"><i class="fa-solid fa-chevron-down"></i></div>
+                            </div>
+
+                            <div class="mt-8 border-t border-emerald-500/20 pt-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <label for="anak-toggle-editor" class="text-emerald-200 font-semibold flex items-center gap-2 cursor-pointer mb-0">
+                                        <i class="fa-solid fa-pen-nib text-emerald-400 ml-1"></i> Edit Teks Pengantar (opsional)
+                                    </label>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="anak-toggle-editor" class="sr-only peer" onchange="toggleEditor('anak')">
+                                        <div class="w-11 h-6 bg-[#1a1a24] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-gray-400 peer-checked:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 border border-emerald-500/30"></div>
+                                    </label>
+                                </div>
+                                
+                                <div id="anak-editor-container" class="hidden transition-all duration-300">
+                                    <div class="flex gap-2 mb-3">
+                                        <button onclick="applyFormatting('anak', 'bold')" class="bg-[#1a1a24]/80 hover:bg-[#3f3f5a] border border-emerald-500/30 text-emerald-300 w-10 h-10 rounded-lg flex items-center justify-center transition-colors"><i class="fa-solid fa-bold"></i></button>
+                                        <button onclick="applyFormatting('anak', 'italic')" class="bg-[#1a1a24]/80 hover:bg-[#3f3f5a] border border-emerald-500/30 text-emerald-300 w-10 h-10 rounded-lg flex items-center justify-center transition-colors"><i class="fa-solid fa-italic"></i></button>
+                                    </div>
+                                    <textarea id="anak-teksPengantarPreview" rows="10" class="w-full bg-[#1a1a24]/80 border border-emerald-500/30 rounded-xl p-4 text-gray-200 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 outline-none transition-all resize-y leading-relaxed" oninput="saveManualEdit('anak')"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================== -->
+                    <!-- WADAH FORM BIRTHDAY -->
+                    <!-- ============================================== -->
+                    <div id="form-birthday" class="hidden">
+                        <!-- Kolom 1 : Nama Tamu -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.05)] relative overflow-hidden group transition-all hover:border-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]">
+                            <label for="birthday-namaTamuInput" class="block text-blue-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400"><i class="fa-solid fa-users text-sm"></i></div>
+                                Kolom 1 : Nama Tamu Undangan
+                            </label>
+                            <textarea id="birthday-namaTamuInput" rows="4" class="w-full bg-[#1a1a24]/80 border border-blue-500/30 rounded-xl p-4 text-white focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none transition-all duration-300 placeholder-gray-500 resize-y" placeholder="Bisa diisi dengan banyak nama tamu sekaligus (Enter untuk baris baru)" required></textarea>
+                            <div id="error-message-birthday" class="text-red-400 text-sm mt-2 font-medium"></div>
+                        </div>
+
+                        <!-- Kolom 2 : Nama Lengkap Anak -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-pink-900/20 to-transparent border border-pink-500/40 shadow-[0_0_15px_rgba(236,72,153,0.05)] relative overflow-hidden group transition-all hover:border-pink-400 hover:shadow-[0_0_20px_rgba(236,72,153,0.15)]">
+                            <label for="birthday-namaAnakInput" class="block text-pink-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400"><i class="fa-solid fa-child text-sm"></i></div>
+                                Kolom 2 : Nama Lengkap Anak
+                            </label>
+                            <input type="text" id="birthday-namaAnakInput" class="w-full bg-[#1a1a24]/80 border border-pink-500/30 rounded-xl p-4 text-white focus:border-pink-400 focus:ring-1 focus:ring-pink-400 outline-none transition-all placeholder-gray-500" placeholder="Contoh: Rayyanza Malik Ahmad">
+                        </div>
+
+                        <!-- Kolom 3 : Nama Panggilan Anak -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-yellow-900/20 to-transparent border border-yellow-500/40 shadow-[0_0_15px_rgba(234,179,8,0.05)] relative overflow-hidden group transition-all hover:border-yellow-400 hover:shadow-[0_0_20px_rgba(234,179,8,0.15)]">
+                            <label for="birthday-namaPanggilanInput" class="block text-yellow-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400"><i class="fa-solid fa-tag text-sm"></i></div>
+                                Kolom 3 : Nama Panggilan Anak
+                            </label>
+                            <input type="text" id="birthday-namaPanggilanInput" class="w-full bg-[#1a1a24]/80 border border-yellow-500/30 rounded-xl p-4 text-white focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none transition-all placeholder-gray-500" placeholder="Contoh: Cipung">
+                        </div>
+
+                        <!-- Kolom 4 : Nama Ortu -->
+                        <div class="mb-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-orange-900/20 to-transparent border border-orange-500/40 shadow-[0_0_15px_rgba(249,115,22,0.05)] relative overflow-hidden group transition-all hover:border-orange-400 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)]">
+                            <label for="birthday-namaOrtuInput" class="block text-orange-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400"><i class="fa-solid fa-person-breastfeeding text-sm"></i></div>
+                                Kolom 4 : Nama Orang Tua
+                            </label>
+                            <input type="text" id="birthday-namaOrtuInput" class="w-full bg-[#1a1a24]/80 border border-orange-500/30 rounded-xl p-4 text-white focus:border-orange-400 focus:ring-1 focus:ring-orange-400 outline-none transition-all placeholder-gray-500" placeholder="Contoh: Raffi Ahmad & Nagita Slavina">
+                        </div>
+
+                        <!-- Kolom 5 : Teks Pengantar -->
+                        <div class="mb-8 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-emerald-900/20 to-transparent border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.05)] relative overflow-hidden group transition-all hover:border-emerald-400 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+                            <label for="birthday-teksPengantar" class="block text-emerald-200 font-semibold mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-envelope-open-text text-sm"></i></div>
+                                Kolom 5 : Pilih Teks Pengantar
+                            </label>
+                            <div class="relative">
+                                <!-- Option list rendered by JS -->
+                                <select id="birthday-teksPengantar" class="w-full bg-[#1a1a24]/80 border border-emerald-500/30 rounded-xl p-4 text-white focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 outline-none transition-all appearance-none cursor-pointer" onchange="changeTemplate('birthday')"></select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400"><i class="fa-solid fa-chevron-down"></i></div>
+                            </div>
+
+                            <div class="mt-8 border-t border-emerald-500/20 pt-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <label for="birthday-toggle-editor" class="text-emerald-200 font-semibold flex items-center gap-2 cursor-pointer mb-0">
+                                        <i class="fa-solid fa-pen-nib text-emerald-400 ml-1"></i> Edit Teks Pengantar (opsional)
+                                    </label>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="birthday-toggle-editor" class="sr-only peer" onchange="toggleEditor('birthday')">
+                                        <div class="w-11 h-6 bg-[#1a1a24] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-gray-400 peer-checked:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 border border-emerald-500/30"></div>
+                                    </label>
+                                </div>
+                                
+                                <div id="birthday-editor-container" class="hidden transition-all duration-300">
+                                    <div class="flex gap-2 mb-3">
+                                        <button onclick="applyFormatting('birthday', 'bold')" class="bg-[#1a1a24]/80 hover:bg-[#3f3f5a] border border-emerald-500/30 text-emerald-300 w-10 h-10 rounded-lg flex items-center justify-center transition-colors"><i class="fa-solid fa-bold"></i></button>
+                                        <button onclick="applyFormatting('birthday', 'italic')" class="bg-[#1a1a24]/80 hover:bg-[#3f3f5a] border border-emerald-500/30 text-emerald-300 w-10 h-10 rounded-lg flex items-center justify-center transition-colors"><i class="fa-solid fa-italic"></i></button>
+                                    </div>
+                                    <textarea id="birthday-teksPengantarPreview" rows="10" class="w-full bg-[#1a1a24]/80 border border-emerald-500/30 rounded-xl p-4 text-gray-200 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 outline-none transition-all resize-y leading-relaxed" oninput="saveManualEdit('birthday')"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================== -->
+
+                    <!-- Buttons Area (Shared) -->
+                    <div class="flex flex-col md:flex-row gap-4 mt-6">
+                        <button id="app-generateButton" class="w-full md:w-auto bg-gradient-to-r from-[#4cb5f9] to-[#2b8cdb] hover:from-[#3ba4e8] hover:to-[#1a7bc8] text-white font-bold py-4 px-8 rounded-xl shadow-lg transform transition hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed">
+                            Generate Nama Tamu
+                        </button>
+                        
+                        <button id="app-resetButton" class="w-full md:w-auto bg-[#1a1a24] border border-[#3f3f5a] hover:bg-[#3f3f5a] text-gray-300 font-bold py-4 px-8 rounded-xl shadow-lg transform transition hover:-translate-y-1">
+                            <i class="fa-solid fa-rotate-right mr-2"></i> Reset Data
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Table Preview (Shared) -->
+                    <div id="app-daftarNamaContainer" class="hidden mt-12 overflow-hidden rounded-xl border border-[#3f3f5a]">
+                        <table class="w-full text-left border-collapse table-fixed">
+                            <thead>
+                                <tr class="bg-[#1a1a24] text-gray-300 text-sm uppercase tracking-wider border-b border-[#3f3f5a]">
+                                    <th class="p-3 md:p-4 font-semibold w-1/2 md:w-3/5">Nama Tamu</th>
+                                    <th class="p-3 md:p-4 font-semibold text-center w-1/2 md:w-2/5">Options</th>
+                                </tr>
+                            </thead>
+                            <tbody id="app-tbody" class="divide-y divide-[#3f3f5a]">
+                                <!-- Tabel dijamin 100% kosong dari HTML, murni diisi oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+            </div>
+
+            <!-- TAB CONTENT 2: CARA KIRIM UNDANGAN -->
+            <div id="tab-tutorial-content" class="hidden transition-opacity duration-300 w-full">
+                <section class="bg-brand-card rounded-3xl p-6 md:p-10 shadow-2xl border border-white/5 overflow-hidden">
+                    
+                    <div class="-mx-6 -mt-6 md:-mx-4 md:-mt-4 mb-8 md:mb-10 flex justify-center bg-[#1a1a24]/30 rounded-t-3xl border-b border-white/5 pb-6 pt-6 px-4">
+                        <img src="https://ik.imagekit.io/undangandigital/general/hero%20tutorial%20nama%20tamu.png" alt="Contoh Hasil Undangan" loading="lazy" class="w-full md:max-w-3xl object-cover border-b-[4px] border-[#4cb5f9]/70 shadow-[0_8px_30px_rgba(76,181,249,0.3)] md:rounded-2xl md:border-[3px] cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox(this.src)">
+                    </div>
+
+                    <div class="p-5 md:p-6 rounded-2xl border-2 border-[#4cb5f9]/60 bg-[#4cb5f9]/10 text-blue-100 text-left font-medium shadow-[0_0_20px_rgba(76,181,249,0.15)] mb-10 flex items-start gap-4 md:max-w-3xl md:mx-auto">
+                        <i class="fa-solid fa-circle-info text-2xl text-[#4cb5f9] mt-0.5"></i>
+                        <p class="leading-relaxed">Ini adalah contoh undangan yang sudah ditulis nama tamunya, dan kita akan membuat seperti ini.</p>
+                    </div>
+
+                    <div class="text-left mb-10 md:mb-12 md:max-w-3xl md:mx-auto">
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
+                            Panduan <span class="bg-gradient-to-r from-[#c084fc] to-[#a855f7] text-transparent bg-clip-text">Cara Kirim</span> Undangan
+                        </h2>
+                        <p class="text-gray-400">Ikuti langkah-langkah mudah di bawah ini untuk mulai membagikan undangan digital kamu dengan praktis.</p>
+                    </div>
+
+                    <!-- WADAH TUTORIAL RENDERED VIA JS -->
+                    <div id="tutorial-container" class="space-y-6 md:space-y-8 text-gray-300 text-sm md:text-base">
+                        <!-- Step tutorial digenerate otomatis di sini -->
+                    </div>
+
+                </section>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer / Closing Section -->
+    <footer class="relative w-full pt-32 pb-16 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#1a1a24] via-[#241c38] to-[#2d1b4e]">
+        <div class="absolute top-0 left-0 w-full leading-[0]">
+            <svg class="block w-full h-[60px] md:h-[100px] fill-[#1a1a24]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7 c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4 c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z"></path>
+            </svg>
+        </div>
+        <div class="relative z-20 px-6 max-w-3xl mx-auto text-center mt-8">
+            <p class="text-gray-200 text-sm md:text-base leading-relaxed font-medium">
+                Jangan ragu untuk menghubungi kami untuk informasi lebih lanjut tentang layanan kami<br class="hidden md:block">
+                dan untuk membuat undangan digital yang sesuai dengan kebutuhan Anda.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#1a1a24]/95 backdrop-blur-md border-t border-[#3f3f5a] z-40 flex justify-around items-center">
+        <button id="btn-tab-kirim-mobile" onclick="switchTab('kirim')" class="flex-1 py-3.5 flex flex-col items-center gap-1.5 text-[#4cb5f9] transition-colors relative bg-gradient-to-t from-[#4cb5f9]/10 to-transparent">
+            <div id="indicator-kirim-mobile" class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-[#4cb5f9] rounded-b-full transition-colors"></div>
+            <i class="fa-regular fa-paper-plane text-xl"></i>
+            <span class="text-[9px] px-1 text-center leading-tight font-bold tracking-wide">Kirim Undangan</span>
+        </button>
+        <button id="btn-tab-tutorial-mobile" onclick="switchTab('tutorial')" class="flex-1 py-3.5 flex flex-col items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors relative opacity-60 hover:opacity-100">
+            <div id="indicator-tutorial-mobile" class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-transparent rounded-b-full transition-colors"></div>
+            <i class="fa-solid fa-book-open text-xl"></i>
+            <span class="text-[9px] px-1 text-center leading-tight font-semibold tracking-wide">Cara Kirim Undangan</span>
+        </button>
+    </nav>
+
+    <!-- POPUP MODAL WARNING -->
+    <div id="app-modal-empty" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300">
+        <div id="app-modal-content" class="bg-[#292938] border border-[#4cb5f9] rounded-2xl p-8 shadow-[0_0_40px_rgba(76,181,249,0.2)] max-w-sm w-[90%] text-center transform scale-95 transition-transform duration-300">
+            <div class="w-16 h-16 bg-[#4cb5f9]/10 rounded-full flex items-center justify-center mx-auto mb-5">
+                <i class="fa-solid fa-user-pen text-[#4cb5f9] text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Oops, ada yang terlewat!</h3>
+            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                Jangan lupa input <strong class="text-white">Nama Tamu Undangan</strong> terlebih dahulu di Kolom 1 sebelum meng-generate ya.
+            </p>
+            <button onclick="closeEmptyModal()" class="w-full bg-gradient-to-r from-[#4cb5f9] to-[#2b8cdb] hover:from-[#3ba4e8] hover:to-[#1a7bc8] text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition-transform hover:-translate-y-1">
+                Oke, Mengerti
+            </button>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div id="app-lightbox" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[60] hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300" onclick="if(event.target === this) closeLightbox()">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 bg-red-500/20 hover:bg-red-500/40 text-red-500 rounded-full flex items-center justify-center transition-colors text-2xl z-10">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="app-lightbox-img" src="" alt="Preview Gambar" loading="lazy" class="max-w-[95%] max-h-[90vh] object-contain rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.8)] transform scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- ========================================== -->
+    <!-- LOAD EXTERNAL DATA (Separation of Concerns)-->
+    <!-- ========================================== -->
+    <script src="template-data.js"></script>
+
+    <!-- Logic Script Induk -->
+    <script>
+        // param helper
+        function getParameterByName(name){
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        const paramId       = getParameterByName('id');
+        const paramLink     = getParameterByName('link');
+        
+        function getTargetBase(){
+            if (paramLink){
+                let l = paramLink.trim();
+                if (!/^https?:\/\//i.test(l)) l = 'https://' + l; 
+                return l;
+            }
+            if (paramId){
+                return `${window.location.origin}/${paramId}`;
+            }
+            return null;
+        }
+
+        /* =================================================================
+           FUNGSI RENDER (Mencetak UI HTML dari Data di template-data.js)
+           ================================================================= */
+        function renderCategories() {
+            const container = document.getElementById('category-container');
+            if(!container || !APP_DATA.categories) return;
+            
+            container.innerHTML = APP_DATA.categories.map(cat => {
+                if(cat.type === 'divider') return `<div class="w-px h-6 bg-[#3f3f5a] mx-2 flex-shrink-0"></div>`;
+                if(cat.status === 'soon') return `<button class="flex-shrink-0 px-5 py-2.5 rounded-xl text-[13px] font-semibold bg-white/5 text-gray-500 cursor-not-allowed border border-white/5">${cat.label} <span class="text-[10px] ml-1 bg-[#1a1a24] text-gray-400 px-2 py-0.5 rounded-md border border-[#3f3f5a]">Soon</span></button>`;
+                
+                return `<button id="cat-btn-${cat.id}" onclick="changeKategori('${cat.id}')" class="flex-shrink-0 px-6 py-2.5 rounded-xl text-sm font-bold transition-all bg-transparent text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"><i class="${cat.icon} mr-2"></i> ${cat.label}</button>`;
+            }).join('');
+        }
+
+        function renderDropdowns() {
+            // Render Acara Wedding
+            const wedAcara = document.getElementById('wedding-jenisAcara');
+            if(wedAcara && APP_DATA.acaraWedding) {
+                wedAcara.innerHTML = APP_DATA.acaraWedding.map(opt => `<option value="${opt.value}">${opt.label}</option>`).join('');
+            }
+            
+            // Render Teks Pengantar
+            ['wedding', 'anak', 'birthday'].forEach(tab => {
+                const sel = document.getElementById(`${tab}-teksPengantar`);
+                if(sel && APP_DATA.templateOptions[tab]) {
+                    sel.innerHTML = APP_DATA.templateOptions[tab].map(opt => `<option value="${opt.value}">${opt.label}</option>`).join('');
+                }
+            });
+        }
+
+        function getColorClasses(color) {
+            const map = {
+                'blue': { bg: 'bg-blue-500/20', text: 'text-blue-400', border: 'border-blue-500/30', imgBorder: 'border-blue-400/70', imgHover: 'hover:border-blue-400' },
+                'pink': { bg: 'bg-pink-500/20', text: 'text-pink-400', border: 'border-pink-500/30', imgBorder: 'border-pink-400/70', imgHover: 'hover:border-pink-400' },
+                'purple': { bg: 'bg-purple-500/20', text: 'text-purple-400', border: 'border-purple-500/30', imgBorder: 'border-purple-400/70', imgHover: 'hover:border-purple-400' },
+                'emerald': { bg: 'bg-emerald-500/20', text: 'text-emerald-400', border: 'border-emerald-500/30', imgBorder: 'border-emerald-400/70', imgHover: 'hover:border-emerald-400' },
+                'brand-accent': { bg: 'bg-[#4cb5f9]/20', text: 'text-[#4cb5f9]', border: 'border-[#4cb5f9]/30', imgBorder: 'border-[#4cb5f9]/70', imgHover: 'hover:border-[#4cb5f9]' },
+                'amber': { bg: 'bg-amber-500/20', text: 'text-amber-400', border: 'border-amber-500/30', imgBorder: 'border-amber-400/70', imgHover: 'hover:border-amber-400' },
+                'orange': { bg: 'bg-orange-500/20', text: 'text-orange-400', border: 'border-orange-500/30', imgBorder: 'border-orange-400/70', imgHover: 'hover:border-orange-400' },
+                'teal': { bg: 'bg-teal-500/20', text: 'text-teal-400', border: 'border-teal-500/30', imgBorder: 'border-teal-400/70', imgHover: 'hover:border-teal-400' },
+                'green': { bg: 'bg-green-500/20', text: 'text-green-400', border: 'border-green-500/30', imgBorder: 'border-green-400/70', imgHover: 'hover:border-green-400' },
+                'indigo': { bg: 'bg-indigo-500/20', text: 'text-indigo-400', border: 'border-indigo-500/30', imgBorder: 'border-indigo-400/70', imgHover: 'hover:border-indigo-400' }
+            };
+            return map[color] || map['blue'];
+        }
+
+        function renderTutorial() {
+            const tutContainer = document.getElementById('tutorial-container');
+            if(!tutContainer || !APP_DATA.tutorialSteps) return;
+            
+            tutContainer.innerHTML = APP_DATA.tutorialSteps.map((step, idx) => {
+                const c = getColorClasses(step.color);
+                return `
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 p-5 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors relative z-10">
+                    <div class="w-full md:w-3/5 order-1">
+                        <div class="flex items-center gap-4 md:gap-5 mb-3 md:mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full ${c.bg} ${c.text} flex items-center justify-center font-bold text-lg md:text-xl border ${c.border}">${idx + 1}</div>
+                            <h4 class="text-white font-semibold text-lg md:text-xl m-0">${step.title}</h4>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed text-left">${step.desc}</p>
+                    </div>
+                    <div class="w-full md:w-2/5 order-2 mt-2 md:mt-0">
+                        <img src="${step.img}" alt="Panduan ${step.title}" loading="lazy" class="w-full rounded-xl border-[3px] ${c.imgBorder} shadow-[0_4px_20px_rgba(0,0,0,0.3)] cursor-pointer ${c.imgHover} transition-colors" onclick="openLightbox(this.src)">
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // LOGIKA KATEGORI ACARA UTAMA (Hide / Show Form Terpisah)
+        function changeKategori(cat, isInit = false) {
+            localStorage.setItem('app-kategori', cat);
+            
+            // Ubah UI Tombol Kategori
+            APP_DATA.categories.forEach(item => {
+                if(item.type === 'divider' || item.status === 'soon') return;
+                const btn = document.getElementById(`cat-btn-${item.id}`);
+                if(btn) {
+                    if(item.id === cat) {
+                        btn.className = "flex-shrink-0 px-6 py-2.5 rounded-xl text-sm font-bold transition-all bg-[#4cb5f9] text-[#1a1a24] shadow-[0_0_15px_rgba(76,181,249,0.3)] border border-[#4cb5f9]";
+                    } else {
+                        btn.className = "flex-shrink-0 px-6 py-2.5 rounded-xl text-sm font-bold transition-all bg-transparent text-gray-400 hover:text-white hover:bg-white/5 border border-transparent";
+                    }
+                }
+            });
+
+            // Hide semua form berdasarkan daftar kategori di APP_DATA
+            APP_DATA.categories.forEach(item => {
+                if(item.type === 'divider' || item.status === 'soon') return;
+                const form = document.getElementById(`form-${item.id}`);
+                if(form) form.classList.replace('block', 'hidden');
+            });
+
+            // Show Form Terpilih
+            const activeForm = document.getElementById(`form-${cat}`);
+            if(activeForm) activeForm.classList.replace('hidden', 'block');
+        }
+
+        // INIT & LOAD DATA
+        document.addEventListener("DOMContentLoaded", function(){
+            // Eksekusi Pembangunan DOM dari JS
+            renderCategories();
+            renderDropdowns();
+            renderTutorial();
+
+            // 1. Tentukan Tab Aktif dari URL Parameter &tab=... 
+            const paramTab = getParameterByName('tab');
+            let currentTab = 'wedding';
+            
+            if (paramTab && APP_DATA.urlConfig.tabAliases[paramTab.toLowerCase()]) {
+                currentTab = APP_DATA.urlConfig.tabAliases[paramTab.toLowerCase()];
+                // Fitur Isolated View / Client Mode (Sembunyikan menu kategori jika diakses via URL spesifik)
+                const categoryMenu = document.getElementById('app-category-menu');
+                if (categoryMenu) categoryMenu.classList.add('hidden');
+            } else {
+                currentTab = localStorage.getItem('app-kategori') || 'wedding';
+            }
+            
+            changeKategori(currentTab, true);
+
+            // 2. Load LocalStorage & Listeners (Dinamis tanpa array terpisah)
+            const allFormInputs = document.querySelectorAll('input[id], textarea[id], select[id]');
+            
+            allFormInputs.forEach(el => {
+                if (el.id.startsWith('wedding-') || el.id.startsWith('anak-') || el.id.startsWith('birthday-')) {
+                    const saved = localStorage.getItem(el.id);
+                    if (saved !== null) el.value = saved;
+                    // Auto-save listeners
+                    el.addEventListener('input', () => localStorage.setItem(el.id, el.value));
+                }
+            });
+
+            // 3. Auto Fill Pintar dari URL (Menggunakan config dari template-data.js)
+            const mapping = APP_DATA.urlConfig.autoFillMapping[currentTab];
+            if (mapping) {
+                for (const inputId in mapping) {
+                    const config = mapping[inputId];
+                    let paramVal = null;
+
+                    // Jika mappingnya array biasa (alias parameter)
+                    if (Array.isArray(config)) {
+                        for (const alias of config) {
+                            const val = getParameterByName(alias);
+                            if (val) { paramVal = val; break; }
+                        }
+                    } 
+                    // Jika mappingnya object khusus (seperti jenis acara wedding)
+                    else if (config.params && config.valueMap) {
+                        for (const alias of config.params) {
+                            const val = getParameterByName(alias);
+                            if (val && config.valueMap[val]) { paramVal = config.valueMap[val]; break; }
+                        }
+                    }
+
+                    // Terapkan nilai ke input field jika ditemukan di URL
+                    if (paramVal) {
+                        const el = document.getElementById(inputId);
+                        if (el) {
+                            el.value = paramVal;
+                            localStorage.setItem(inputId, paramVal);
+                            
+                            // Trigger event terkait jika form itu adalah dropdown
+                            if (inputId.includes('teksPengantar')) changeTemplate(currentTab);
+                            if (inputId.includes('jenisAcara')) toggleCustomAcara(currentTab);
+                        }
+                    }
+                }
+            }
+
+            // Fallback: Jika template masih kosong saat form dibuka pertama kali
+            if(!document.getElementById(currentTab + '-teksPengantarPreview').value) { 
+                // Ambil opsi template pertama dari daftar templateOptions tab tersebut
+                let defaultTemplate = APP_DATA.templateOptions[currentTab][0].value;
+
+                if(defaultTemplate) {
+                    document.getElementById(currentTab + '-teksPengantar').value = defaultTemplate;
+                    changeTemplate(currentTab); 
+                }
+            }
+            
+            if (currentTab === 'wedding') toggleCustomAcara('wedding');
+        });
+
+        // Trigger perubahan pada Dropdown Teks Pengantar
+        function changeTemplate(tabId) {
+            const select = document.getElementById(tabId + '-teksPengantar');
+            const preview = document.getElementById(tabId + '-teksPengantarPreview');
+            const val = select.value;
+            
+            if(APP_DATA.templates[val]) {
+                preview.value = APP_DATA.templates[val];
+                localStorage.setItem(tabId + '-teksPengantar', val);
+                localStorage.setItem(tabId + '-teksPengantarPreview', APP_DATA.templates[val]);
+            }
+        }
+
+        // Trigger perubahan pada Custom Acara Input (Hanya Wedding)
+        function toggleCustomAcara(tabId) {
+            const select = document.getElementById(tabId + '-jenisAcara');
+            const customInput = document.getElementById(tabId + '-customAcaraInput');
+            if(!select || !customInput) return;
+
+            if(select.value === 'custom') customInput.classList.remove('hidden');
+            else customInput.classList.add('hidden');
+            
+            localStorage.setItem(tabId + '-jenisAcara', select.value);
+        }
+
+        // Fitur Edit / Format Teks
+        function toggleEditor(tabId) {
+            const container = document.getElementById(tabId + '-editor-container');
+            const checkbox = document.getElementById(tabId + '-toggle-editor');
+            if (checkbox.checked) { container.classList.remove('hidden'); container.classList.add('block'); } 
+            else { container.classList.remove('block'); container.classList.add('hidden'); }
+        }
+
+        function saveManualEdit(tabId) {
+            const preview = document.getElementById(tabId + '-teksPengantarPreview');
+            localStorage.setItem(tabId + '-teksPengantarPreview', preview.value);
+        }
+
+        function applyFormatting(tabId, type){
+            const textarea = document.getElementById(tabId + '-teksPengantarPreview');
+            const start = textarea.selectionStart;
+            const end   = textarea.selectionEnd;
+            const selected = textarea.value.substring(start, end);
+
+            const map = { bold: `*${selected}*`, italic: `_${selected}_` };
+            const out = map[type] ?? selected;
+            
+            textarea.value = textarea.value.substring(0, start) + out + textarea.value.substring(end);
+            textarea.setSelectionRange(start + out.length, start + out.length);
+            textarea.focus();
+            
+            saveManualEdit(tabId);
+        }
+
+        // Close Error Modal
+        function closeEmptyModal() {
+            const modal = document.getElementById("app-modal-empty");
+            const modalContent = document.getElementById("app-modal-content");
+            const activeTab = localStorage.getItem('app-kategori') || 'wedding';
+            const namaTamuInput = document.getElementById(activeTab + "-namaTamuInput");
+            
+            modal.classList.add("opacity-0");
+            modalContent.classList.remove("scale-100");
+            modalContent.classList.add("scale-95");
+            
+            setTimeout(() => {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex"); 
+                namaTamuInput.focus();
+                namaTamuInput.classList.add("ring-4", "ring-blue-400/50");
+                setTimeout(() => namaTamuInput.classList.remove("ring-4", "ring-blue-400/50"), 1000); 
+            }, 300);
+        }
+
+        // GENERATE BUTTON LOGIC
+        document.getElementById("app-generateButton").addEventListener("click", function(){
+            const button = this;
+            const originalContent = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> Memproses...`;
+
+            setTimeout(() => {
+                const activeTab = localStorage.getItem('app-kategori') || 'wedding';
+                
+                const namaTamuRaw = document.getElementById(activeTab + "-namaTamuInput").value.trim();
+                const teksPengantar = document.getElementById(activeTab + "-teksPengantarPreview").value;
+                let nilaiAcara = "";
+
+                // Ekstrak nilai spesifik form khusus untuk variabel [acara]
+                if (activeTab === 'wedding') {
+                    let jAcara = document.getElementById("wedding-jenisAcara").value;
+                    nilaiAcara = jAcara === 'custom' ? document.getElementById("wedding-customAcaraInput").value.trim() : jAcara;
+                    if(!nilaiAcara && APP_DATA.acaraWedding.length > 0) nilaiAcara = APP_DATA.acaraWedding[0].value;
+                } 
+                else if (APP_DATA.urlConfig.acaraKhusus && APP_DATA.urlConfig.acaraKhusus[activeTab]) {
+                    let tAcara = document.getElementById(activeTab + "-teksPengantar").value;
+                    const mapAcara = APP_DATA.urlConfig.acaraKhusus[activeTab];
+                    nilaiAcara = mapAcara[tAcara] || mapAcara.default || "Acara";
+                }
+
+                if(!namaTamuRaw){
+                    if(document.getElementById(`error-message-${activeTab}`)) document.getElementById(`error-message-${activeTab}`).textContent = ""; 
+                    const modal = document.getElementById("app-modal-empty");
+                    const modalContent = document.getElementById("app-modal-content");
+                    modal.classList.remove("hidden"); modal.classList.add("flex"); void modal.offsetWidth; 
+                    modal.classList.remove("opacity-0"); modalContent.classList.remove("scale-95"); modalContent.classList.add("scale-100");
+                    button.disabled = false; button.innerHTML = originalContent;
+                    return;
+                }
+
+                let targetBase = getTargetBase() || (window.location.origin + window.location.pathname);
+                const daftarNama = namaTamuRaw.split("\n");
+                const tbody = document.getElementById("app-tbody");
+                tbody.innerHTML = "";
+
+                let hasGenerated = false;
+
+                // PENGGANTIAN TAG OTOMATIS DARI JS MASTER DATA (PRE-FETCH)
+                // Menarik data sebelum masuk ke looping agar tidak membuat browser nge-lag
+                const replaceMap = APP_DATA.urlConfig.replaceTags[activeTab];
+                const tagValues = {};
+                if(replaceMap) {
+                    for (const tag in replaceMap) {
+                        const inputId = replaceMap[tag];
+                        const el = document.getElementById(inputId);
+                        tagValues[tag] = el ? el.value.trim() : "";
+                    }
+                }
+
+                for(let nama of daftarNama) {
+                    if(nama.trim() !== ""){
+                        hasGenerated = true;
+                        const sep = targetBase.includes('?') ? '&' : '?';
+                        const linkUndangan = `${targetBase}${sep}to=${encodeURIComponent(nama.trim())}`;
+
+                        // Dasar tag yang selalu diganti
+                        let personalized = teksPengantar
+                            .replace(/\[nama-tamu\]/g, nama.trim())
+                            .replace(/\[link-undangan\]/g, linkUndangan)
+                            .replace(/\[acara\]/g, nilaiAcara);
+                            
+                        // PENGGANTIAN TAG OTOMATIS DARI JS MASTER DATA
+                        if(replaceMap) {
+                            for (const tag in tagValues) {
+                                // Escaping brackets agar regex tidak error
+                                const regex = new RegExp(tag.replace(/\[/g, '\\[').replace(/\]/g, '\\]'), 'g');
+                                personalized = personalized.replace(regex, tagValues[tag]);
+                            }
+                        }
+
+                        if(personalized.includes("[link-undangan]")){
+                            alert("Pastikan placeholder [link-undangan] tidak sengaja terhapus dan diganti link manual.");
+                            button.disabled = false; button.innerHTML = originalContent; return;
+                        }
+
+                        const safePersonalized = encodeURIComponent(personalized).replace(/'/g, "%27");
+                        const safeLink = encodeURIComponent(linkUndangan).replace(/'/g, "%27");
+
+                        const tr = document.createElement("tr");
+                        tr.className = "hover:bg-white/5 transition-colors";
+                        tr.innerHTML = `
+                            <td class="p-3 md:p-4 text-white font-medium break-words">${nama.trim()}</td>
+                            <td class="p-3 md:p-4">
+                                <div class="flex flex-wrap justify-center gap-1.5 md:gap-2">
+                                    <button class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white transition-colors flex items-center justify-center" onclick="window.open(decodeURIComponent('${safeLink}'),'_blank')" title="Buka Link"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i></button>
+                                    <button class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-white transition-colors flex items-center justify-center" onclick="copyLinkToClipboard(decodeURIComponent('${safeLink}'))" title="Salin Link Saja"><i class="fa-solid fa-link text-sm"></i></button>
+                                    <button class="w-8 h-8 rounded-lg bg-orange-500/10 text-orange-400 hover:bg-orange-500 hover:text-white transition-colors flex items-center justify-center" onclick="copyTextToClipboard('${safePersonalized}')" title="Salin Link + Kata Pengantar"><i class="fa-solid fa-copy text-sm"></i></button>
+                                    <button class="w-8 h-8 rounded-lg bg-green-500/10 text-green-400 hover:bg-green-500 hover:text-white transition-colors flex items-center justify-center" onclick="sendWA(this, 'https://wa.me/?text=' + '${safePersonalized}')" title="Kirim ke WhatsApp"><i class="fa-brands fa-whatsapp text-sm"></i></button>
+                                    <button class="w-8 h-8 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-colors flex items-center justify-center" onclick="this.parentElement.parentElement.parentElement.remove()" title="Delete"><i class="fa-solid fa-trash text-sm"></i></button>
+                                </div>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    }
+                }
+
+                if(hasGenerated) document.getElementById("app-daftarNamaContainer").classList.remove("hidden");
+                button.disabled = false; button.innerHTML = originalContent;
+            }, 500);
+        });
+
+        // Tombol Reset Data Pintar
+        document.getElementById("app-resetButton").addEventListener("click", function(){
+            if(confirm("Apakah Anda yakin ingin menghapus semua data nama tamu dan mereset form?")) {
+                const activeTab = localStorage.getItem('app-kategori') || 'wedding';
+                
+                // Clear semua input secara dinamis
+                const activeInputs = document.querySelectorAll(`#form-${activeTab} input[id], #form-${activeTab} textarea[id], #form-${activeTab} select[id]`);
+                activeInputs.forEach(el => {
+                    el.value = "";
+                    localStorage.removeItem(el.id);
+                });
+                
+                // Kembalikan ke default masing-masing form
+                if (activeTab === 'wedding') {
+                    document.getElementById("wedding-customAcaraInput").classList.add('hidden');
+                    if (APP_DATA.acaraWedding && APP_DATA.acaraWedding.length > 0) {
+                        const defAcara = APP_DATA.acaraWedding[0].value;
+                        document.getElementById("wedding-jenisAcara").value = defAcara;
+                        localStorage.setItem('wedding-jenisAcara', defAcara);
+                    }
+                }
+                
+                let defaultTemplate = APP_DATA.templateOptions[activeTab][0].value;
+                document.getElementById(activeTab + "-teksPengantar").value = defaultTemplate;
+                changeTemplate(activeTab);
+                
+                if(document.getElementById(`error-message-${activeTab}`)) document.getElementById(`error-message-${activeTab}`).textContent = "";
+                document.getElementById("app-tbody").innerHTML = "";
+                document.getElementById("app-daftarNamaContainer").classList.add("hidden");
+            }
+        });
+
+        // Utilities / Helper
+        function sendWA(btn, url) {
+            window.open(url, '_blank');
+            btn.classList.remove('bg-green-500/10', 'text-green-400', 'hover:bg-green-500');
+            btn.classList.add('bg-gray-600/50', 'text-gray-400', 'hover:bg-gray-500');
+            btn.innerHTML = '<i class="fa-solid fa-check-double text-sm"></i>';
+            btn.title = "Sudah Dikirim";
+        }
+
+        async function copyTextToClipboard(text){
+            text = decodeURIComponent(text);
+            try{ await navigator.clipboard.writeText(text); alert('Teks berhasil disalin ke clipboard.'); }
+            catch(err){
+                const temp = document.createElement("textarea"); temp.value = text; document.body.appendChild(temp); temp.select();
+                try{ document.execCommand("copy"); alert('Teks berhasil disalin ke clipboard (fallback).'); } catch(e){ alert('Gagal menyalin teks.'); } document.body.removeChild(temp);
+            }
+        }
+
+        async function copyLinkToClipboard(link){
+            try{ await navigator.clipboard.writeText(link); alert('Link berhasil disalin.'); }
+            catch(err){
+                const temp = document.createElement("textarea"); temp.value = link; document.body.appendChild(temp); temp.select();
+                try{ document.execCommand("copy"); alert('Link berhasil disalin (fallback).'); } catch(e){ alert('Gagal menyalin link.'); } document.body.removeChild(temp);
+            }
+        }
+
+        function openLightbox(src) {
+            const lightbox = document.getElementById("app-lightbox"); const lightboxImg = document.getElementById("app-lightbox-img");
+            lightboxImg.src = src; lightbox.classList.remove("hidden"); lightbox.classList.add("flex"); void lightbox.offsetWidth; lightbox.classList.remove("opacity-0"); lightboxImg.classList.remove("scale-95"); lightboxImg.classList.add("scale-100");
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById("app-lightbox"); const lightboxImg = document.getElementById("app-lightbox-img");
+            lightbox.classList.add("opacity-0"); lightboxImg.classList.remove("scale-100"); lightboxImg.classList.add("scale-95"); setTimeout(() => { lightbox.classList.add("hidden"); lightbox.classList.remove("flex"); lightboxImg.src = ""; }, 300);
+        }
+
+        function switchTab(tabId) {
+            const tabKirimContent = document.getElementById('tab-kirim-content'); const tabTutorialContent = document.getElementById('tab-tutorial-content');
+            const mainHeader = document.getElementById('main-header'); const mainContent = document.getElementById('main-content');
+            const btnKirimDesktop = document.getElementById('btn-tab-kirim-desktop'); const btnTutorialDesktop = document.getElementById('btn-tab-tutorial-desktop');
+            const btnKirimMobile = document.getElementById('btn-tab-kirim-mobile'); const btnTutorialMobile = document.getElementById('btn-tab-tutorial-mobile');
+            const indKirimMobile = document.getElementById('indicator-kirim-mobile'); const indTutorialMobile = document.getElementById('indicator-tutorial-mobile');
+
+            if (tabId === 'kirim') {
+                tabKirimContent.classList.remove('hidden'); tabTutorialContent.classList.add('hidden');
+                if(mainHeader) { mainHeader.classList.remove('hidden'); mainHeader.classList.add('flex'); }
+                if(mainContent) { mainContent.classList.add('-mt-12', 'py-8'); mainContent.classList.remove('mt-0', 'pt-0', 'md:pt-6', 'pb-8'); }
+                btnKirimDesktop.className = "px-6 py-2.5 rounded-lg font-bold transition-all bg-[#4cb5f9] text-[#1a1a24] shadow-md"; btnTutorialDesktop.className = "px-6 py-2.5 rounded-lg font-bold transition-all bg-transparent text-gray-400 hover:text-white hover:bg-white/5 opacity-80 hover:opacity-100";
+                btnKirimMobile.className = "flex-1 py-3.5 flex flex-col items-center gap-1.5 text-[#4cb5f9] transition-colors relative bg-gradient-to-t from-[#4cb5f9]/10 to-transparent"; indKirimMobile.className = "absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-[#4cb5f9] rounded-b-full transition-colors";
+                btnTutorialMobile.className = "flex-1 py-3.5 flex flex-col items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors relative opacity-60 hover:opacity-100"; indTutorialMobile.className = "absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-transparent rounded-b-full transition-colors";
+            } else if (tabId === 'tutorial') {
+                tabTutorialContent.classList.remove('hidden'); tabKirimContent.classList.add('hidden');
+                if(mainHeader) { mainHeader.classList.add('hidden'); mainHeader.classList.remove('flex'); }
+                if(mainContent) { mainContent.classList.remove('-mt-12', 'py-8'); mainContent.classList.add('mt-0', 'pt-0', 'md:pt-6', 'pb-8'); }
+                btnTutorialDesktop.className = "px-6 py-2.5 rounded-lg font-bold transition-all bg-[#4cb5f9] text-[#1a1a24] shadow-md"; btnKirimDesktop.className = "px-6 py-2.5 rounded-lg font-bold transition-all bg-transparent text-gray-400 hover:text-white hover:bg-white/5 opacity-80 hover:opacity-100";
+                btnTutorialMobile.className = "flex-1 py-3.5 flex flex-col items-center gap-1.5 text-[#4cb5f9] transition-colors relative bg-gradient-to-t from-[#4cb5f9]/10 to-transparent"; indTutorialMobile.className = "absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-[#4cb5f9] rounded-b-full transition-colors";
+                btnKirimMobile.className = "flex-1 py-3.5 flex flex-col items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors relative opacity-60 hover:opacity-100"; indKirimMobile.className = "absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-transparent rounded-b-full transition-colors";
+            }
+        }
+    </script>
+</body>
+</html>
