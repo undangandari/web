@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+                
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Undangan Acara Partumpolon</title>
+    
+			    <meta property="og:title" content="Acara Partumpolon Arisman & Putri">
+			    <meta property="og:description" content="Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri acara partumpolon kami">
+			    <meta property="og:image" content="https://ik.imagekit.io/fotoclient/wedding/aris-dan-putri/galeri-5.jpeg">
+			    <meta property="og:type" content="website">
+			    <meta property="og:url" content="https://undanganweb.net">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link id="dynamic-google-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&amp;family=Berkshire+Swash&amp;family=Marcellus&amp;family=Lobster+Two&amp;family=Pinyon+Script&amp;display=swap">
+    <style id="style-invitation">
+    /* === PANEL KANAN (PREVIEW) & ASLI UNDANGAN === */
+        #preview-area { flex-grow: 1; display: flex; justify-content: center; align-items: center; background-color: #e8e4dc; position: relative; overflow: hidden; }
+        /* ==========================================
+           KAMUS CLASS UTILITY WARNA
+           ========================================== */
+        /* Ganti .color-accent menjadi .text-primary agar lebih jelas */
+		.text-primary { color: var(--primary) !important; }
+		.text-secondary { color: var(--secondary) !important; } /* Tambahan baru */
+		.text-dark { color: var(--text-dark) !important; }
+		.text-light { color: var(--text-light) !important; }
+		.text-hitam { color: var(--cover-text) !important; }
+		
+		.bg-primary { background-color: var(--primary) !important; }
+		.bg-soft { background-color: var(--soft-color) !important; }
+		.bg-cover { background-color: var(--cover-bg) !important; }
+		.border-primary { border: 1px solid var(--primary) !important; }
+
+        /* Terapkan font-base ke seluruh elemen secara default tanpa merusak ikon */
+        #app-container { font-family: var(--font-base); }
+        #app-container * { box-sizing: border-box; }
+        
+        /* ==========================================
+           STRUKTUR DASAR (CLEAN & DYNAMIC)
+           ========================================== */
+        #app-container { width: 400px; height: 800px; background-color: var(--
+        urface); position: relative; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.15); border-radius: 20px; transform-origin: center center; }
+        
+        .frame { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 10; } .frame img { position: absolute; max-width: 60%; }
+        
+        .frame-tl { top: 0; left: 0; } .frame-tr { top: 0; right: 0; } .frame-bl { bottom: 0; left: 0; transition: bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1); } .frame-br { bottom: 0; right: 0; transition: bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .frame-top { top: 0; left: 0; width: 100%; max-width: 100%; } .frame-bottom { bottom: 0; left: 0; width: 100%; max-width: 100%; transition: bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .frame-ml { top: 50%; left: 0; translate: 0 -50%; width: 40%; } .frame-mr { top: 50%; right: 0; translate: 0 -50%; width: 40%; }
+        #app-container.nav-active .frame-bl, #app-container.nav-active .frame-br, #app-container.nav-active .frame-bottom { bottom: 80px; }
+        #app-container.nav-active .frame-ml, #app-container.nav-active .frame-mr { top: calc(50% - 40px); }
+        
+        #slider-container { position: relative; width: 100%; height: 100%; z-index: 1; }
+        
+        /* REVISI: Hapus hardcode background image url() dari .page */
+        .page { position: absolute; top: 0; left: 0; width: 100%; height: calc(100% - 80px); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; background-size: cover; background-position: center; opacity: 0; transform: translate3d(0, 0, 0) scale(0.95); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; z-index: 1; will-change: transform, opacity; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+	  .page.cover-page { height: 100%; padding-bottom: 0; }
+	  .page.active-page { opacity: 1; transform: translate3d(0, 0, 0) scale(1); pointer-events: auto; z-index: 5; }
+        
+        /* REVISI: Tipografi tidak lagi dikunci dengan color dan font family statis */
+        .page h1 { font-size: 28px; margin-bottom: 10px; font-family: var(--font-accent); position: relative; z-index: 20;} 
+        .page h2 { font-size: 22px; margin-bottom: 15px; font-family: var(--font-latin); position: relative; z-index: 20;} 
+        .page p { font-size: 14px; line-height: 1.6; max-width: 300px; position: relative; z-index: 20;}
+        
+        /* ==========================================
+           KOMPONEN (UI ELEMENTS)
+           ========================================== */
+        .btn-open { margin-top: 30px; padding: 12px 30px; background-color: var(--primary); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.2s; position: relative; z-index: 20; } .btn-open:active { transform: scale(0.95); }
+        
+        #nav-bar { position: absolute; bottom: 0; left: 0; width: 100%; height: 80px; background-color: var(--bg-surface); border-top-left-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 -2px 15px rgba(0,0,0,0.05); transform: translateY(100%); transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); z-index: 100; } #nav-bar.visible { transform: translateY(0); } #nav-track { display: flex; height: 100%; align-items: center; overflow-x: hidden; scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; } #nav-track::-webkit-scrollbar { display: none; } .nav-item { flex: 0 0 20%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; color: var(--nav-inactive); transition: color 0.3s; } .nav-box { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 85%; height: 80%; border-radius: 12px; transition: all 0.3s; } .nav-item svg { width: 22px; height: 22px; margin-bottom: 4px; fill: currentColor; } .nav-item span { font-size: 11px; font-weight: 600; } .nav-item.active { color: var(--text-light); } 
+        
+        /* REVISI: Hapus hardcode RGB cokelat di bayangan nav-box */
+        .nav-item.active .nav-box { background-color: var(--primary); }
+
+        /* Utility Asli */
+        .d-flex { display: flex; } .flex-column { flex-direction: column; } .flex-wrap { flex-wrap: wrap; } .justify-content-center { justify-content: center; } .align-items-center { align-items: center; } .text-center { text-align: center; } .text-left { text-align: left; } .mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: 0.25rem; } .mb-2 { margin-bottom: 0.5rem; } .mb-3 { margin-bottom: 1rem; } .mb-4 { margin-bottom: 1.5rem; } .mb-5 { margin-bottom: 3rem; } .mt-2 { margin-top: 0.5rem; } .mt-3 { margin-top: 1rem; } .mt-4 { margin-top: 2rem; } .mt-5 { margin-top: 3rem; } .pt-5 { padding-top: 3rem; } .p-4 { padding: 1.5rem; } .pl-2 { padding-left: 0.5rem; } .pl-3 { padding-left: 1rem; } .mb-auto { margin-bottom: auto; } .mx-auto { margin-left: auto; margin-right: auto; } .mx-3 { margin-left: 1rem; margin-right: 1rem; }  .my-3 { margin-top: 1rem; margin-bottom: 1rem; } .px-3 { padding-left: 1rem; padding-right: 1rem; }  .px-4 { padding-left: 1.5rem; padding-right: 1.5rem; } .px-5 { padding-left: 2rem; padding-right: 2rem; }  .w-100 { width: 100%; } .h-100 { height: 100%; } .p-2 { padding: 0.5rem; } .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; } .text-bold { font-weight: bold; } .text-italic { font-style: italic; } .rounded { border-radius: 0.25rem !important; } .bg-white { background-color: #fff !important; } .h4 { font-size: 1.5rem; font-weight: 500; line-height: 1.2; } .h5 { font-size: 1.25rem; font-weight: 500; line-height: 1.2; }
+        .btn-copy { background-color: var(--secondary); color: var(--text-light); border: none; padding: 4px 10px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-left: 10px; transition: background-color 0.2s, transform 0.2s; } .btn-copy:active { transform: scale(0.95); } .btn-copy:hover { background-color: var(--primary); } 
+        .toast-message { position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); background-color: rgba(74, 74, 74, 0.9); color: white; padding: 10px 20px; border-radius: 30px; font-size: 13px; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); white-space: nowrap; } .toast-message.show { opacity: 1; }
+        
+        .countdown-wrapper { margin-top: 15px; } .countdown { display: flex; justify-content: center; gap: 10px; } 
+        .countdown-item { display: flex; flex-direction: column; align-items: center; background: var(--count-bg); padding: 8px 12px; border-radius: 8px; min-width: 60px; border: 1px solid var(--secondary);} 
+        .countdown-item .number { font-size: 22px; color: var(--count-text); font-family: var(--font-elegant);} 
+        .countdown-item .text { font-size: 12px; color: var(--count-text); letter-spacing: 1px; margin-top: 2px;} 
+        
+        /* REVISI: Hapus hardcode warna dari quotes */
+        .quotes { line-height: 1.6; opacity: 0.85; } 
+        
+        /* REVISI: Class font hanya mengatur font, tidak memaksa warna */
+        .font-base { font-family: var(--font-base) !important; }
+        .font-accent { font-family: var(--font-accent) !important;} 
+        .font-latin { font-family: var(--font-latin) !important; } 
+        .font-elegant { font-family: var(--font-elegant) !important; }
+        .font-cursive { font-family: var(--font-cursive) !important; }
+        
+        /* REVISI: Hapus hardcode shadow cokelat dari tombol */
+        .btn { display: inline-block; font-weight: 400; text-align: center; vertical-align: middle; user-select: none; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; transition: all 0.2s ease-in-out; text-decoration: none; cursor: pointer; } .btn-sm { padding: 0.25rem 0.75rem; font-size: 0.875rem; } 
+        .btn-primary, .btn-tema { color: var(--text-light); background-color: var(--primary); border-color: var(--primary); } .btn:active { transform: scale(0.95); } .rounded-pill { border-radius: 50rem !important; }
+        
+        /* ANIMASI ROTASI CD TEMA EMAS */
+        @keyframes spin-continuous { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
+        #btn-audio {
+            position: absolute; bottom: 120px; right: 15px; 
+            width: 38px; height: 38px; 
+            background: var(--primary); border: none; border-radius: 50%; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; z-index: 1000; 
+            display: none; align-items: center; justify-content: center; transition: all 0.3s ease;
+        }
+        #btn-audio svg { width: 22px; height: 22px; fill: white; transition: fill 0.3s ease; }
+        #btn-audio.rotating svg { animation: spin-continuous 4s linear infinite; }
+    </style>
+<style>
+            .wave-left img {
+                transform-origin: bottom center !important;
+                animation: wave-left-custom 4s ease-in-out infinite alternate !important;
+            }
+            @keyframes wave-left-custom {
+                0% { transform: rotate(-5deg); }
+                100% { transform: rotate(1deg); }
+            }
+        </style>
+<style>
+            .wave-left img {
+                transform-origin: bottom center !important;
+                animation: wave-left-custom 4s ease-in-out infinite alternate !important;
+            }
+            @keyframes wave-left-custom {
+                0% { transform: rotate(-5deg); }
+                100% { transform: rotate(1deg); }
+            }
+        </style>
+<style>
+        .maps-scroll-area::-webkit-scrollbar { display: none; }
+        .maps-scroll-area { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .map-card-wrapper {
+            background-color: var(--soft-color);
+            padding: 6px; 
+            border-radius: 16px;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
+            margin: 0 10px 25px 10px;
+            aspect-ratio: 4/3; 
+            overflow: hidden;
+            
+            /* Trik Hardware Acceleration untuk mencegah shaking/getar pada animasi */
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translate3d(0,0,0);
+        }
+    </style>
+<style>
+            #scroll-area-rsvp::-webkit-scrollbar { display: none; }
+            #scroll-area-rsvp { -ms-overflow-style: none; scrollbar-width: none; }
+        </style>
+<style>
+            /* Injeksi CSS Khusus Animasi Bunga di Halaman Ini Saja */
+            .wave-left img {
+                transform-origin: bottom center !important;
+                animation: wave-left-custom 4s ease-in-out infinite alternate !important;
+            }
+            @keyframes wave-left-custom {
+                0% { transform: rotate(-5deg); }
+                100% { transform: rotate(1deg); }
+            }
+        </style>
+
+    <style>
+        :root { --primary: #d9a13f; --secondary: #eccf9c; --bg-surface: #fdf1e2; --text-dark: #fffcfa; --text-light: #3b3b3b; --nav-inactive: #9a8065; --cover-bg: #871c1c; --cover-text: #ebe6e0; --count-bg: #ecba65; --count-text: #242424; --soft-color: #7e1010; --font-base: 'Poppins', sans-serif; --font-accent: 'Berkshire Swash', serif; --font-latin: 'Marcellus', serif; --font-elegant: 'Lobster Two', sans-serif; --font-cursive: 'Pinyon Script', cursive; }
+    </style>
+    <style id="dynamic-bg-style">.page:not(.custom-bg) { background-image: url('https://dwigital.com/themes/adat-batak/bg.webp') !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; background-color: var(--bg-surface) !important; background-position: center top !important; background-attachment: fixed !important; }</style>
+    <style>
+        body { margin: 0; padding: 0; background: #e8e4dc; height: 100vh; height: 100dvh; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+        * { box-sizing: border-box; } /* Fix layout padding */
+        #app-container { width: 400px; height: 800px; background-color: var(--bg-surface); position: relative; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.15); transform-origin: center center; }
+        #slider-container { width: 100%; height: 100%; position: relative; }
+        #nav-bar { position: absolute; bottom: 0; left: 0; width: 100%; z-index: 1000; }
+        @media (max-width: 480px) { #app-container { width: 100%; height: 100dvh; border-radius: 0; box-shadow: none; } }
+    </style>
+</head>
+<body>
+    <div id="app-container">
+        <div class="frame">
+            <img src="https://dwigital.com/themes/adat-batak/frame-tm.webp" class="frame-top animate__animated animate__slower animate__fadeInDown" draggable="false" style="width: 100%; max-width: 100%;" data-anims="animate__slower animate__fadeInDown"><img src="https://dwigital.com/themes/adat-batak/frame-bm.webp" class="frame-bottom animate__animated animate__slower animate__fadeInUp" draggable="false" style="width: 100%; max-width: 100%;" data-anims="animate__slower animate__fadeInUp">
+        </div>
+        <div id="slider-container">
+        <div class="page cover-page active-page" style="padding: 0;">
+            <div class="d-flex flex-column justify-content-between align-items-center" style="height:100%; z-index:20; position:relative; padding-top: 40px; padding-bottom: 80px;">
+                
+                <div class="text-center w-100 mb-auto" style="margin-top: 10vh;">
+                    <div class="mb-1 text-primary animate__animated animate__fadeInDown animate__slower font-elegant" style="font-size: 19px; letter-spacing: 2px; color: rgb(217, 161, 63) !important; font-weight: normal; font-style: normal;">Acara Partumpolon</div>
+                    
+                    <div class="text-center animate__animated animate__fadeInUp animate__slower text-primary font-elegant" style="font-size:52px; line-height:1.2; animation-delay: 300ms; padding: 0 15px;">
+                        Arisman &amp; Putri
+                    </div>
+                </div>
+                
+                <div class="w-100 animate__animated animate__zoomIn animate__slower" style="margin: auto auto auto -30px; overflow: hidden; width: calc(100% + 60px); animation-delay: 600ms;">
+                    <img src="https://dwigital.com/themes/adat-batak/ulos.webp" alt="Ornamen Adat" class="animate__animated animate__pulse animate__infinite infinite animate__slower" style="width: 100%; height: 100%; object-fit: contain; pointer-events: auto;" draggable="false">
+                </div>
+                
+                <div class="w-100 mt-auto">
+                    <div class="text-center">
+                        <div class="animate__animated animate__zoomIn animate__slower" style="background-color: var(--cover-bg); opacity: 0.95; border: 1px solid var(--primary); border-radius:0.5rem; padding:12px; max-width:240px; margin: 0 auto; animation-delay: 900ms;">
+                            <div class="mb-1 text-hitam animate__animated animate__fadeInUp animate__slower" style="font-size:14px; animation-delay: 1100ms;">Kepada Yth.<br>Bapak/Ibu/Saudara/i</div> 
+                            <div id="guestNameSlot" class="text-primary h5 mb-2 font-elegant text-bold animate__animated animate__fadeInUp animate__slower" style="font-size:18px; animation-delay: 1300ms;">Tamu Undangan</div>
+                            <div id="groupNameSlot" class="h5 text-hitam animate__animated animate__fadeInUp animate__slower" style="font-size: 14.4px; animation-delay: 1500ms;">di Tempat</div>
+                        </div> 
+                        <button class="mt-4 btn-open-invitation btn btn-tema animate__animated animate__fadeInUp animate__slow" style="font-size: 16px; border-radius: 8px; padding: 12px 30px; animation-delay: 1800ms;" onclick="openInvitation()">BUKA UNDANGAN</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    <div class="page" style="padding: 0; background-color: var(--bg-surface);">
+        
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+            
+            <img src="https://ik.imagekit.io/fotoclient/wedding/aris-dan-putri/galeri-1.jpeg" class="animate__animated animate__zoomIn animate__slower" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" alt="Foto Sampul" draggable="false">
+            
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%); pointer-events: none;"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%); pointer-events: none;"></div>
+        </div>
+
+        <div class="d-flex flex-column justify-content-start align-items-center w-100 h-100" style="position: relative; z-index: 2; padding: 60px 20px 20px 20px; pointer-events: none;">
+            
+            <div class="text-center w-100" style="pointer-events: auto;">
+                
+                <div class="font-latin text-dark mb-1 animate__animated animate__fadeInDown animate__slower" style="font-size: 15px; letter-spacing: 4px; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">
+                    31 . 05 . 26
+                </div>
+
+                <div class="text-dark mb-1 animate__animated animate__fadeInUp animate__slower font-latin" style="font-size: 15px; letter-spacing: 2px; text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 4px; color: rgb(255, 252, 250) !important; font-weight: normal; font-style: normal;">Acara Partumpolon</div>
+
+                <div class="font-elegant text-dark animate__animated animate__fadeInUp animate__slower" style="font-size: 45px; line-height: 1.1; text-shadow: 2px 2px 5px rgba(0,0,0,0.5);">
+                    Putri &amp; Arisman
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+        <div class="page" style="padding: 20px 0; background-color: transparent;">
+            <div class="d-flex flex-column justify-content-center align-items-center text-center" style="height: 100%; position: relative; z-index: 20; width: 100%; padding: 0 20px;">
+                
+                <div class="font-latin text-primary animate__animated animate__fadeInDown animate__slower" style="font-size: 15px; font-weight: bold; margin-bottom: 17px; letter-spacing: 1px;">
+                    ✤ Gokhon Dohot Jou Jou ✤
+                </div>
+                
+                <div class="pt-3 d-flex align-items-center justify-content-center mb-4 mx-auto animate__animated animate__zoomIn animate__slower" style="height: 180px; width: 100%; position: relative; animation-delay: 300ms;">
+                    <img src="https://assets.satumomen.com/assets/rumah-adat-1687974592.png" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; object-fit: contain; z-index: 1; pointer-events: none; opacity: 0.45;" draggable="false">
+                    
+                    <div style="position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                        <div class="text-primary font-elegant" style="font-size: 80px; line-height: 1; transform: translate(2px, 9px); font-weight: normal; color: rgb(217, 161, 63) !important; font-style: normal;">A</div>
+                        <div class="text-primary font-elegant" style="font-size: 80px; line-height: 1; transform: translate(-8px, 33px); font-weight: normal; color: rgb(217, 161, 63) !important; font-style: normal;">P</div>
+                    </div>
+                </div>
+                
+                <div style="width: 100%;">
+                    <div class="text-primary font-elegant animate__animated animate__fadeInDown animate__slower" style="font-size: 15px; letter-spacing: 3px; margin-bottom: 10px; animation-delay: 500ms;">
+                        31 . 05 . 2026
+                    </div>
+
+                    <div class="text-primary font-elegant animate__animated animate__fadeInDown animate__slower" style="font-size: 34px; margin-bottom: 25px; animation-delay: 700ms; line-height: 1.2;">
+                        Arisman &amp; Putri
+                    </div>
+
+                    <div class="quotes text-dark px-1 animate__animated animate__fadeInUp animate__slower" style="font-size: 14px; line-height: 1.7; max-width: 300px; margin: 0 auto; animation-delay: 1000ms;">
+                        "Dan di atas semuanya itu: kenakanlah kasih, sebagai pengikat yang mempersatukan dan menyempurnakan. Hendaklah damai sejahtera Kristus memerintah dalam hatimu, karena untuk itulah kamu telah dipanggil menjadi satu tubuh."
+                    </div>
+
+                    <div class="mt-2 font-accent text-primary animate__animated animate__fadeInUp animate__slower" style="font-size: 18px; animation-delay: 1200ms;">
+                        - Kolose 3 : 14 - 15 -
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    <div class="page">
+        <div class="d-flex justify-content-center align-items-center" style="height: 100%; position: relative; z-index: 20;">
+            <div style="width: 100%;">
+                
+                <div class="w-100 mb-2">
+                    <div class="text-primary text-center animate__animated animate__fadeInDown animate__slower font-cursive" style="font-size: 50px; line-height: 1; color: rgb(217, 161, 63) !important; font-weight: normal; font-style: normal;">The Groom</div>
+                </div>
+                
+                
+        <style>
+            .wave-left img {
+                transform-origin: bottom center !important;
+                animation: wave-left-custom 4s ease-in-out infinite alternate !important;
+            }
+            @keyframes wave-left-custom {
+                0% { transform: rotate(-5deg); }
+                100% { transform: rotate(1deg); }
+            }
+        </style>
+        <div class="w-100 mx-auto animate__animated animate__zoomIn animate__slower mb-3" style="max-width:240px;">
+            <div class="w-100 position-relative d-flex align-items-center justify-content-center" style="padding-bottom:115%;">
+                
+                <div style="width:51%; position:absolute; left:-20%; top:1%; transform:rotate(356deg); z-index: 1;" class="animate__animated animate__zoomIn animate__slower wave-left">
+                    <img src="https://dwigital.com/themes/phinisi/flowers.webp" class="w-100 h-auto" style="pointer-events: none;" alt="Bunga" draggable="false" onerror="this.src='https://ik.imagekit.io/asetundangan/aset/ornament/sweet-flowers/tl.webp'">
+                </div>
+
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="position:absolute; top:0; z-index: 2;">
+                    <div class="mb-4 mx-auto" style="height:265px; width:78%; overflow:hidden; margin-top:auto; border: 3px solid var(--secondary); border-radius: 20rem; padding: 8px;">
+                        <img src="https://ik.imagekit.io/fotoclient/wedding/aris-dan-putri/galeri-3.jpeg" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20rem; object-position: 50% 4%; transform: scale(1.3); transform-origin: 50% 4%;" alt="Foto Profile" draggable="false">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+                
+                <div class="text-center mb-4 px-3">
+                    <div class="text-primary font-accent mb-2 animate__animated animate__fadeInUp animate__slower" style="font-size: 33px; animation-delay: 300ms;">
+                        Arisman Marbun
+                    </div> 
+                    <div class="text-hitam mb-2 animate__animated animate__fadeInUp animate__slower" style="font-size: 16px; animation-delay: 600ms;">
+                        Anak Kesembilan dari<br>Bapak Marhaman Marbun <br>&amp; Ibu Upi Herta Br Simanjuntak
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="d-flex justify-content-center align-items-center" style="height: 100%; position: relative; z-index: 20;">
+            <div style="width: 100%;">
+                
+                <div class="w-100 mb-2">
+                    <div class="text-primary text-center animate__animated animate__fadeInDown animate__slower font-cursive" style="font-size: 50px; line-height: 1; color: rgb(217, 161, 63) !important; font-weight: normal; font-style: normal;">The Bride</div>
+                </div>
+                
+                
+        <style>
+            .wave-left img {
+                transform-origin: bottom center !important;
+                animation: wave-left-custom 4s ease-in-out infinite alternate !important;
+            }
+            @keyframes wave-left-custom {
+                0% { transform: rotate(-5deg); }
+                100% { transform: rotate(1deg); }
+            }
+        </style>
+        <div class="w-100 mx-auto animate__animated animate__zoomIn animate__slower mb-3" style="max-width:240px;">
+            <div class="w-100 position-relative d-flex align-items-center justify-content-center" style="padding-bottom:115%;">
+                
+                <div style="width:51%; position:absolute; left:-20%; top:1%; transform:rotate(356deg); z-index: 1;" class="animate__animated animate__zoomIn animate__slower wave-left">
+                    <img src="https://dwigital.com/themes/phinisi/flowers.webp" class="w-100 h-auto" style="pointer-events: none;" alt="Bunga" draggable="false" onerror="this.src='https://ik.imagekit.io/asetundangan/aset/ornament/sweet-flowers/tl.webp'">
+                </div>
+
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="position:absolute; top:0; z-index: 2;">
+                    <div class="mb-4 mx-auto" style="height:265px; width:78%; overflow:hidden; margin-top:auto; border: 3px solid var(--secondary); border-radius: 20rem; padding: 8px;">
+                        <img src="https://ik.imagekit.io/fotoclient/wedding/aris-dan-putri/galeri-4.jpeg" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20rem; object-position: 50% 25%; transform: scale(1.5); transform-origin: 50% 25%;" alt="Foto Profile" draggable="false">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+                
+                <div class="text-center mb-4 px-3">
+                    <div class="text-primary mb-2 animate__animated animate__fadeInUp animate__slower font-accent" style="font-size: 30px; animation-delay: 300ms; color: rgb(217, 161, 63) !important; font-weight: normal; font-style: normal;">Putri Patricia Septiani Br Simanjuntak</div> 
+                    <div class="text-hitam mb-2 animate__animated animate__fadeInUp animate__slower" style="font-size: 16px; animation-delay: 600ms;">
+                        Putri Keempat dari<br>Bapak Marihot Tua Simanjuntak <br>&amp; Ibu Rismawaty Br Silaban
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page" style="background-color: transparent;">
+        <div class="d-flex flex-column justify-content-center align-items-center" style="height:100%; position: relative; z-index: 20;">
+            <div style="width:100%;">
+                
+                <div class="text-center text-primary mb-5 animate__animated animate__fadeInDown animate__slower font-latin" style="font-size:28px;">ACARA RESEPSI</div>
+
+                <div class="mb-2">
+                    <div class="text-primary text-center animate__animated animate__zoomIn animate__slower font-accent" style="font-size:18px;line-height:1.2; animation-delay: 200ms;">Mei</div>
+                    
+                    <div class="d-flex justify-content-center align-items-center my-2">
+                        <div class="py-1 text-center text-primary animate__animated animate__zoomIn animate__slower font-accent" style="font-size:16px;line-height:1.2;width:100px;border-top:1px solid var(--secondary);border-bottom:1px solid var(--secondary); animation-delay: 400ms;">Minggu</div>
+                        
+                        <div class="px-3 text-primary animate__animated animate__zoomIn animate__slower font-accent" style="font-size:80px;line-height:1.2; animation-delay: 400ms;">31</div>
+                        
+                        <div class="py-1 text-center text-primary animate__animated animate__zoomIn animate__slower font-elegant text-bold" style="font-size:18px;line-height:1.2;width:100px;border-top:1px solid var(--secondary);border-bottom:1px solid var(--secondary); animation-delay: 400ms;">2026</div>
+                    </div>
+                    
+                    <div class="text-primary text-center animate__animated animate__fadeInUp animate__slower font-latin text-bold mt-2" style="font-size:16px;line-height:1.2; animation-delay: 600ms;">Pukul 10.00 WIB</div>
+                </div>
+                
+                <div class="text-center mb-5 mt-4">
+                    <div class="text-dark font-latin text-bold mb-1 animate__animated animate__fadeInUp animate__slower" style="font-size:18px; animation-delay: 800ms;">✤ Pinang Manis ✤</div>
+                    
+                    <div class="text-dark px-3 animate__animated animate__fadeInUp animate__slower" style="font-size:14px; max-width: 280px; margin: 0 auto; animation-delay: 1000ms;">Jl. Lintas Duri—Kandis Desa Tengganau, <br>Kec. Pinggir, Kabupaten Bengkalis, Riau</div>
+                    
+                    
+                </div>
+
+                
+        <div class="mx-auto countdown-wrapper d-flex flex-column animate__animated animate__fadeInUp animate__slower" style="max-width:320px; animation-delay: 1300ms;">
+            <div class="countdown text-center">
+                <div class="countdown-item day"><div class="number" id="uid_resepsi-day">12</div><div class="text">Hari</div></div>
+                <div class="countdown-item hour"><div class="number" id="uid_resepsi-hour">16</div><div class="text">Jam</div></div>
+                <div class="countdown-item minute"><div class="number" id="uid_resepsi-minute">08</div><div class="text">Menit</div></div>
+                <div class="countdown-item second"><div class="number" id="uid_resepsi-second">14</div><div class="text">Detik</div></div>
+            </div>
+        </div>
+                
+                
+    <div class="text-center mt-3 animate__animated animate__fadeInUp animate__slower" style="animation-delay: 1500ms;">
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Martumpol&amp;dates=20260531T030000Z%2F20260531T050000Z&amp;location=Pinang+Manis&amp;details=Jl.+Lintas+Duri%E2%80%94Kandis+Desa+Tengganau%2C+%0AKec.+Pinggir%2C+Kabupaten+Bengkalis%2C+Riau" target="_blank" class="btn btn-tema rounded-pill font-base" rel="noreferrer noopener" draggable="false" style="font-size: 14px; padding: 10px 24px; display: inline-flex; align-items: center; justify-content: center;">
+         <span class="btn-icon"><i class="fa-regular fa-calendar-alt" style="margin-right: 9px; font-size: 1.1em; vertical-align: middle;"></i></span>
+         <span class="btn-text">Add to Calendar</span>
+     </a>
+    </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        .maps-scroll-area::-webkit-scrollbar { display: none; }
+        .maps-scroll-area { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .map-card-wrapper {
+            background-color: var(--soft-color);
+            padding: 6px; 
+            border-radius: 16px;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
+            margin: 0 10px 25px 10px;
+            aspect-ratio: 4/3; 
+            overflow: hidden;
+            
+            /* Trik Hardware Acceleration untuk mencegah shaking/getar pada animasi */
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translate3d(0,0,0);
+        }
+    </style>
+    
+    <div class="page">
+        <div class="d-flex flex-column justify-content-center align-items-center text-center" style="height:100%; position: relative; z-index: 20;">
+            
+            <div class="maps-scroll-area" style="width:100%; max-height: 80vh; overflow-y: auto; padding: 10px 20px 40px 20px;">
+                
+                <div class="text-primary h4 animate__animated animate__fadeInDown animate__slower font-latin" style="font-size: 26px; margin-bottom: 12px; color: rgb(217, 161, 63) !important; font-weight: normal; font-style: normal;">Maps Acara Martumpol</div>
+                
+                <div class="bg-primary animate__animated animate__zoomIn animate__slower" style="width: 90px; height: 2px; margin: 0 auto 20px auto; animation-delay: 400ms;"></div>
+                
+                <div class="map-card-wrapper animate__animated animate__fadeInUp animate__slower" style="animation-delay: 600ms;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d15956.340350935647!2d101.27269278885065!3d1.0984710282329622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMDUnNDguNCJOIDEwMcKwMTYnNDAuMSJF!5e0!3m2!1sid!2sid!4v1779096160096!5m2!1sid!2sid" width="100%" height="100%" style="border:0; border-radius:12px; display:block; width:100%; height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                
+                <div class="animate__animated animate__fadeInUp animate__slower" style="animation-delay: 900ms;">
+                    <div class="font-latin text-bold mb-2 text-dark" style="font-size:18px; letter-spacing: 0.5px;">✤ Pinang Manis ✤</div>
+                    
+                    <div class="px-2 text-dark" style="font-size:14px; line-height: 1.6; max-width: 320px; margin: 0 auto;">Jl. Lintas Duri—Kandis Desa Tengganau, <br>Kec. Pinggir, Kabupaten Bengkalis, Riau</div>
+                </div>
+                
+                <div class="mt-3 animate__animated animate__fadeInUp animate__slower" style="animation-delay: 1200ms;">
+                    <a href="https://maps.app.goo.gl/7aoZQHCWpoA59KcKA" target="_blank" class="btn btn-tema rounded-pill" rel="noreferrer noopener" draggable="false" style="font-size: 14px; padding: 10px 24px; text-decoration: none; display: inline-block; align-items: center; justify-content: center; color: rgb(255, 255, 255) !important; background-color: rgb(217, 161, 63) !important; border-color: rgb(217, 161, 63) !important; font-weight: normal; font-style: normal;">
+                        <span class="btn-icon"><i class="fa-solid fa-location-dot" style="margin-right: 9px; font-size: 1.1em; vertical-align: middle;"></i></span>
+                        <span class="btn-text">Buka Google Maps</span>
+                    </a>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="page" id="page-rsvp-container" style="background-color: transparent;">
+        <div class="d-flex flex-column justify-content-center align-items-center" style="height:100%; position: relative; z-index: 20; padding-top: 10px;">
+            
+            
+        <div class="w-100 text-center mb-4">
+            <div class="mx-auto mb-3 animate__animated animate__zoomIn animate__slower" style="height: 150px; width: 100%;">
+                <img src="https://assets.satumomen.com/assets/rumah-adat-1687974592.png" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;" draggable="false" alt="Ornamen RSVP">
+            </div>
+            
+            <div class="font-accent text-primary animate__animated animate__fadeInDown animate__slower" style="font-size: 30px; margin-bottom: 25px; line-height: 1.2; animation-delay: 200ms;">
+                Do'a Untuk Pengantin
+            </div>
+            <div class="quotes text-dark animate__animated animate__fadeInUp animate__slower" style="font-size: 14px; margin-bottom: 20px; max-width: 320px; margin-left: auto; margin-right: auto; animation-delay: 400ms;">
+                "Dan di atas semuanya itu: kenakanlah kasih, sebagai pengikat yang mempersatukan dan menyempurnakan. Hendaklah damai sejahtera Kristus memerintah dalam hatimu, karena untuk itulah kamu telah dipanggil menjadi satu tubuh."
+            </div>
+            <div class="text-bold text-primary animate__animated animate__fadeInUp animate__slower" style="font-size: 14px; animation-delay: 600ms; letter-spacing: 1px;">
+                [Kolose 3 : 14 - 15]
+            </div>
+        </div>
+
+            <div class="text-center mt-3">
+                <div class="text-dark mb-3 px-3 animate__animated animate__fadeInUp animate__slower" style="font-size:14px; animation-delay: 800ms;">
+                    Tekan tombol dibawah untuk mengirim ucapan kepada mempelai &amp; mengonfirmasi kehadiran
+                </div>
+                
+                <button onclick="if(window.bukaModalRSVP) window.bukaModalRSVP()" class="mt-3 btn btn-tema animate__animated animate__fadeInUp animate__slow" style="font-size:14px; border-radius: 8px; padding: 12px 30px; animation-delay: 1000ms;"> Kirim Ucapan &amp; RSVP</button>
+            </div>
+
+        </div>
+        
+        <style>
+            #scroll-area-rsvp::-webkit-scrollbar { display: none; }
+            #scroll-area-rsvp { -ms-overflow-style: none; scrollbar-width: none; }
+        </style>
+        <div id="modal-rsvp-overlay" ontouchmove="event.stopPropagation()" onwheel="event.stopPropagation()" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--soft-color); z-index: 998; opacity: 0; transition: opacity 0.4s ease;">
+            
+            <div id="modal-rsvp-card" class="bg-cover" style="position: absolute; top: 7.5%; left: 5%; width: 90%; height: 85%; z-index: 999; display: flex; flex-direction: column; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); overflow: hidden; transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);">
+                
+                <button onclick="if(window.tutupModalRSVP) window.tutupModalRSVP()" style="position: absolute; top: 15px; right: 15px; background: #fff5f5; border: 1px solid #feb2b2; border-radius: 50%; width: 40px; height: 40px; font-size: 24px; color: #c53030; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 1002; font-weight: bold; transition: 0.2s;">×</button>
+                
+                <div class="bg-cover" style="padding: 25px 20px 10px 20px; text-align: center; z-index: 1001;">
+                    <h3 class="text-primary font-accent" style="margin: 0; font-size: 26px; font-weight: normal;">Buku Tamu</h3>
+                    <div style="width: 40px; height: 3px; background-color: var(--secondary); margin: 10px auto; border-radius: 10px;"></div>
+                </div>
+                
+                <div style="flex-grow: 1; overflow-y: auto; padding: 10px 20px 30px 20px; text-align: left;" id="scroll-area-rsvp">
+                    
+                    <div style="background: transparent; padding: 20px; border-radius: 18px; border: 1px solid var(--secondary); margin-bottom: 25px;">
+                        
+                        <div style="margin-bottom: 12px;">
+                            <label class="text-primary" style="font-size: 11px; font-weight: bold; margin-left: 5px; letter-spacing: 0.5px;">NAMA LENGKAP</label>
+                            <input type="text" id="rsvp-nama" placeholder="Masukkan nama Anda" style="width: 100%; padding: 12px 15px; border: 1px solid var(--secondary); border-radius: 10px; font-family: var(--font-base); font-size: 14px; outline: none; margin-top: 5px; background: rgba(255, 255, 255, 0.5); color: var(--text-dark); transition: 0.3s;" onfocus="this.style.borderColor='var(--primary)';" onblur="this.style.borderColor='var(--secondary)';">
+                        </div>
+                        
+                        <div style="margin-bottom: 12px;">
+                            <label class="text-primary" style="font-size: 11px; font-weight: bold; margin-left: 5px; letter-spacing: 0.5px;">KEHADIRAN</label>
+                            <select id="rsvp-hadir" style="width: 100%; padding: 12px 15px; border: 1px solid var(--secondary); border-radius: 10px; font-family: var(--font-base); font-size: 14px; outline: none; margin-top: 5px; background: rgba(255, 255, 255, 0.5); color: var(--text-dark);" onfocus="this.style.borderColor='var(--primary)';" onblur="this.style.borderColor='var(--secondary)';">
+                                <option value="" disabled="" selected="" hidden="">Pilih status kehadiran</option>
+                                <option value="Hadir" style="color: #333;">Hadir</option>
+                                <option value="Tidak Hadir" style="color: #333;">Tidak Hadir</option>
+                                <option value="Masih Ragu" style="color: #333;">Masih Ragu</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label class="text-primary" style="font-size: 11px; font-weight: bold; margin-left: 5px; letter-spacing: 0.5px;">UCAPAN &amp; DOA</label>
+                            <textarea id="rsvp-pesan" rows="4" placeholder="Berikan doa terbaik Anda..." style="width: 100%; padding: 12px 15px; border: 1px solid var(--secondary); border-radius: 10px; font-family: var(--font-base); font-size: 14px; resize: none; outline: none; margin-top: 5px; background: rgba(255, 255, 255, 0.5); color: var(--text-dark); transition: 0.3s;" onfocus="this.style.borderColor='var(--primary)';" onblur="this.style.borderColor='var(--secondary)';"></textarea>
+                        </div>
+                        
+                        <button onclick="if(window.kirimRsvpPreview) window.kirimRsvpPreview()" id="btn-kirim-rsvp" class="btn-tema" style="width: 100%; padding: 14px; border-radius: 12px; font-weight: bold; cursor: pointer; font-family: var(--font-base); font-size: 14px; letter-spacing: 1px;">KIRIM SEKARANG</button>
+                    </div>
+                    
+                    <div class="bg-cover" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 10px; border-radius: 15px; margin-bottom: 25px; border: 1px solid var(--secondary);">
+                        <div style="text-align: center; width: 33%;">
+                            <div id="count-hadir" style="font-size: 24px; font-weight: bold; color: #2ecc71;">0</div>
+                            <div style="font-size: 9px; color: var(--text-dark); font-weight: bold; margin-top: 4px;">HADIR</div>
+                        </div>
+                        <div style="text-align: center; width: 33%; border-left: 1px solid var(--secondary); border-right: 1px solid var(--secondary);">
+                            <div id="count-tidak" style="font-size: 24px; font-weight: bold; color: #e74c3c;">0</div>
+                            <div style="font-size: 9px; color: var(--text-dark); font-weight: bold; margin-top: 4px;">TIDAK</div>
+                        </div>
+                        <div style="text-align: center; width: 33%;">
+                            <div id="count-ragu" style="font-size: 24px; font-weight: bold; color: #f1c40f;">0</div>
+                            <div style="font-size: 9px; color: var(--text-dark); font-weight: bold; margin-top: 4px;">RAGU</div>
+                        </div>
+                    </div>
+                    
+                    <div id="daftar-ucapan" style="display: flex; flex-direction: column; gap: 15px;"></div>
+                    
+                    <div style="text-align: center; margin-top: 40px;">
+                        <button onclick="if(window.tutupModalRSVP) window.tutupModalRSVP()" style="background: transparent; border: 1px solid var(--secondary); padding: 10px 25px; border-radius: 30px; font-size: 12px; color: var(--text-dark); cursor: pointer; font-weight: bold; letter-spacing: 1px; transition: 0.2s;">× TUTUP JENDELA</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="page" style="background-color: transparent;">
+        <div class="watermark d-flex justify-content-center align-items-center" style="height:100%; position: relative; z-index: 20; width: 100%;">
+            <div style="width: 100%;">
+                
+        <style>
+            /* Injeksi CSS Khusus Animasi Bunga di Halaman Ini Saja */
+            .wave-left img {
+                transform-origin: bottom center !important;
+                animation: wave-left-custom 4s ease-in-out infinite alternate !important;
+            }
+            @keyframes wave-left-custom {
+                0% { transform: rotate(-5deg); }
+                100% { transform: rotate(1deg); }
+            }
+        </style>
+        
+        <div class="text-center" style="width: 100%;">
+            
+            <div class="w-100 mx-auto animate__animated animate__zoomIn animate__slower mb-3 mt-2" style="max-width:240px;">
+                <div class="w-100 position-relative d-flex align-items-center justify-content-center" style="padding-bottom:115%;">
+                    
+                    <div style="width:51%; position:absolute; left:-15%; top:1%; transform:rotate(356deg); z-index: 1;" class="animate__animated animate__zoomIn animate__slower wave-left">
+                        <img src="https://dwigital.com/themes/phinisi/flowers.webp" class="w-100 h-auto" style="pointer-events: none;" alt="Bunga" draggable="false" onerror="this.src='https://ik.imagekit.io/asetundangan/aset/ornament/sweet-flowers/tl.webp'">
+                    </div>
+
+                    <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="position:absolute; top:0; z-index: 2;">
+                        <div class="mb-4 mx-auto" style="height:220px; width:68%; overflow:hidden; margin-top:auto; border: 3px solid var(--secondary); border-radius: 20rem; padding: 8px;">
+                            <img src="https://ik.imagekit.io/fotoclient/wedding/aris-dan-putri/galeri-2.jpeg" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20rem;" alt="Foto Thanks" draggable="false">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="quotes text-dark mb-4 px-3 animate__animated animate__fadeInUp animate__slower" style="font-size: 14px; animation-delay: 300ms; line-height: 1.6;">
+                Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do'a restu kepada kami.
+            </div>
+            
+            <div class="text-dark text-italic animate__animated animate__fadeInUp animate__slower" style="font-size: 14px; animation-delay: 500ms;">
+                Hormat Kami Yang Mengundang
+            </div>
+            
+            <div class="text-primary font-accent animate__animated animate__zoomIn animate__slower text-italic" style="font-size: 34px; margin-top: 8px; animation-delay: 700ms; line-height: 1.2;">
+                Arisman &amp; Putri
+            </div>
+            
+            
+        <div class="reseller-credit mt-4 text-dark animate__animated animate__fadeInUp animate__slower" style="opacity: 0.9; animation-delay: 1000ms;">
+            <div class="mx-auto mb-3" style="width: 60%; height: 1px; background-color: var(--secondary); opacity: 0.5;"></div>
+            <div style="font-size: 13px; margin-bottom: 2px;">Made with love by <strong class="text-primary">UndanganWeb.Net</strong></div> 
+            <div style="font-size: 11px; margin-bottom: 18px; opacity: 0.75;">Click here if you are interested in us</div> 
+            <div class="d-flex justify-content-center align-items-center text-primary" style="gap: 20px;">
+                <a href="https://katalog.undanganweb.net" target="_blank" rel="noreferrer noopener" style="color: inherit; text-decoration: none; transition: transform 0.2s; display: inline-block;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-solid fa-globe" style="font-size: 1.4em;"></i></a><a href="https://maps.app.goo.gl/bMcUhiRbfyqV78mM8" target="_blank" rel="noreferrer noopener" style="color: inherit; text-decoration: none; transition: transform 0.2s; display: inline-block;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-solid fa-map-location-dot" style="font-size: 1.4em;"></i></a><a href="https://www.instagram.com/undanganwebnet" target="_blank" rel="noreferrer noopener" style="color: inherit; text-decoration: none; transition: transform 0.2s; display: inline-block;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-brands fa-instagram" style="font-size: 1.5em;"></i></a><a href="https://wa.me/6285117173637?text=Halo%20kak%2C%20saya%20ingin%20bertanya%20lebih%20lanjut%20mengenai%20undangan%20digitalnya.%20Boleh%20diinfokan%20lebih%20lanjut%3F%20%F0%9F%93%A9%E2%9C%A8" target="_blank" rel="noreferrer noopener" style="color: inherit; text-decoration: none; transition: transform 0.2s; display: inline-block;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-brands fa-whatsapp" style="font-size: 1.5em;"></i></a>
+            </div>
+        </div>
+            
+        </div>
+            </div>
+        </div>
+    </div>
+    </div>
+        <div id="toast" class="toast-message">Berhasil disalin!</div>
+        
+        <audio id="bg-music" src="https://github.com/asetundangan/lagu/raw/refs/heads/main/Batak%20-%20Osen%20Hutasoit%20-%20Saonari%20Sogot%20Haduan%20(Full).mp3" loop></audio>
+        <button id="btn-audio" onclick="toggleAudio()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 32a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm-96-32a96 96 0 1 0 192 0 96 96 0 1 0 -192 0zM96 240c0-35 17.5-71.1 45.2-98.8S205 96 240 96c8.8 0 16-7.2 16-16s-7.2-16-16-16c-45.4 0-89.2 22.3-121.5 54.5S64 194.6 64 240c0 8.8 7.2 16 16 16s16-7.2 16-16z"></path></svg>
+        </button>
+        
+        <nav id="nav-bar"><div id="nav-track"></div></nav>
+    </div>
+    
+    <input type="hidden" id="g_brideId" value="arisman-dan-putri">
+    
+    <script src="js/utils/utils-datetime.js"></script>
+    <script type="module" src="js/utils/utils-rsvp.js"></script>
+    
+    <script>
+        var currentIndex = 0;
+        var isInvitationOpened = false;
+        var activeMenuData = [{"id":"uid_cover","type":"page_cover","label":"Opening","icon":"<path d=\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\"/>"},{"id":"uid_1779095503986","type":"page_sampul","label":"Wedding","icon":"<path d=\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\"/>"},{"id":"uid_quotes","type":"page_quotes","label":"Quotes","icon":"<g transform=\"scale(0.025) translate(0, 960)\"><path d=\"M630-320v-112l-76-139q-20 10-32 29t-12 42v320l57 100h313l-40-500-280-320-13 13q-29 29-34.5 68t14.5 74l163 297v128h-60Zm-360 0v-128l163-297q20-35 13.5-74T412-887l-12-13-280 320L80-80h313l57-100v-320q0-23-12.5-42T406-571l-76 139v112h-60Z\"/></g>"},{"id":"uid_bride","type":"page_bride","label":"Groom","icon":"<path d=\"M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z\"/>"},{"id":"uid_groom","type":"page_groom","label":"Bride","icon":"<path d=\"M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z\"/>"},{"id":"uid_resepsi","type":"page_resepsi","label":"Martumpol","icon":"<path d=\"M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z\"/>"},{"id":"uid_maps","type":"page_maps","label":"Lokasi","icon":"<path d=\"M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z\"/>"},{"id":"uid_rsvp","type":"page_rsvp","label":"RSVP","icon":"<g transform=\"scale(0.025) translate(0, 960)\"><path d=\"M320-200h320v-80H320v80Zm0-120h320v-80H320v80Zm160-148q66-60 113-106.5t47-97.5q0-36-26-62t-62-26q-21 0-40.5 8.5T480-728q-12-15-31.5-23.5T408-760q-36 0-62 26t-26 62q0 51 45.5 96T480-468ZM720-80H240q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h480q33 0 56.5 23.5T800-800v640q0 33-23.5 56.5T720-80Z\"/></g>"},{"id":"uid_thanks","type":"page_thanks","label":"Thanks","icon":"<g transform=\"scale(0.025) translate(0, 960)\"><path d=\"M160-280q-33 0-56.5-23.5T80-360v-314q0-15 8.5-29.5T112-726l308-154 302 154q12 6 20.5 19t11.5 27H637L420-790 160-661v381Zm120 160q-33 0-56.5-23.5T200-200v-360q0-33 23.5-56.5T280-640h520q33 0 56.5 23.5T880-560v360q0 33-23.5 56.5T800-120H280Zm260-226 260-134v-80L540-426 280-560v80l260 134Z\"/></g>"}];
+        var countdownTargets = [{"prefix":"uid_resepsi","date":1780196400000}];
+
+        // Fungsi Salin Teks (Rekening/Alamat) & Toast Notifikasi Klien
+        function copyText(text, btnElement) {
+            const textArea = document.createElement("textarea"); textArea.value = text; textArea.style.position = "absolute"; textArea.style.left = "-9999px"; document.body.appendChild(textArea); textArea.select();
+            try { 
+                document.execCommand('copy'); showToast("Berhasil disalin!"); 
+                const originalHtml = btnElement.innerHTML; 
+                btnElement.innerHTML = '<i class="fas fa-check text-green-500"></i> TERSALIN'; 
+                setTimeout(() => { btnElement.innerHTML = originalHtml; }, 2000); 
+            } catch (err) { showToast("Gagal menyalin"); } document.body.removeChild(textArea);
+        }
+        
+        function showToast(msg) { 
+            const toast = document.getElementById("toast"); 
+            if(!toast) return;
+            toast.innerText = msg; toast.classList.add("show"); setTimeout(() => { toast.classList.remove("show"); }, 3000); 
+        }
+
+        function toggleAudio() {
+            const bgMusic = document.getElementById('bg-music');
+            if(!bgMusic) return;
+            
+            if (bgMusic.paused) bgMusic.play();
+            else bgMusic.pause();
+        }
+
+        function initNavigation() {
+            const navTrack = document.getElementById('nav-track'); 
+            if(!navTrack) return;
+            navTrack.innerHTML = ""; 
+            
+            activeMenuData.forEach((menu, index) => {
+                const item = document.createElement('div'); 
+                item.className = 'nav-item'; 
+                item.onclick = () => goToSlide(index);
+                item.innerHTML = '<div class="nav-box"><svg viewBox="0 0 24 24">' + menu.icon + '</svg><span>' + menu.label + '</span></div>';
+                navTrack.appendChild(item);
+            });
+            
+            if (currentIndex >= activeMenuData.length) currentIndex = Math.max(0, activeMenuData.length - 1);
+            isInvitationOpened = false; 
+            goToSlide(currentIndex);
+        }
+
+        let touchStartX = 0, touchEndX = 0, touchStartY = 0, touchEndY = 0;
+        let isPulling = false; let pullDistance = 0;
+        window.addEventListener('DOMContentLoaded', () => {
+            
+            // === FITUR CUSTOM NAMA TAMU (URL PARAMETER) ===
+            const urlParams = new URLSearchParams(window.location.search);
+            // Cek apakah ada parameter ?to= atau ?kepada=
+            const guestName = urlParams.get('to') || urlParams.get('kepada');
+            
+            if (guestName) {
+                const guestSlot = document.getElementById('guestNameSlot');
+                if (guestSlot) {
+                    // Menggunakan innerText untuk mencegah serangan script berbahaya (XSS)
+                    // URLSearchParams otomatis menerjemahkan %20 menjadi spasi dan %26 menjadi &
+                    guestSlot.innerText = guestName; 
+                }
+            }
+            // ==============================================
+
+            // 1. SINKRONISASI AUDIO & SMART TAB UNTUK KLIEN
+            const bgMusic = document.getElementById('bg-music');
+            const btnAudio = document.getElementById('btn-audio');
+            
+            if(bgMusic && btnAudio) {
+                // Putar SVG saat lagu jalan, hentikan saat pause
+                bgMusic.addEventListener('play', () => btnAudio.classList.add('rotating'));
+                bgMusic.addEventListener('pause', () => btnAudio.classList.remove('rotating'));
+                
+                // Variabel memori untuk mengetahui siapa yang mem-pause lagu (Sisi Klien)
+                let isSystemPaused = false;
+
+                const handleFocusChange = () => {
+                    if(!isInvitationOpened) return;
+                    
+                    if (document.hidden) {
+                        if (!bgMusic.paused) {
+                            isSystemPaused = true;
+                            bgMusic.pause();
+                        }
+                    } else {
+                        if (isSystemPaused) {
+                            bgMusic.play().catch(e => console.log('Autoplay ditahan browser'));
+                            isSystemPaused = false;
+                        }
+                    }
+                };
+
+                document.addEventListener("visibilitychange", handleFocusChange);
+                
+                window.addEventListener("blur", () => { 
+                    if (isInvitationOpened && !bgMusic.paused) {
+                        isSystemPaused = true;
+                        bgMusic.pause();
+                    }
+                }); 
+                
+                window.addEventListener("focus", handleFocusChange);
+            }
+
+            // 2. LOGIKA SWIPE LAYAR
+            // 2. LOGIKA SWIPE LAYAR & PULL-TO-REFRESH
+            const sliderContainer = document.getElementById('slider-container');
+            if(sliderContainer) {
+                sliderContainer.addEventListener('touchstart', e => { 
+                    touchStartX = e.changedTouches[0].screenX; 
+                    touchStartY = e.changedTouches[0].screenY; 
+                    isPulling = false;
+                    pullDistance = 0;
+                }, {passive: true});
+                
+                // EVENT BARU: Mendeteksi pergerakan jari (Physics & Rubber Banding)
+                sliderContainer.addEventListener('touchmove', e => {
+                    if (!isInvitationOpened) return;
+                    
+                    const currentY = e.changedTouches[0].screenY;
+                    const diffY = currentY - touchStartY;
+                    
+                    // Deteksi Tarikan Karet Gelang di Batas Atas dan Bawah
+                    if (currentIndex === 0 && diffY > 0) { 
+                        // Di Cover, ditarik ke bawah
+                        isPulling = true;
+                        pullDistance = diffY * 0.35; 
+                    } else if (currentIndex === activeMenuData.length - 1 && diffY < 0) {
+                        // Di Halaman Terakhir, ditarik ke atas
+                        isPulling = true;
+                        pullDistance = diffY * 0.35; // Nilai akan negatif mengikuti arah jari
+                    } else {
+                        return; // Abaikan pergerakan di halaman tengah
+                    }
+                    
+                    if (isPulling) {
+                        const activePage = document.querySelector('.page.active-page');
+                        if (activePage) {
+                            activePage.style.transition = 'none';
+                            activePage.style.transform = 'translate3d(0, ' + pullDistance + 'px, 0) scale(1)';
+                        }
+                    }
+                }, {passive: true});
+
+                sliderContainer.addEventListener('touchend', e => {
+                    touchEndX = e.changedTouches[0].screenX; 
+                    touchEndY = e.changedTouches[0].screenY;
+                    
+                    // --- EKSEKUSI PULL-TO-REFRESH & RUBBER BAND ---
+                    if (isPulling) {
+                        isPulling = false;
+                        const activePage = document.querySelector('.page.active-page');
+                        
+                        // Eksekusi Refresh HANYA di Cover jika ditarik sangat kuat
+                        if (currentIndex === 0 && pullDistance > 120) {
+                            window.location.reload();
+                            return;
+                        } 
+                        
+                        // Sisanya: Pantulkan kembali (Snap back) ke titik 0
+                        if (activePage) {
+                            activePage.style.transition = 'transform 0.4s cubic-bezier(0.25, 1.5, 0.5, 1)'; 
+                            activePage.style.transform = ''; 
+                        }
+                        
+                        pullDistance = 0;
+                        return; // Hentikan fungsi di sini agar tidak memicu pindah halaman!
+                    }
+                    
+                    if (!isInvitationOpened) return; 
+                    
+                    const rsvpOverlay = document.getElementById('modal-rsvp-overlay');
+                    if (rsvpOverlay && rsvpOverlay.style.display === 'block') return;
+
+                    const diffX = touchStartX - touchEndX; 
+                    const diffY = touchStartY - touchEndY;
+                    
+                    if (Math.abs(diffX) > Math.abs(diffY)) {
+                        if (diffX > 50) goToSlide(currentIndex + 1); else if (diffX < -50) goToSlide(currentIndex - 1);
+                    } else {
+                        if (diffY > 50) goToSlide(currentIndex + 1); else if (diffY < -50) goToSlide(currentIndex - 1);
+                    }
+                }, {passive: true});
+            }
+            
+            initNavigation();
+            if (window.UtilsTime && countdownTargets.length > 0) window.UtilsTime.startCountdown(countdownTargets);
+            if (window.initFirebaseRSVP) window.initFirebaseRSVP();
+        });
+
+        function openInvitation() { 
+	    isInvitationOpened = true; 
+	    goToSlide(1); 
+	    
+	    // Logika putar musik klien
+	    const bgMusic = document.getElementById('bg-music');
+	    const btnAudio = document.getElementById('btn-audio');
+	    
+	    if (bgMusic) {
+	        // 1. Munculkan tombolnya dulu, terlepas lagu berhasil jalan atau tidak
+	        if (btnAudio) btnAudio.style.display = 'flex';
+	        
+	        // 2. Coba putar lagu secara asinkron
+	        const playPromise = bgMusic.play();
+	        if (playPromise !== undefined) {
+	            playPromise.catch(e => {
+	                console.log('Autoplay ditahan browser');
+	                // Ikon akan otomatis dimute oleh event listener DOMContentLoaded di atas
+	            });
+	        }
+	    }
+	    
+	    try {
+	        // Minta mode Fullscreen saat undangan dibuka di mobile
+	        let elem = document.documentElement;
+                if (elem.requestFullscreen) { elem.requestFullscreen().catch(err => console.log(err)); }
+                else if (elem.webkitRequestFullscreen) { elem.webkitRequestFullscreen().catch(err => console.log(err)); }
+                else if (elem.msRequestFullscreen) { elem.msRequestFullscreen().catch(err => console.log(err)); }
+            } catch(e) {}
+        }
+
+        function goToSlide(index) {
+            if (index < 0 || index >= activeMenuData.length) return;
+            const isChangingSlide = currentIndex !== index; 
+            currentIndex = index;
+
+            if (isChangingSlide) {
+                const overlay = document.getElementById('modal-rsvp-overlay');
+                const frame = document.querySelector('.frame');
+                if (overlay && overlay.style.display !== 'none') {
+                    overlay.style.display = 'none';
+                    overlay.style.opacity = '0';
+                    if (frame) frame.style.opacity = '1';
+                }
+            }
+
+            document.querySelectorAll('.page').forEach((page, i) => {
+                if(i === currentIndex) page.classList.add('active-page'); else page.classList.remove('active-page');
+            });
+
+            const navElements = document.querySelectorAll('.nav-item');
+            if(navElements.length > 0) {
+                navElements.forEach(el => el.classList.remove('active')); 
+                if(navElements[currentIndex]) {
+                    // REVISI 2: Delay pergerakan navigasi agar lebih elegan & tersinkron dengan animasi page (Klien)
+                    const targetNav = navElements[currentIndex];
+                    setTimeout(() => {
+                        if (currentIndex === index) { // Anti-spam click guard
+                            targetNav.classList.add('active');
+                            const track = document.getElementById('nav-track'); 
+                            if(track && targetNav) {
+                                track.scrollTo({ left: Math.max(0, targetNav.offsetLeft - (track.offsetWidth / 2) + (targetNav.offsetWidth / 2)), behavior: 'smooth' });
+                            }
+                        }
+                    }, 250);
+                }
+            }
+
+            const navBar = document.getElementById('nav-bar'); 
+            const appContainer = document.getElementById('app-container');
+            const btnAudio = document.getElementById('btn-audio'); // Tambahkan baris ini
+
+            if(navBar && appContainer) {
+                if (currentIndex === 0) { 
+                    navBar.classList.remove('visible'); 
+                    appContainer.classList.remove('nav-active');
+                    if (btnAudio) btnAudio.style.display = 'none'; // Sembunyikan tombol di cover
+                } 
+                else { 
+                    navBar.classList.add('visible'); 
+                    appContainer.classList.add('nav-active'); 
+                    // Tampilkan kembali hanya jika undangan sudah pernah dibuka
+                    if (btnAudio && isInvitationOpened) btnAudio.style.display = 'flex'; 
+                }
+            }
+            if (isChangingSlide) replayAnimations(currentIndex);
+        }
+
+        function replayAnimations(activeIndex) {
+            const activePage = document.querySelectorAll('.page')[activeIndex];
+            if(activePage) {
+                const innerAnimatedElements = activePage.querySelectorAll('[class*="animate__"]');
+                innerAnimatedElements.forEach(el => {
+                    const animClasses = Array.from(el.classList).filter(c => c.startsWith('animate__') && c !== 'animate__animated');
+                    el.dataset.anims = animClasses.join(' '); animClasses.forEach(c => el.classList.remove(c));
+                });
+                const appContainer = document.getElementById('app-container');
+                if(appContainer) void appContainer.offsetWidth;
+                
+                innerAnimatedElements.forEach(el => { if(el.dataset.anims) el.dataset.anims.split(' ').forEach(c => el.classList.add(c)); });
+            }
+            
+            // Replay animasi dinamis ornamen dengan metode Animate.css
+            const dynamicFrames = document.querySelectorAll('.frame img');
+            dynamicFrames.forEach(el => {
+                const animClasses = Array.from(el.classList).filter(c => c.startsWith('animate__') && c !== 'animate__animated');
+                if (animClasses.length > 0) {
+                    el.dataset.anims = animClasses.join(' ');
+                    animClasses.forEach(c => el.classList.remove(c));
+                }
+            });
+            // Trigger reflow UI sekali
+            const appC = document.getElementById('app-container');
+            if(appC) void appC.offsetWidth;
+            
+            dynamicFrames.forEach(el => {
+                if(el.dataset.anims) {
+                    el.dataset.anims.split(' ').forEach(c => el.classList.add(c));
+                }
+            });
+        }
+
+        function scalePreview() {
+            const appContainer = document.getElementById('app-container');
+            if(!appContainer) return;
+            if(window.innerWidth <= 480) {
+                appContainer.style.transform = 'scale(1)';
+                // Fix tinggi absolut untuk mengatasi terpotongnya nav bar oleh browser address bar
+                appContainer.style.height = window.innerHeight + 'px';
+            } else {
+                appContainer.style.height = '800px';
+                const scaleH = window.innerHeight / 800; const scaleW = window.innerWidth / 400;
+                let scale = Math.min(scaleH, scaleW); if (scale > 1) scale = 1; 
+                appContainer.style.transform = 'scale(' + scale + ')';
+            }
+        }
+        window.addEventListener('resize', scalePreview);
+        scalePreview();
+    </script>
+</body>
+</html>
