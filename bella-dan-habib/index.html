@@ -108,6 +108,50 @@
         }
         #btn-audio svg { width: 22px; height: 22px; fill: white; transition: fill 0.3s ease; }
         #btn-audio.rotating svg { animation: spin-continuous 4s linear infinite; }
+		#lightbox-modal {
+			display: none;
+			position: absolute; /* absolute agar mengikuti batas app-container */
+			z-index: 9999;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.85);
+			justify-content: center;
+			align-items: center;
+			backdrop-filter: blur(3px); /* efek blur tambahan agar lebih estetik */
+		}
+
+		#lightbox-img {
+			max-width: 90%;
+			max-height: 90%;
+			border-radius: 12px;
+			box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+			animation: zoomIn 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+		}
+
+		.close-lightbox {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			color: #ffffff;
+			font-size: 35px;
+			line-height: 1;
+			font-weight: bold;
+			cursor: pointer;
+			transition: transform 0.2s;
+			z-index: 10000;
+		}
+
+		.close-lightbox:active {
+			transform: scale(0.9);
+		}
+
+		@keyframes zoomIn {
+			from { transform: scale(0.9); opacity: 0; }
+			to { transform: scale(1); opacity: 1; }
+		}
+		
     </style>
 <style>
         .maps-scroll-area::-webkit-scrollbar { display: none; }
@@ -224,6 +268,10 @@
                 </div>
             </div>
         </div>
+		<div id="lightbox-modal">
+		<span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+		<img id="lightbox-img" src="">
+		</div>
     </div>
     <div class="page">
         <div class="d-flex justify-content-center align-items-center" style="height: 100%; position: relative; z-index: 20;">
@@ -1128,6 +1176,34 @@
         }
         window.addEventListener('resize', scalePreview);
         scalePreview();
+		document.addEventListener('DOMContentLoaded', () => {
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const galleryImages = document.querySelectorAll('.lightbox');
+
+    // Memicu modal ketika foto galeri diklik
+    galleryImages.forEach(img => {
+        img.style.cursor = 'pointer'; 
+        img.addEventListener('click', function() {
+            lightboxModal.style.display = 'flex';
+            lightboxImg.src = this.src; 
+        });
+    });
+
+    // Menutup modal jika area luar foto yang diklik (opsional, sangat disukai klien)
+    lightboxModal.addEventListener('click', function(e) {
+        if (e.target !== lightboxImg) {
+            closeLightbox();
+        }
+    });
+});
+
+// Fungsi untuk tombol close (x)
+function closeLightbox() {
+    document.getElementById('lightbox-modal').style.display = 'none';
+    document.getElementById('lightbox-img').src = ''; // reset src
+}
     </script>
 </body>
 </html>
+
